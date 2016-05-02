@@ -3,6 +3,7 @@
 namespace Controllers\Worker;
 
 use Models\Business\Worker as Worker;
+use App\Core\View as View;
 
 class WorkerController{
 
@@ -12,7 +13,10 @@ class WorkerController{
 		$worker = new Worker();
 		$worker->setUsername("Andreu");
 		$hola = "Hola treballador";
-        return compact('hola', 'worker');
+        View::to("worker.index", compact("hola","worker"));
+	}
+
+	public function edit(){
 	}
 }
 

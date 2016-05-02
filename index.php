@@ -9,8 +9,9 @@ define("URL", "http://localhost/api.web.com/");
 require_once "App/Core/Autoload.php";
 
 App\Core\Autoload::load();
-new App\Core\View();
+$template = new App\Core\Template();
 App\Core\Bootstrap::run(new App\Core\Request());
+
 
 
 

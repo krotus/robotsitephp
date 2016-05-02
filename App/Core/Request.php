@@ -13,7 +13,7 @@ class Request{
 			$request = filter_input(INPUT_GET, "url", FILTER_SANITIZE_URL);
 			$request = explode("/", $request);
 			$request = array_filter($request);
-
+			
 			if($request[0] == "index.php"){
 				$this->controller = "worker";
 			}else{

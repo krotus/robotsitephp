@@ -21,21 +21,13 @@ class Bootstrap{
 			if(in_array($method, $methodsClass)){
 				if(!isset($argument)){
 					// Retornem els valors $data a la view 
-					$data = call_user_func(array($controller, $method));
+					call_user_func(array($controller, $method));
 				}else{
-					$data = call_user_func_array(array($controller, $method), $argument);
+					call_user_func_array(array($controller, $method), $argument);
 				}
 			}else{
 				echo "error 404";
 			}
-		}
-
-		//load de la vista
-		$view = ROOT . "Views" . DS . $request->getController() . DS . $request->getMethod() . ".php";
-		if(is_readable($view)){
-			require_once $view;
-		}else{
-			echo "La vista no es troba";
 		}
 	}
 }
