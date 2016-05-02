@@ -1,23 +1,23 @@
 <?php 
 namespace Models\Business;
 
-class Worker{
+use Models\Business\User as User;
 
-	private $id;
-	private $username;
-	private $password;
-	private $NIF;
+class Worker extends User{
+
+	
+	private $nif;
 	private $name;
 	private $surname;
 	private $mobile;
 	private $telephone;
 	private $category;
 	private $team;
-	private $isAdmin;
 
 	public function __construct(){
 
 	}
+
 
 
 }

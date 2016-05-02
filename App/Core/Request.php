@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Config;
+namespace App\Core;
 
 class Request{
 
@@ -25,6 +25,9 @@ class Request{
 				$this->method = "index";
 			}
 			$this->argument = $request;
+		}else{
+			$this->controller = "worker";
+			$this->method = "index";
 		}
 	}
 

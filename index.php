@@ -4,11 +4,13 @@ header('Content-Type: text/html; charset=utf-8');
 
 define("DS", DIRECTORY_SEPARATOR);
 define("ROOT", realpath(dirname(__FILE__)) . DS);
+define("URL", "http://localhost/api.web.com/");
 
-require_once "App/Config/Autoload.php";
+require_once "App/Core/Autoload.php";
 
-App\Config\Autoload::load();
-App\Config\Bootstrap::run(new App\Config\Request());
+App\Core\Autoload::load();
+new App\Core\View();
+App\Core\Bootstrap::run(new App\Core\Request());
 
 
 
