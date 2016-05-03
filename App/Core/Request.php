@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Core\Session as Session;
+
 class Request{
 
 	private $controller;
@@ -9,6 +11,11 @@ class Request{
 	private $argument;
 
 	public function __construct(){
+
+		if(!Session::get("lang")){
+			Session::set("lang", LOCALE);
+		}
+
 		if(isset($_GET["url"])){
 			$request = filter_input(INPUT_GET, "url", FILTER_SANITIZE_URL);
 			$request = explode("/", $request);

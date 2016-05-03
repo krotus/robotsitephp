@@ -1,3 +1,2 @@
-<h2>Vista principal del treballador</h2>
-
-<?php echo $data["hola"] . " " . $data["worker"]->getUsername(); ?>
+<h2><?php echo $trans['title'] ?></h2>
+<a href="<?php echo URL . 'worker/language' ?>">switch language</a>

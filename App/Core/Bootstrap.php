@@ -28,6 +28,8 @@ class Bootstrap{
 			}else{
 				echo "error 404";
 			}
+		}else{
+			echo "error 404 no route found.";
 		}
 	}
 }
