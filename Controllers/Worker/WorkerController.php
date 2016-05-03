@@ -14,15 +14,15 @@ class WorkerController extends Controller{
 		$worker = new Worker();
 		$worker->setUsername("Andreu");
 		$hola = "Hola treballador";
-		
-        View::to("worker.index", compact("hola","worker"));
+		$marc = "Marc";
+        View::to("worker.index", compact("hola","worker", "marc"));
 	}
 
-	public function edit(){
+	public function edit($id){
 		//TODO
 	}
 
-	public function delete(){
+	public function delete($id){
 		//TODO
 	}
 
