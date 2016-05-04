@@ -1,4 +1,5 @@
 <?php 
+
 namespace Models\Business;
 
 use Models\Business\User as User;

@@ -32,7 +32,7 @@ class User{
             $this->setTeam($team);
         }
 
-        	public function getId(){
+    public function getId(){
 		return $this->id;
 	}
 

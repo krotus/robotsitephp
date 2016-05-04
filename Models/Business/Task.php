@@ -1,16 +1,7 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace Models\Business;
 
-/**
- * Description of tasks
- *
- * @author Marc
- */
 class Task {
     private $id;
     private $team;
