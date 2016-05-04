@@ -10,7 +10,11 @@ class Template{
 <head>
 	<meta charset="UTF-8">
 	<title>Admin Robotsite</title>
-	<link rel="stylesheet" href="<?php echo URL; ?>Views/template/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo URL; ?>Libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo URL; ?>Libs/bootstrap/css/bootstrap-theme.min.css">
+        <script type="text/javascript" src="<?php echo URL; ?>Libs/jquery/jquery.js"></script>
+        <script type="text/javascript" src="<?php echo URL; ?>Libs/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?php echo URL; ?>Libs/bootstrap/js/npm.js"></script>
 </head>
 <body>
 <?php
