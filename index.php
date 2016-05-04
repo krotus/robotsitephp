@@ -12,6 +12,4 @@ $template = new App\Core\Template();
 App\Core\Bootstrap::run(new App\Core\Request());
 
 
-
-
 ?>

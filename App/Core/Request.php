@@ -33,8 +33,10 @@ class Request{
 			}
 			$this->argument = $request;
 		}else{
-			$this->controller = "worker";
+			$this->controller = FIRST_PAGE;
 			$this->method = "index";
+			//Per la pantalla principal cal afegir $_GET["url"] !!!
+			$_GET["url"] = "";
 		}
 	}
 
