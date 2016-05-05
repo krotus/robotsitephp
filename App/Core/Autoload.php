@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+require_once "vendor/autoload.php";
+
 class Autoload{
 
 	public static function load(){
