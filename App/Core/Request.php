@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Core\Session as Session;
+use App\Core\View as View;
 
 class Request{
 
@@ -35,8 +36,15 @@ class Request{
 		}else{
 			$this->controller = FIRST_PAGE;
 			$this->method = "index";
-			//Per la pantalla principal cal afegir $_GET["url"] !!!
-			$_GET["url"] = "";
+		}
+
+		// usuari ha fet login
+		if(!Session::isLogged()){
+			$pos = strpos($_GET["url"], "login");
+			if(is_bool($pos)){
+				View::redirect("login.index");
+				
+			}
 		}
 	}
 

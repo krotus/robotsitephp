@@ -26,7 +26,6 @@ class Order {
         $this->setProcess($process);
     }
 
-        
     
     function getId() {
         return $this->id;

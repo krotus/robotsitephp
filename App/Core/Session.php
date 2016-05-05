@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Core\View as View;
+
 class Session{
 
 
@@ -38,6 +40,16 @@ class Session{
 		if(isset($_SESSION[$key])){
 		    return $_SESSION[$key];
 		}
+	}
+
+	public static function isLogged(){
+		$login = false;
+
+		if(self::get("user")){
+			$login = true;
+		}
+		
+		return $login;
 	}
 
 }

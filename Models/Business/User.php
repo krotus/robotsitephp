@@ -125,6 +125,9 @@ class User{
 		$this->team = $team;
 	}
 
+	public function isAdmin(){
+		return $this->getIsAdmin();
+	}
 
 }
 

@@ -2,9 +2,11 @@
 
 namespace App\Core;
 
+use App\Core\Session as Session;
+
 class Bootstrap{
 
-	public static function run(Request $request){
+	public static function run(Request $request){	
 		$controller = ucfirst($request->getController()) . "Controller";
 		$route = ROOT . "Controllers" . DS . ucfirst($request->getController()) . DS . $controller . ".php";
 		$method = $request->getMethod();
@@ -18,6 +20,7 @@ class Bootstrap{
 			$namespaceController = "Controllers\\" . ucfirst($request->getController()) . "\\" . $controller;
 			$controller = new $namespaceController;
 			$methodsClass = get_class_methods($controller);
+
 			if(in_array($method, $methodsClass)){
 				if(!isset($argument)){
 					// Retornem els valors $data a la view 
