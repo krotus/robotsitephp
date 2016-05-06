@@ -1,6 +1,7 @@
 {
     "require": {
         "itbz/fpdf": "^1.7",
-        "phpunit/phpunit": "^4.8"
+        "phpunit/phpunit": "^4.8",
+        "phpdocumentor/phpdocumentor": "2.*"
     }
 }

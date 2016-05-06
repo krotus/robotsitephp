@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>Docs Robotsite</title>
+    <parser>
+        <target>docs</target>
+        <encoding>utf8</encoding>
+        <markers>
+            <item>README</item>
+        </markers>
+        <extensions>
+            <extension>php</extension>
+        </extensions>
+        <visibility></visibility>
+    </parser>
+    <transformer>
+        <target>docs</target>
+    </transformer>
+    <files>
+        <directory>App</directory>
+        <directory>Controllers</directory>
+        <directory>Models</directory>
+        <ignore>.git/*</ignore>
+    </files>
+    <transformations>
+        <template name="responsive-twig"/>
+        <template name="checkstyle"/>
+    </transformations>
+</phpdoc>
