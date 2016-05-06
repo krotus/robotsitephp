@@ -42,8 +42,7 @@ class Request{
 		if(!Session::isLogged()){
 			$pos = strpos($_GET["url"], "login");
 			if(is_bool($pos)){
-				View::redirect("login.index");
-				
+				View::redirect("login.index");	
 			}
 		}
 	}
