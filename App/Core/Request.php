@@ -4,9 +4,11 @@ namespace App\Core;
 
 use App\Core\Session as Session;
 use App\Core\View as View;
+use Models\Business\User as User;
 
 class Request{
 
+	private $page;
 	private $controller;
 	private $method;
 	private $argument;
@@ -21,8 +23,11 @@ class Request{
 			$request = filter_input(INPUT_GET, "url", FILTER_SANITIZE_URL);
 			$request = explode("/", $request);
 			$request = array_filter($request);
-			
-						
+
+			$isAdminPage = in_array("admin", $request);
+			if($isAdminPage){
+				$this->page = strtolower(array_shift($request));
+			}
 			$this->controller = strtolower(array_shift($request));
 			$this->method = strtolower(array_shift($request));
 			if(!$this->method){
@@ -41,6 +46,10 @@ class Request{
 				View::redirect("login.index");	
 			}
 		}
+	}
+
+	public function getPage(){
+		return $this->page;
 	}
 
 	public function getController(){

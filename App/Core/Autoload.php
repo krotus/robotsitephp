@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Utility\Debug as Debug;
+
 require_once "vendor/autoload.php";
 
 class Autoload{

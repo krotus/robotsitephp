@@ -14,7 +14,8 @@ class LoginController extends Controller{
 		if(!$_POST){
         	View::to("login.index");
     	}else{
-    		Session::set("user","andreu");
+			$user = new Worker();
+    		Session::set("user",$user);
     		View::redirect("worker.index");
     	}
 	}

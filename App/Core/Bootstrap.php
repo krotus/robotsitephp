@@ -3,21 +3,29 @@
 namespace App\Core;
 
 use App\Core\Session as Session;
+use App\Utility\Debug as Debug;
 
 class Bootstrap{
 
-	public static function run(Request $request){	
+	public static function run(Request $request){
 		$controller = ucfirst($request->getController()) . "Controller";
-		$route = ROOT . "Controllers" . DS . ucfirst($request->getController()) . DS . $controller . ".php";
+		if($request->getPage() == "admin"){
+			$route = ROOT . "Controllers" . DS . "Admin" . DS . $controller . ".php";
+		}else{
+			$route = ROOT . "Controllers" . DS . ucfirst($request->getController()) . DS . $controller . ".php";
+		}
 		$method = $request->getMethod();
 		if($method == "index.php"){
 			$method = "index";
 		}
 		$argument = $request->getArgument();
-
 		if(is_readable($route)){
 			require_once $route;
-			$namespaceController = "Controllers\\" . ucfirst($request->getController()) . "\\" . $controller;
+			if($request->getPage() == "admin"){
+				$namespaceController = "Controllers\\Admin\\" . $controller;
+			}else{
+				$namespaceController = "Controllers\\" . ucfirst($request->getController()) . "\\" . $controller;
+			}
 			$controller = new $namespaceController;
 			$methodsClass = get_class_methods($controller);
 
