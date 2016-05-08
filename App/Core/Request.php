@@ -24,15 +24,17 @@ class Request{
 		if(!Session::isLogged()){
 			$pos = strpos($_GET["url"], "login");
 			if(is_bool($pos)){
-				View::redirect("login.index");
+				$alert = "alert_must_login";
+				View::redirect("login.index", compact('alert'));
 				exit;
 			}
 		}else{ //usuari ha fet login
 			if(isset($_GET["url"])){
 				$pos = strpos($_GET["url"], "login");
 				if(!is_bool($pos)){
-					$message = "Ya has hecho login con tu cuenta!";
-					View::redirect("", compact('message'));	
+					//mode multi idioma => clau associativa del array de langs
+					$alert = "alert_already_login";
+					View::redirect("", compact('alert'));	
 					exit;
 				}
 			}
@@ -46,8 +48,9 @@ class Request{
 			$isAdminPage = in_array("admin", $request);
 			if($isAdminPage){ //peticio a una pagina admin
 				if(Session::get("user") instanceof Worker){ //si ets un treballador redireccionem a la primera pagina
-					$message = "Lo sentimos, pero no tienes permisos para acceder a esa pagina!";
-					View::redirect(FIRST_PAGE, compact('message'));
+					$alert = "alert_access_denied";
+					View::redirect(FIRST_PAGE, compact('alert'));
+					exit;
 				}else{
 					$this->page = strtolower(array_shift($request)); //retallem /admin
 				}

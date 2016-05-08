@@ -18,7 +18,7 @@ class LoginController{
     		if(Session::get("user") instanceof Worker){
     			View::redirect(FIRST_PAGE);
     		}else{
-    			View::redirect("admin.dashboard");
+    			View::redirect("admin." . FIRST_PAGE_ADMIN);
     		}
     	}
 	}
