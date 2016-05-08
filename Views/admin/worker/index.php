@@ -1,1 +1,1 @@
-<p>Admin access only</p>
+<p>List workers from admin panel</p>

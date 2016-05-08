@@ -2,13 +2,12 @@
 
 namespace Controllers\Login;
 
-use Controllers\Controller as Controller;
 use App\Core\View as View;
 use App\Core\Session as Session;
 use Models\Business\Worker as Worker;
 use Models\Business\Admin as Admin;
 
-class LoginController extends Controller{
+class LoginController{
 
 	public function index(){
 		if(!$_POST){
@@ -16,20 +15,12 @@ class LoginController extends Controller{
     	}else{
 			$user = new Worker();
     		Session::set("user",$user);
-    		View::redirect("worker.index");
+    		if(Session::get("user") instanceof Worker){
+    			View::redirect(FIRST_PAGE);
+    		}else{
+    			View::redirect("admin.dashboard");
+    		}
     	}
-	}
-
-	public function edit($id){
-		//TODO
-	}
-
-	public function delete($id){
-		//TODO
-	}
-
-	public function create(){
-		//TODO
 	}
 }
 
