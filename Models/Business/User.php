@@ -124,7 +124,9 @@ class User{
 	public function setTeam($team){
 		$this->team = $team;
 	}
-
+        //validarLogin
+        //logout
+        
 
 }
 
