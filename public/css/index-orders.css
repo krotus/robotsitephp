@@ -1,0 +1,10 @@
+.panel-heading{
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+}
+.panel-heading > h3{
+    cursor: pointer;
+}
+.orders-table{
+    width: 100% !important;
+}
