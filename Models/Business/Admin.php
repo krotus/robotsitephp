@@ -3,6 +3,7 @@
 namespace Models\Business;
 
 use Models\Business\User as User;
+use Models\DAO\TaskDAO as TaskDAO;
 
 class Admin extends User{
 
@@ -12,10 +13,10 @@ class Admin extends User{
 	}
     public function assignOrderToTeam($task){
         $dao = new TaskDAO;
-	$dao->insert($task);
+	$dao->create($task);
     }
     public function reassignOrder($task){
-        $dao = new OrderDAO;
+        $dao = new TaskDAO;
         $dao->update($task);
     }
 }
