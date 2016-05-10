@@ -64,12 +64,8 @@ class User extends DataObject{
 		}
 	}
 
-	public function getIsAdmin(){
-		return $this->isAdmin;
-	}
-
-	public function setIsAdmin($isAdmin){
-		$this->isAdmin = $isAdmin;
+	public function isAdmin(){
+		return $this->getIsAdmin();
 	}
 
 	public function getNif(){
@@ -126,10 +122,6 @@ class User extends DataObject{
 
 	public function setTeam($team){
 		$this->team = $team;
-	}
-
-	public function isAdmin(){
-		return $this->getIsAdmin();
 	}
 
 }
