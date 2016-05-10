@@ -2,7 +2,9 @@
 
 namespace Models\Business;
 
-class Process {
+use Models\DAO\DataObject as DataObject;
+
+class Process extends DataObject{
     private $id;
     private $code;
     private $description;

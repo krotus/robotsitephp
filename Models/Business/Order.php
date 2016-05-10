@@ -2,7 +2,9 @@
 
 namespace Models\Business;
 
-class Order {
+use Models\DAO\DataObject as DataObject;
+
+class Order extends DataObject{
     private $id;
     private $code;
     private $description;

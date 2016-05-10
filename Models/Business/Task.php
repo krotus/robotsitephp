@@ -2,7 +2,9 @@
 
 namespace Models\Business;
 
-class Task {
+use Models\DAO\DataObject as DataObject;
+
+class Task extends DataObject{
     private $id;
     private $team;
     private $order;

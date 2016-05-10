@@ -15,6 +15,7 @@ class LoginController{
     	}else{
 			$user = new Worker();
     		Session::set("user",$user);
+            $user->setId(1);
             $user->get();
             exit;
     		if(Session::get("user") instanceof Worker){

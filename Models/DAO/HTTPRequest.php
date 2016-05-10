@@ -13,7 +13,7 @@ class HTTPRequest {
 	private $curlHandler;
 	private $output;
 	
-	function __construct($url,$method,$data = null)	{
+	function __construct($url = null,$method = null,$data = null)	{
 
 			$this->setUrl($url);
 			$this->setMethod($method);

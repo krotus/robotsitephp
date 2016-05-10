@@ -2,7 +2,9 @@
 
 namespace Models\Business;
 
-class Robot {
+use Models\DAO\DataObject as DataObject;
+
+class Robot extends DataObject{
     private $id;
     private $code;
     private $name;

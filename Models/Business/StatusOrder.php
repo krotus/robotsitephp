@@ -2,7 +2,9 @@
 
 namespace Models\Business;
 
-class StatusOrder {
+use Models\DAO\DataObject as DataObject;
+
+class StatusOrder extends DataObject{
     private $id;
     private $description;
     

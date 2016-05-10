@@ -2,7 +2,9 @@
 
 namespace Models\Business;
 
-class StatusRobot {
+use Models\DAO\DataObject as DataObject;
+
+class StatusRobot extends DataObject{
     private $id;
     private $description;
     
