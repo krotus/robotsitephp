@@ -154,7 +154,7 @@ class HTTPRequest {
 	private function validateResponse()	{
 		$output = $this->getOutput();
 		if ($output["state"] == 200) {
-			return $output;
+			return $output["data"];
 		} else {
 			throw new Exception($output["state"]);
 		}

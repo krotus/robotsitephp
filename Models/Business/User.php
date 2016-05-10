@@ -3,7 +3,7 @@
 namespace Models\Business;
 
 use Models\DAO\HTTPRequest as HTTPRequest;
-use Models\DAO\DataObject as DataObject;
+use Models\Business\DataObject as DataObject;
 
 class User extends DataObject {
 

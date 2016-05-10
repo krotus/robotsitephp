@@ -2,7 +2,7 @@
 
 namespace Models\Business;
 
-use Models\DAO\DataObject as DataObject;
+use Models\Business\DataObject as DataObject;
 
 class Team extends DataObject{
     private $id;

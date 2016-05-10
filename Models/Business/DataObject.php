@@ -1,6 +1,6 @@
 <?php 
 
-namespace Models\DAO;
+namespace Models\Business;
 
 use App\Utility\Debug as Debug;
 
@@ -15,29 +15,29 @@ abstract class DataObject{
 		return $dao;
 	}
 
-	public function get(){
-		$dao = buildDAO();
-		$dao->getById($this->getId());
+	protected function get(){
+		$dao = $this->buildDAO();
+		return $dao->getById($this->getId());
 	}
 
-	public function getAll(){
-		$dao = buildDAO();
-		$dao->getAll();
+	protected function getAll(){
+		$dao = $this->buildDAO();
+		return $dao->getAll();
 	}
 
-	public function create(){
-		$dao = buildDAO();
-		$dao->create($this);
+	protected function create(){
+		$dao = $this->buildDAO();
+		return $dao->create($this);
 	}
 
-	public function delete(){
-		$dao = buildDAO();
-		$dao->delete($this->getId());
+	protected function delete(){
+		$dao = $this->buildDAO();
+		return $dao->delete($this->getId());
 	}
 
-	public function update(){
-		$dao = buildDAO();
-		$dao->update($this);
+	protected function update(){
+		$dao = $this->buildDAO();
+		return $dao->update($this);
 	}
 
     protected function objectToArray($data) {
