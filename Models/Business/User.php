@@ -2,7 +2,10 @@
 
 namespace Models\Business;
 
-class User{
+use Models\DAO\HTTPRequest as HTTPRequest;
+use Models\DAO\DataObject as DataObject;
+
+class User extends DataObject{
 
 	private $id;
 	private $username;
