@@ -1,6 +1,7 @@
 <?php 
 
 namespace Models\DAO;
+
 /**
 * Classe per enviar HTTP requests al Web service i realitzar les operacions basiques del CRUD.
 */
@@ -14,29 +15,30 @@ class HTTPRequest {
 	
 	function __construct($url,$method,$data = null)	{
 
-		$this->setMethod($method);
-		$this->setUrl($url);
-		if (!is_null($data)) {
-			$this->setData($data);
-		}
+			$this->setUrl($url);
+			$this->setMethod($method);
+			if (!is_null($data)) {
+				$this->setData($data);
+			}
+
 
 	}
 
 	//inicialitza envia la request
-	public static function sendHTTPRequest() {
+	public function sendHTTPRequest() {
 		$method = strtoupper($this->getMethod());
 		switch ($method) {
 			case 'GET':
-				sendGetReq();
+				return $this->sendGetReq();
 				break;
 			case 'POST':
-				sendPostReq();
+				return $this->sendPostReq();
 				break;
 			case 'PUT':
-				sendPutReq();
+				return $this->sendPutReq();
 				break;
 			case 'DELETE':
-				sendDeleteReq();
+				return $this->sendDeleteReq();
 				break;
 			default:
 				//tractament de errors?
@@ -55,22 +57,24 @@ class HTTPRequest {
 
 	private function sendGetReq() {
 
-		initRequestParameters();
+		$this->initRequestParameters();
 		// execute the request
 		$ch = $this->getCurlHandler();
 		$output = curl_exec($ch);
+		$output = json_decode($output,true);
 		// close curl resource to free up system resources
 		curl_close($ch);
 		// output the profile information - includes the header
 		$this->setOutput($output);
-		return validateResponse();
+		//var_dump($output);
+		return $this->validateResponse();
 	}
 
 	//se li ha de passar com a parametre un json en format string
 	//ex:$data_string = json_encode($data); on data es un array.
-	function sendPostReq() {
+	private function sendPostReq() {
 		// set up the curl resource
-		initRequestParameters();
+		$this->initRequestParameters();
 		$ch = $this->getCurlHandler();
 		// s'ha de passar a string les dades abans de ser enviades en POST o PUT
 		$data = $this->getData();
@@ -93,16 +97,16 @@ class HTTPRequest {
 			// output the profile information - includes the header
 			//echo($output) . PHP_EOL;
 			$this->setOutput($output);
-			return validateResponse();
+			return $this->validateResponse();
 		}
 	}
 
 
 	//se li ha de passar com a parametre un json en format string
 	//ex:$data_string = json_encode($data); on data es un array.
-	function sendPutReq() {
+	private function sendPutReq() {
 		// set up the curl resource
-		initRequestParameters();
+		$this->initRequestParameters();
 		$ch = $this->getCurlHandler();
 		// s'ha de passar a string les dades abans de ser enviades en POST o PUT
 		$data = $this->getData();
@@ -125,14 +129,14 @@ class HTTPRequest {
 			// output the profile information - includes the header
 			//echo($output) . PHP_EOL;
 			$this->setOutput($output);
-			return validateResponse();
+			return $this->validateResponse();
 		}
 	}
 
 
-	function sendDeleteReq() {
+	private function sendDeleteReq() {
 		// set up the curl resource
-		initRequestParameters();
+		$this->initRequestParameters();
 		$ch = $this->getCurlHandler();
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
 		// execute the request
@@ -143,10 +147,10 @@ class HTTPRequest {
 		// close curl resource to free up system resources
 		curl_close($ch);
 		$this->setOutput($output);
-		return validateResponse();
+		return $this->validateResponse();
 	}
 
-	function validateResponse()	{
+	private function validateResponse()	{
 		$output = $this->getOutput();
 		if ($output["state"] == 200) {
 			return $output;
