@@ -2,7 +2,9 @@
 
 namespace Models\Business;
 
-class Point {
+use Models\DAO\DataObject as DataObject;
+
+class Point extends DataObject{
     private $id;
     private $posX;
     private $posY;
