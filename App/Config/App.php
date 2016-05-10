@@ -10,6 +10,6 @@ define("FIRST_PAGE_ADMIN", "dashboard");
 
 
 //WEBSERVICE 
-define("WEBSERVICE", "http://localhost/api.arduino.com/v1/");
+define("WEBSERVICE", "http://testservice.xyz/v1/");
 
 ?>

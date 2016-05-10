@@ -16,7 +16,7 @@ class LoginController{
 			$user = new Worker();
     		Session::set("user",$user);
             $user->setId(1);
-            $user->get();
+            $user->getById();
             exit;
     		if(Session::get("user") instanceof Worker){
     			View::redirect(FIRST_PAGE);
