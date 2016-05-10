@@ -1,34 +1,44 @@
-<?php
+<?php 
 
 namespace Models\DAO;
 
 use App\Utility\Debug as Debug;
 
-abstract class DataObject {
+abstract class DataObject{
 
-    public function get() {
-        $typeOf = get_class($this);
-        $typeOf = str_replace("Business", "DAO", $typeOf);
-        $typeOf .= "DAO";
-        $dao = new $typeOf;
-        $dao->getById($this->getId());
-    }
+	private function buildDAO()
+	{
+		$typeOf = get_class($this);
+		$typeOf = str_replace("Business", "DAO", $typeOf);
+		$typeOf .= "DAO";
+		$dao = new $typeOf;
+		return $dao;
+	}
 
-    public function getAll() {
-        
-    }
+	public function get(){
+		$dao = buildDAO();
+		$dao->getById($this->getId());
+	}
 
-    public function add($object) {
-        
-    }
+	public function getAll(){
+		$dao = buildDAO();
+		$dao->getAll();
+	}
 
-    public function delete($object) {
-        
-    }
+	public function create(){
+		$dao = buildDAO();
+		$dao->create($this);
+	}
 
-    public function update($object) {
-        
-    }
+	public function delete(){
+		$dao = buildDAO();
+		$dao->delete($this->getId());
+	}
+
+	public function update(){
+		$dao = buildDAO();
+		$dao->update($this);
+	}
 
     protected function objectToArray($data) {
         if (is_array($data) || is_object($data)) {

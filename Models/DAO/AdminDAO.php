@@ -6,7 +6,7 @@ use Models\DAO\HTTPRequest as HTTPRequest;
 use App\Utility\Debug as Debug;
 
 
-class WorkerDAO{
+class AdminDAO {
 
 	private $HTTPRequest;
 
@@ -16,7 +16,7 @@ class WorkerDAO{
 
 
 	public function getById($id){
-		$url = WEBSERVICE ."workers/getById/" . $id;
+		$url = WEBSERVICE. "workers/getById/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
