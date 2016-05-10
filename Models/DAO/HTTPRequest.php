@@ -29,21 +29,22 @@ class HTTPRequest {
 		$method = strtoupper($this->getMethod());
 		switch ($method) {
 			case 'GET':
-				return $this->sendGetReq();
+				$output = $this->sendGetReq();
 				break;
 			case 'POST':
-				return $this->sendPostReq();
+				$output = $this->sendPostReq();
 				break;
 			case 'PUT':
-				return $this->sendPutReq();
+				$output = $this->sendPutReq();
 				break;
 			case 'DELETE':
-				return $this->sendDeleteReq();
+				$output = $this->sendDeleteReq();
 				break;
 			default:
 				//tractament de errors?
 				break;
 		}
+		return $output;
 	}
 
 
