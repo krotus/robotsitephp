@@ -1,24 +1,31 @@
-<?php 
+<?php
 
 namespace App\Core;
 
-class Template{
-	public function __construct(){
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>Admin Robotsite</title>
-	<link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="<?php echo URL; ?>public/css/login.css">
-	<link rel="stylesheet" href="<?php echo URL; ?>public/css/heading.css">
-    <script src="<?php echo URL; ?>public/js/jquery.js"></script>
-    <script src="<?php echo URL; ?>public/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-<?php
+class Template {
+
+    public function __construct() {
+        ?>
+        <!DOCTYPE html>
+        <html lang="es">
+            <head>
+                <meta charset="UTF-8">
+                <title>Admin Robotsite</title>
+                <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap.min.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap-theme.min.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/css/login.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/css/heading.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/css/index-orders.css">
+                <!--<link rel="stylesheet" href="<?php echo URL; ?>public/datatables/css/datatables.min.css">-->
+                <link rel="stylesheet" href="<?php echo URL; ?>public/datatables/css/datatables.bootstrap.min.css">
+                <script src="<?php echo URL; ?>public/js/jquery.js"></script>
+                <script src="<?php echo URL; ?>public/bootstrap/js/bootstrap.min.js"></script>
+                <script src="<?php echo URL; ?>public/datatables/js/datatables.min.js"></script>
+                <script src="<?php echo URL; ?>public/datatables/js/datatables.bootstrap.min.js"></script>
+                <script src="<?php echo URL; ?>public/js/index_orders.js"></script>
+            </head>
+            <body>
+                <?php
                 $login = false;
                 if (isset($_GET['url'])) {
                     $expUrl = explode(DS, $_GET['url']);
@@ -65,18 +72,17 @@ class Template{
                             </div><!--/.nav-collapse -->
                         </div>
                     </nav>
-                <div class="col-xs-12 nav-separator"></div>
+                    <div class="col-xs-12 nav-separator"></div>
                     <?php
                 }
             }
 
             public function __destruct() {
                 ?>
-</body>
-</html>
-<?php
-	}
+            </body>
+        </html>
+        <?php
+    }
 
 }
-
 ?>
