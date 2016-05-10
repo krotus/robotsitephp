@@ -27,7 +27,11 @@ class WorkerController extends Controller{
 	}
 
 	public function create(){
-		//TODO
+		if(!$_POST){
+			View::to("worker.create");
+		}else{
+			View::redirect("worker.index");
+		}
 	}
 
 }

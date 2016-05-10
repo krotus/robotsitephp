@@ -2,7 +2,10 @@
 
 namespace Models\Business;
 
-class User{
+use Models\DAO\HTTPRequest as HTTPRequest;
+use Models\DAO\DataObject as DataObject;
+
+class User extends DataObject{
 
 	private $id;
 	private $username;
@@ -32,7 +35,7 @@ class User{
             $this->setTeam($team);
         }
 
-        	public function getId(){
+    public function getId(){
 		return $this->id;
 	}
 
@@ -124,9 +127,10 @@ class User{
 	public function setTeam($team){
 		$this->team = $team;
 	}
-        //validarLogin
-        //logout
-        
+
+	public function isAdmin(){
+		return $this->getIsAdmin();
+	}
 
 }
 

@@ -1,3 +1,10 @@
+<?php 
+if(isset($data)){
+	if (array_key_exists("alert", $data)) {
+		echo '<div class="alert alert-danger" role="alert">' . $trans[$data["alert"]] . '</div>';
+	}	
+}
+?>
 <div class="col-md-4 hidden-xs">
 </div>
 <div class="form-block col-md-4 col-xs-12 panel panel-primary">

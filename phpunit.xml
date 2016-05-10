@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
+	backupGlobals="true"
+	backupStaticAttributes="false"
+	cacheTokens="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	forceCoversAnnotation="false"
+	mapTestClassNameToCoveredClassName="false"
+	processIsolation="false"
+	stopOnError="false"
+	stopOnFailure="false"
+	stopOnIncomplete="false"
+	stopOnSkipped="false"
+	stopOnRisky="false"
+	verbose="false"
+	bootstrap="App/Core/Autoload.php">
+  <testsuites>
+    <testsuite name="TDT web project">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
