@@ -11,7 +11,7 @@ abstract class DataObject{
 		$typeOf = str_replace("Business", "DAO", $typeOf);
 		$typeOf .= "DAO";
 		$dao = new $typeOf;
-		$dao->getById($this->id);		
+		$dao->getById($this->getId());		
 	}
 
 	public function getAll(){

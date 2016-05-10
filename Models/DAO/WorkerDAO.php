@@ -3,6 +3,7 @@
 namespace Models\DAO;
 
 use Models\DAO\HTTPRequest as HTTPRequest;
+use App\Utility\Debug as Debug;
 
 
 class WorkerDAO{
@@ -10,16 +11,17 @@ class WorkerDAO{
 	private $HTTPRequest;
 
 	public function __construct(){
-		$HTTPRequest = new HTTPRequest();
+		$this->HTTPRequest = new HTTPRequest();
 	}
 
 
 	public function getById($id){
 		$url = "http://localhost/api.arduino.com/v1/workers/getById/" . $id;
-		$HTTPRequest->setUrl($url);
-		$HTTPRequest->setMethod("GET");
-		$json = $HTTPRequest->sendHTTPRequest();
-		var_dump($json);
+		$this->HTTPRequest->setUrl($url);
+		$this->HTTPRequest->setMethod("GET");
+		$json = $this->HTTPRequest->sendHTTPRequest();
+		Debug::log($json);
+		var_dump("wtf");
 	}
 }
 
