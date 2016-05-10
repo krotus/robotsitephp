@@ -10,7 +10,14 @@ class Admin extends User{
         parent::__construct($this);
         $this->setIsAdmin(true);
 	}
-
+    public function assignOrderToTeam($task){
+        $dao = new TaskDAO;
+	$dao->insert($task);
+    }
+    public function reassignOrder($task){
+        $dao = new OrderDAO;
+        $dao->update($task);
+    }
 }
 
 ?>
