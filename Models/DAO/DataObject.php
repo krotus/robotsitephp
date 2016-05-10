@@ -40,6 +40,17 @@ abstract class DataObject{
 		$dao->update($this);
 	}
 
+    protected function objectToArray($data) {
+        if (is_array($data) || is_object($data)) {
+            $result = array();
+            foreach ($data as $key => $value) {
+                $result[$key] = objectToArray($value);
+            }
+            return $result;
+        }
+        return $data;
+    }
+
 }
 
 ?>

@@ -3,6 +3,7 @@
 namespace Models\Business;
 
 use Models\DAO\DataObject as DataObject;
+use Models\DAO\OrderDAO as OrderDAO;
 
 class Order extends DataObject{
     private $id;
@@ -101,5 +102,10 @@ class Order extends DataObject{
         $this->process = $process;
     }
 
+    function checkOrdersAssigned($team){
+        $dao = new OrderDAO();
+        //provisional
+        $dao->getOrdersByTeamId($team);
+    }
 
 }
