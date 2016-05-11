@@ -3,10 +3,12 @@
 namespace Models\DAO;
 
 use Models\DAO\HTTPRequest as HTTPRequest;
+use Models\DAO\AbstractDAO as AbstractDAO;
+use Models\Business\Team as Team;
 use App\Utility\Debug as Debug;
 
 
-class WorkerDAO{
+class WorkerDAO extends AbstractDAO{
 
 	private $HTTPRequest;
 
@@ -20,7 +22,11 @@ class WorkerDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $arrayResponse;
+		$worker = $this->arrayToObject($arrayResponse);
+		$team = new Team($worker->getTeam());
+		$team = $team->get();
+		$worker->setTeam($team);
+		return $worker;
 	}
 
 	public function getAll(){

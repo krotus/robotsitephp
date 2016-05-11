@@ -5,12 +5,12 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 
 class Point extends DataObject{
-    private $id;
-    private $posX;
-    private $posY;
-    private $posZ;
-    private $tweezer;
-    private $process;
+    protected $id;
+    protected $posX;
+    protected $posY;
+    protected $posZ;
+    protected $tweezer;
+    protected $process;
     
     function __construct($id = null, $posX = null, $posY = null, $posZ = null, 
             $tweezer = null, $process = null) {

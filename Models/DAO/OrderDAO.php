@@ -3,6 +3,9 @@
 namespace Models\DAO;
 
 use Models\DAO\HTTPRequest as HTTPRequest;
+use Models\Business\Robot as Robot;
+use Models\Business\Process as Process;
+use Models\Business\StatusOrder as StatusOrder;
 use App\Utility\Debug as Debug;
 
 
@@ -19,8 +22,26 @@ class OrderDAO{
 		$url = WEBSERVICE. "orders/getById/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
-		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $arrayResponse;
+		$order = $this->HTTPRequest->sendHTTPRequest();
+
+		$idProcess = $order->getProcess();
+		$process = new Process($idProcess);
+		$process = $process->get();
+		$order->setProcess($process);
+
+		$idRobot = $order->getRobot();
+		$robot = new Robot($idRobot);
+		$robot = $robot->get();
+		$order->setRobot($robot);
+
+		$idStatusOrder = $order->getStatusOrder();
+		$statusOrder = new StatusOrder($idStatusOrder);
+		$statusOrder = $statusOrder->get();
+		$order->setStatusOrder($statusOrder);
+
+		var_dump($order);
+		exit;
+		return $order;
 	}
 
 	public function getAll(){

@@ -5,9 +5,9 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 
 class Process extends DataObject{
-    private $id;
-    private $code;
-    private $description;
+    protected $id;
+    protected $code;
+    protected $description;
     
     function __construct($id = null, $code = null, $description = null) {
         $this->setCode($code);

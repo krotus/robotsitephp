@@ -6,6 +6,7 @@ use App\Core\View as View;
 use App\Core\Session as Session;
 use Models\Business\Worker as Worker;
 use Models\Business\Admin as Admin;
+use App\Utility\Debug as Debug;
 
 class LoginController{
 
@@ -16,9 +17,8 @@ class LoginController{
 			$user = new Worker();
     		Session::set("user",$user);
             $user->setId(1);
-            $user->get();
-            //var_dump();
-            //exit;
+            Debug::log($user->get());
+            exit;
     		if(Session::get("user") instanceof Worker){
     			View::redirect(FIRST_PAGE);
     		}else{

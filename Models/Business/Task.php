@@ -5,13 +5,13 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 
 class Task extends DataObject{
-    private $id;
-    private $team;
-    private $order;
-    private $worker;
-    private $dateAssignation;
-    private $dateCompletion;
-    private $justification;
+    protected $id;
+    protected $team;
+    protected $order;
+    protected $worker;
+    protected $dateAssignation;
+    protected $dateCompletion;
+    protected $justification;
     
     function __construct($id = null, $team = null, $order = null, $worker = null, 
             $dateAssignation = null, $dateCompletion = null, $justification = null) {
