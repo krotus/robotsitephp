@@ -15,9 +15,34 @@ abstract class DataObject{
 		return $dao;
 	}
 
-	protected function get(){
+	public function arrayToObject($data)
+	{
+		$setters  = $this->getSetters();
+		$typeOf = get_class($this);
+		$class = new $typeOf;
+		$i = 0;
+		foreach ($data as $key => $value) {
+			$class->$setters[$i]($value);
+			$i++;
+		}
+		var_dump($class);
+		exit;
+	}
+  	public function getSetters()
+    {
+        $settersArray = array();
+        foreach ($this as $key => $value) {
+           $key = ucfirst($key);
+           array_push($settersArray,"set" . $key);
+        }
+
+        return $settersArray;
+    }
+
+	public function get(){
 		$dao = $this->buildDAO();
-		return $dao->getById($this->getId());
+		$obj = $this->arrayToObject($dao->getById($this->getId()));
+		return $obj; 
 	}
 
 	protected function getAll(){

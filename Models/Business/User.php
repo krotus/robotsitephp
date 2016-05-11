@@ -7,17 +7,17 @@ use Models\Business\DataObject as DataObject;
 
 class User extends DataObject {
 
-    private $id;
-    private $username;
-    private $password;
-    private $isAdmin;
-    private $nif;
-    private $name;
-    private $surname;
-    private $mobile;
-    private $telephone;
-    private $category;
-    private $team;
+    protected $id;
+    protected $username;
+    protected $password;
+    protected $nif;
+    protected $name;
+    protected $surname;
+    protected $mobile;
+    protected $telephone;
+    protected $category;
+    protected $team;
+    protected $isAdmin;
 
     function __construct($id = null, $username = null, $password = null, $isAdmin = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null) {
         $this->setUsername($username);
@@ -141,6 +141,8 @@ class User extends DataObject {
     public function logout(){
         Session::destroy('user');
     }
+
+
 }
 
 ?>
