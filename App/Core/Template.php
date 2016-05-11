@@ -72,7 +72,7 @@ class Template {
                             </div><!--/.nav-collapse -->
                         </div>
                     </nav>
-                    <div class="col-xs-12 nav-separator"></div>
+                    <div class="nav-separator"></div>
                     <?php
                 }
             }
