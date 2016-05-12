@@ -6,8 +6,7 @@ use App\Utility\Debug as Debug;
 
 abstract class DataObject{
 
-	private function buildDAO()
-	{
+	protected function buildDAO(){
 		$typeOf = get_class($this);
 		$typeOf = str_replace("Business", "DAO", $typeOf);
 		$typeOf .= "DAO";
@@ -15,21 +14,7 @@ abstract class DataObject{
 		return $dao;
 	}
 
-	public function arrayToObject($data)
-	{
-		$setters  = $this->getSetters();
-		$typeOf = get_class($this);
-		$class = new $typeOf;
-		$i = 0;
-		foreach ($data as $key => $value) {
-			$class->$setters[$i]($value);
-			$i++;
-		}
-		var_dump($class);
-		exit;
-	}
-  	public function getSetters()
-    {
+  	public function getSetters(){
         $settersArray = array();
         foreach ($this as $key => $value) {
            $key = ucfirst($key);
@@ -41,35 +26,34 @@ abstract class DataObject{
 
 	public function get(){
 		$dao = $this->buildDAO();
-		$obj = $this->arrayToObject($dao->getById($this->getId()));
-		return $obj; 
+		return $dao->getById($this->getId());
 	}
 
-	protected function getAll(){
+	public function getAll(){
 		$dao = $this->buildDAO();
 		return $dao->getAll();
 	}
 
-	protected function create(){
+	public function create(){
 		$dao = $this->buildDAO();
 		return $dao->create($this);
 	}
 
-	protected function delete(){
+	public function delete(){
 		$dao = $this->buildDAO();
 		return $dao->delete($this->getId());
 	}
 
-	protected function update(){
+	public function update(){
 		$dao = $this->buildDAO();
 		return $dao->update($this);
 	}
 
-    protected function objectToArray($data) {
+    public function objectToArray($data) {
         if (is_array($data) || is_object($data)) {
             $result = array();
             foreach ($data as $key => $value) {
-                $result[$key] = objectToArray($value);
+                $result[$key] = $this->objectToArray($value);
             }
             return $result;
         }

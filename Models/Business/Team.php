@@ -5,11 +5,12 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 
 class Team extends DataObject{
-    private $id;
-    private $code;
-    private $name;
+    protected $id;
+    protected $code;
+    protected $name;
     
     function __construct($id = null, $code = null, $name = null) {
+        $this->setId($id);
         $this->setCode($code);
         $this->setName($name);
     }

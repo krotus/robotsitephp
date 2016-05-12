@@ -5,13 +5,13 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 
 class Robot extends DataObject{
-    private $id;
-    private $code;
-    private $name;
-    private $ipAddress;
-    private $latitude;
-    private $longitude;
-    private $statusRobot;
+    protected $id;
+    protected $code;
+    protected $name;
+    protected $ipAddress;
+    protected $latitude;
+    protected $longitude;
+    protected $statusRobot;
     
     function __construct($id = null, $code = null, $name = null, $ipAddress = null, 
             $latitude = null, $longitude = null, $statusRobot = null) {

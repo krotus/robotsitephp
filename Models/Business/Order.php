@@ -6,15 +6,15 @@ use Models\Business\DataObject as DataObject;
 use Models\DAO\OrderDAO as OrderDAO;
 
 class Order extends DataObject{
-    private $id;
-    private $code;
-    private $description;
-    private $priority;
-    private $date;
-    private $quantity;
-    private $statusOrder;
-    private $robot;
-    private $process;
+    protected $id;
+    protected $code;
+    protected $description;
+    protected $priority;
+    protected $date;
+    protected $quantity;
+    protected $statusOrder;
+    protected $robot;
+    protected $process;
     
     
     function __construct($id = null, $code = null, $description = null, $priority = null, 

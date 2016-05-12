@@ -3,10 +3,11 @@
 namespace Models\DAO;
 
 use Models\DAO\HTTPRequest as HTTPRequest;
+use Models\DAO\AbstractDAO as AbstractDAO;
 use App\Utility\Debug as Debug;
 
 
-class TeamDAO{
+class TeamDAO extends AbstractDAO{
 
 	private $HTTPRequest;
 
@@ -20,7 +21,8 @@ class TeamDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $arrayResponse;
+		$team = $this->arrayToObject($arrayResponse);
+		return $team;
 	}
 
 	public function getAll(){

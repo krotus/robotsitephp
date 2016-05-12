@@ -5,8 +5,8 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 
 class StatusOrder extends DataObject{
-    private $id;
-    private $description;
+    protected $id;
+    protected $description;
     
     function __construct($id = null, $description = null) {
         $this->setDescription($description);
