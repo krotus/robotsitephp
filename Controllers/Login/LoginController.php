@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Controllers\Login;
 
@@ -8,25 +8,25 @@ use Models\Business\Worker as Worker;
 use Models\Business\Admin as Admin;
 use App\Utility\Debug as Debug;
 
-class LoginController{
+class LoginController {
 
-	public function index(){
-		if(!$_POST){
-        	View::to("login.index");
-    	}else{
-			$user = new Worker();
-    		Session::set("user",$user);
+    public function index() {
+        if (!$_POST) {
+            View::to("login.index");
+        } else {
+            $user = new Worker();
+            Session::set("user", $user);
             $user->setId(1);
             Debug::log($user->get());
             exit;
-    		if(Session::get("user") instanceof Worker){
-    			View::redirect(FIRST_PAGE);
-    		}else{
-    			View::redirect("admin." . FIRST_PAGE_ADMIN);
-    		}
-    	}
-	}
-}
+            if (Session::get("user") instanceof Worker) {
+                View::redirect(FIRST_PAGE);
+            } else {
+                View::redirect("admin." . FIRST_PAGE_ADMIN);
+            }
+        }
+    }
 
+}
 
 ?>

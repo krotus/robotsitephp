@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Controllers\Worker;
 
@@ -7,33 +7,46 @@ use Models\Business\Worker as Worker;
 use Models\Business\Order as Order;
 use App\Core\View as View;
 
-class WorkerController extends Controller{
+class WorkerController extends Controller {
 
-	private $worker;
+    private $worker;
 
-	public function index(){
-		$worker = new Worker();
-		$worker->setUsername("Andreu");
-		$hola = "Hola treballador";
-		$marc = "Marc";
-        View::to("worker.index", compact("hola","worker", "marc"));
-	}
+    public function index() {
+        $worker = new Worker();
+        $worker->setUsername("Andreu");
+        $hola = "Hola treballador";
+        $marc = "Marc";
+        View::to("worker.index", compact("hola", "worker", "marc"));
+    }
 
-	public function edit($id){
-		//TODO
-	}
+    public function edit($id) {
+        //TODO
+    }
 
-	public function delete($id){
-		//TODO
-	}
+    public function delete($id) {
+        //TODO
+    }
 
-	public function create(){
-		if(!$_POST){
-			View::to("worker.create");
-		}else{
-			View::redirect("worker.index");
-		}
-	}
+    public function create() {
+        if (!$_POST) {
+            View::to("worker.create");
+        } else {
+            View::redirect("worker.index");
+        }
+    }
+
+    public function getordersbyajax() {
+
+        /*$order = new Order();
+        var_dump($order->getAll());
+        exit;
+        $orders = $order->getAll();
+        $ordArrays = array();
+        foreach ($orders as $ord) {
+            array_push($ordArrays, $ord->objectToArray($ord));
+        }
+        var_dump($ordArrays);*/
+    }
 
 
 	public function ajax(){
@@ -43,6 +56,5 @@ class WorkerController extends Controller{
 
 
 }
-
 
 ?>

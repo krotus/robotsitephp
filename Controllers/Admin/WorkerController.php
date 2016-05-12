@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Controllers\Admin;
 
@@ -8,25 +8,26 @@ use Models\Business\Worker as Admin;
 use App\Core\Session as Session;
 use App\Core\View as View;
 
-class WorkerController extends Controller{
+class WorkerController extends Controller {
 
-	private $worker;
+    private $worker;
 
-	public function index(){
+    public function index() {
         View::to("admin.worker.index");
-	}
+    }
 
-	public function edit($id){
-		//TODO
-	}
+    public function edit($id) {
+        View::to("admin.worker.edit");
+    }
 
-	public function delete($id){
-		//TODO
-	}
+    public function delete($id) {
+        View::to("admin.worker.delete");
+    }
 
-	public function create(){
-		//TODO
-	}
+    public function create() {
+        View::to("admin.worker.create");
+    }
+
 }
 
 ?>
