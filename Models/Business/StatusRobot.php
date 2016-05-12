@@ -12,7 +12,7 @@ class StatusRobot extends DataObject{
         $this->setDescription($description);
     }
 
-        function getId() {
+    function getId() {
         return $this->id;
     }
 

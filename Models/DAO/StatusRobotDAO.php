@@ -2,11 +2,12 @@
 
 namespace Models\DAO;
 
+use Models\DAO\AbstractDAO as AbstractDAO;
 use Models\DAO\HTTPRequest as HTTPRequest;
 use App\Utility\Debug as Debug;
 
 
-class StatusRobotDAO {
+class StatusRobotDAO extends AbstractDAO{
 
 	private $HTTPRequest;
 
@@ -20,8 +21,8 @@ class StatusRobotDAO {
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		//objecte 
-		return $arrayResponse;
+		$statusRobot = $this->arrayToObject($arrayResponse);
+		return $statusRobot;
 	}
 
 	public function getAll(){
@@ -29,11 +30,11 @@ class StatusRobotDAO {
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		//array de objectes statusRobot
-		for ($i=0; $i < ; $i++) { 
-			# code...
+		$arrayStatusRobot = [];
+		foreach ($arrayResponse as $prop) {
+			array_push($arrayStatusRobot, $this->arrayToObject($prop));
 		}
-		return $arrayResponse;
+		return $arrayStatusRobot;
 	}
 
 	public function create($object){
