@@ -27,7 +27,6 @@ class WorkerController extends Controller{
 	public function create(){
 		//TODO
 	}
-
 }
 
 ?>

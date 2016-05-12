@@ -4,6 +4,7 @@ namespace Controllers\Worker;
 
 use Controllers\Controller as Controller;
 use Models\Business\Worker as Worker;
+use Models\Business\Order as Order;
 use App\Core\View as View;
 
 class WorkerController extends Controller{
@@ -33,6 +34,13 @@ class WorkerController extends Controller{
 			View::redirect("worker.index");
 		}
 	}
+
+
+	public function ajax(){
+		$order = new Order();
+		var_dump($order->getAll());
+	}
+
 
 }
 
