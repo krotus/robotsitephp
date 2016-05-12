@@ -21,7 +21,7 @@ class TeamDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		$team = $this->arrayToObject($arrayResponse);
+		$team = $this->arrayToObject($arrayResponse[0]);
 		return $team;
 	}
 
@@ -30,6 +30,9 @@ class TeamDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+		for ($i=0; $i < count($arrayResponse); $i++) { 
+			$team = $this->arrayToObject($arrayResponse);
+		}
 		return $arrayResponse;
 	}
 
@@ -58,6 +61,16 @@ class TeamDAO extends AbstractDAO{
 		$this->HTTPRequest->setMethod("DELETE");
 		$response = $this->HTTPRequest->sendHTTPRequest();
 		return $response;
+	}
+
+	public function toTeam($items)
+	{
+		$arrayTeams = array();
+		for ($i=0; $i < count($items); $i++) { 
+			$team = $this->arrayToObject($items[$i]);
+			array_push($arrayTeams, $team);
+		}
+		return $arrayTeams;
 	}
 }
 
