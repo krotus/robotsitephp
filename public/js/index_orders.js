@@ -52,6 +52,7 @@ function pendingOrders() {
             "url": "public/datatables/json/es.json"
         },
         "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+        
     });
 }
 function initOrders() {

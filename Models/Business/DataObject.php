@@ -54,6 +54,9 @@ abstract class DataObject{
             $result = array();
             foreach ($data as $key => $value) {
                 $result[$key] = $this->objectToArray($value);
+                if (is_object($result[$key])) {
+                    return $this->objectToArray($result[$key]);
+                }
             }
             return $result;
         }
