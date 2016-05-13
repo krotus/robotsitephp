@@ -59,7 +59,7 @@ class Request{
 				$this->controller = FIRST_PAGE_ADMIN;
 			}else{
 				$this->controller = strtolower(array_shift($request));
-				$this->method = strtolower(array_shift($request));
+				$this->method = array_shift($request);
 			}
 			if(!$this->method){
 				$this->method = "index";

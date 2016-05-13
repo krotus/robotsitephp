@@ -36,7 +36,7 @@ class WorkerController extends Controller {
         }
     }
 
-    public function getordersbyajax() {
+    public function getOrdersByAjax() {
         $order = new Order();
         $orders = $order->getAll();
         $ordArrays = array();
