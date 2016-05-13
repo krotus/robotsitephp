@@ -24,7 +24,7 @@ class LoginController {
                 }else{
                     $user = new Worker($user->getId());
                 }
-                $user = $user->get();
+                $user = $user->get();       
                 Session::set("user", serialize($user));
                 if($user->getIsAdmin() == 1){
                     View::redirect("admin." . FIRST_PAGE_ADMIN);

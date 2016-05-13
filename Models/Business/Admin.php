@@ -9,7 +9,7 @@ class Admin extends User{
 
 	public function __construct($id = null, $username = null, $password = null, $isAdmin = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null){
         parent::__construct($id, $username, $password, $isAdmin, $nif, $name, $surname, $mobile, $telephone, $category, $team);
-        $this->setIsAdmin(true);
+        $this->setIsAdmin(1);
 	}
     public function assignOrderToTeam($task){
         $dao = new TaskDAO;
