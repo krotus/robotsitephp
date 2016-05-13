@@ -3,6 +3,7 @@
 namespace Models\Business;
 
 use Models\DAO\HTTPRequest as HTTPRequest;
+use Models\DAO\WorkerDAO as WorkerDAO;
 use Models\Business\DataObject as DataObject;
 
 class User extends DataObject {
@@ -20,6 +21,7 @@ class User extends DataObject {
     protected $isAdmin;
 
     function __construct($id = null, $username = null, $password = null, $isAdmin = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null) {
+        $this->setId($id);
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setIsAdmin($isAdmin);
@@ -125,12 +127,14 @@ class User extends DataObject {
     }
 
     public function authenticate() {
-        $userDAO = new UserDAO();
-        $users = $userDAO->getAll();
+        $workerDAO = new WorkerDAO();
+        $users = $workerDAO->getAll();
         $valid = false;
         if (!empty($users)) {
             foreach ($users as $user) {
                 if ($this->getUsername() == $user->getUsername() && $this->getPassword() == $user->getPassword()) {
+                    $this->setId($user->getId());
+                    $this->setIsAdmin($user->getIsAdmin());
                     $valid = true;
                     break;
                 }

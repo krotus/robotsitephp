@@ -47,7 +47,7 @@ class Request{
 
 			$isAdminPage = in_array("admin", $request);
 			if($isAdminPage){ //peticio a una pagina admin
-				if(Session::get("user") instanceof Worker){ //si ets un treballador redireccionem a la primera pagina
+				if(unserialize(Session::get("user")) instanceof Worker){ //si ets un treballador redireccionem a la primera pagina
 					$alert = "alert_access_denied";
 					View::redirect(FIRST_PAGE, compact('alert'));
 					exit;
@@ -59,7 +59,7 @@ class Request{
 				$this->controller = FIRST_PAGE_ADMIN;
 			}else{
 				$this->controller = strtolower(array_shift($request));
-				$this->method = strtolower(array_shift($request));
+				$this->method = array_shift($request);
 			}
 			if(!$this->method){
 				$this->method = "index";

@@ -26,7 +26,7 @@ abstract class DataObject{
 
 	public function get(){
 		$dao = $this->buildDAO();
-		return $dao->getById($this->getId());
+		return $dao->getById($this->getId())[0];
 	}
 
 	public function getAll(){
@@ -54,6 +54,9 @@ abstract class DataObject{
             $result = array();
             foreach ($data as $key => $value) {
                 $result[$key] = $this->objectToArray($value);
+                if (is_object($result[$key])) {
+                    return $this->objectToArray($result[$key]);
+                }
             }
             return $result;
         }

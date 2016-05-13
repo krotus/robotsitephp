@@ -9,10 +9,11 @@ class StatusRobot extends DataObject{
     protected $description;
     
     function __construct($id = null, $description = null) {
+        $this->setId($id);
         $this->setDescription($description);
     }
 
-        function getId() {
+    function getId() {
         return $this->id;
     }
 

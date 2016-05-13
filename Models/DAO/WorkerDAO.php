@@ -22,11 +22,7 @@ class WorkerDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		$worker = $this->arrayToObject($arrayResponse);
-		$team = new Team($worker->getTeam());
-		$team = $team->get();
-		$worker->setTeam($team);
-		return $worker;
+		return $this->arrayToWorkers($arrayResponse);
 	}
 
 	public function getAll(){
@@ -34,7 +30,7 @@ class WorkerDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $arrayResponse;
+		return $this->arrayToWorkers($arrayResponse);
 	}
 
 	public function create($object){
@@ -63,6 +59,23 @@ class WorkerDAO extends AbstractDAO{
 		$response = $this->HTTPRequest->sendHTTPRequest();
 		return $response;
 	}
+
+	public function arrayToWorkers($workers){
+		$arrayWorkers = array();
+		for ($i=0; $i < count($workers); $i++) { 
+			$worker = $this->arrayToObject($workers[$i]);
+			array_push($arrayWorkers, $this->fixForeingWorker($worker));
+		}
+		return $arrayWorkers;
+	}
+
+	public function fixForeingWorker($worker){
+		$team = new Team($worker->getTeam());
+		$team = $team->get();
+		$worker->setTeam($team);
+		return $worker;
+	}
+
 }
 
 

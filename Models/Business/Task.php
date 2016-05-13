@@ -15,12 +15,13 @@ class Task extends DataObject{
     
     function __construct($id = null, $team = null, $order = null, $worker = null, 
             $dateAssignation = null, $dateCompletion = null, $justification = null) {
-        $this->team = $team;
-        $this->order = $order;
-        $this->worker = $worker;
-        $this->dateAssignation = $dateAssignation;
-        $this->dateCompletion = $dateCompletion;
-        $this->justification = $justification;
+        $this->setId($id);
+        $this->setTeam($team);
+        $this->setOrder($order);
+        $this->setWorker($worker);
+        $this->setDateAssignation($dateAssignation);
+        $this->setDateCompletion($dateCompletion);
+        $this->setJustification($justification);
     }
 
     

@@ -19,6 +19,7 @@ class Order extends DataObject{
     
     function __construct($id = null, $code = null, $description = null, $priority = null, 
             $date = null, $quantity = null, $statusOrder = null, $robot = null, $process = null) {
+        $this->setId($id);
         $this->setCode($code);
         $this->setDescription($description);
         $this->setPriority($priority);

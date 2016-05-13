@@ -6,10 +6,11 @@ use Models\DAO\HTTPRequest as HTTPRequest;
 use Models\Business\Robot as Robot;
 use Models\Business\Process as Process;
 use Models\Business\StatusOrder as StatusOrder;
+use Models\DAO\AbstractDAO as AbstractDAO;
 use App\Utility\Debug as Debug;
 
 
-class OrderDAO{
+class OrderDAO extends AbstractDAO{
 
 	private $HTTPRequest;
 
@@ -22,26 +23,8 @@ class OrderDAO{
 		$url = WEBSERVICE. "orders/getById/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
-		$order = $this->HTTPRequest->sendHTTPRequest();
-
-		$idProcess = $order->getProcess();
-		$process = new Process($idProcess);
-		$process = $process->get();
-		$order->setProcess($process);
-
-		$idRobot = $order->getRobot();
-		$robot = new Robot($idRobot);
-		$robot = $robot->get();
-		$order->setRobot($robot);
-
-		$idStatusOrder = $order->getStatusOrder();
-		$statusOrder = new StatusOrder($idStatusOrder);
-		$statusOrder = $statusOrder->get();
-		$order->setStatusOrder($statusOrder);
-
-		var_dump($order);
-		exit;
-		return $order;
+		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+		return $this->arrayToOrder($arrayResponse);
 	}
 
 	public function getAll(){
@@ -49,7 +32,7 @@ class OrderDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $arrayResponse;
+		return $this->arrayToOrder($arrayResponse);
 	}
 
 	public function create($object){
@@ -77,6 +60,31 @@ class OrderDAO{
 		$this->HTTPRequest->setMethod("DELETE");
 		$response = $this->HTTPRequest->sendHTTPRequest();
 		return $response;
+	}
+
+	public function arrayToOrder($orders){
+		$arrayOrders = array();
+		for ($i=0; $i < count($orders); $i++) { 
+			$order = $this->arrayToObject($orders[$i]);
+			array_push($arrayOrders, $this->fixForeingOrder($order));
+		}
+		return $arrayOrders;
+	}
+
+	public function fixForeingOrder($order){
+		$process = new Process($order->getProcess());
+		$process = $process->get();
+		$order->setProcess($process);
+
+		$robot = new Robot($order->getRobot());
+		$robot = $robot->get();
+		$order->setRobot($robot);
+
+		$statusOrder = new StatusOrder($order->getStatusOrder());
+		$statusOrder = $statusOrder->get();
+		$order->setStatusOrder($statusOrder);
+
+		return $order;
 	}
 }
 

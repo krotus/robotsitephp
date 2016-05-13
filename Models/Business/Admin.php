@@ -7,9 +7,9 @@ use Models\DAO\TaskDAO as TaskDAO;
 
 class Admin extends User{
 
-	public function __construct(){
-        parent::__construct($this);
-        $this->setIsAdmin(true);
+	public function __construct($id = null, $username = null, $password = null, $isAdmin = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null){
+        parent::__construct($id, $username, $password, $isAdmin, $nif, $name, $surname, $mobile, $telephone, $category, $team);
+        $this->setIsAdmin(1);
 	}
          /**
          * Metode que assigna una ordre a un equip mitjançant una tasca
@@ -17,7 +17,7 @@ class Admin extends User{
          */
     public function assignOrderToTeam($task){
         $dao = new TaskDAO;
-	$dao->create($task);
+        $dao->create($task);
     }
     /**
      * Ens permet reasignar una ordre a partir de la tasca

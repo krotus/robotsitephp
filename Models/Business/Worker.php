@@ -7,9 +7,9 @@ use Models\DAO\TaskDAO as TaskDAO;
 
 class Worker extends User {
 
-    public function __construct() {
-        parent::__construct($this);
-        $this->setIsAdmin(false);
+    public function __construct($id = null, $username = null, $password = null, $isAdmin = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null){
+        parent::__construct($id, $username, $password, $isAdmin, $nif, $name, $surname, $mobile, $telephone, $category, $team);
+        $this->setIsAdmin(0);
     }
 /**
  * Metode que permet a un treballador afagar una ordre

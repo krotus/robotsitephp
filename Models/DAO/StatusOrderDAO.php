@@ -3,10 +3,11 @@
 namespace Models\DAO;
 
 use Models\DAO\HTTPRequest as HTTPRequest;
+use Models\DAO\AbstractDAO as AbstractDAO;
 use App\Utility\Debug as Debug;
 
 
-class StatusOrderDAO {
+class StatusOrderDAO  extends AbstractDAO {
 
 	private $HTTPRequest;
 
@@ -20,7 +21,7 @@ class StatusOrderDAO {
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $arrayResponse;
+		return $this->arrayToStatusOrder($arrayResponse);
 	}
 
 	public function getAll(){
@@ -28,7 +29,7 @@ class StatusOrderDAO {
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $arrayResponse;
+		return $this->arrayToStatusOrder($arrayResponse);
 	}
 
 	public function create($object){
@@ -57,6 +58,17 @@ class StatusOrderDAO {
 		$response = $this->HTTPRequest->sendHTTPRequest();
 		return $response;
 	}
+
+	public function arrayToStatusOrder($statusOrders){
+		$arrayStatusOrder = array();
+		for ($i=0; $i < count($statusOrders); $i++) { 
+			$statusOrder = $this->arrayToObject($statusOrders[$i]);
+			array_push($arrayStatusOrder, $statusOrder);
+		}
+		return $arrayStatusOrder;
+	}
+
+
 }
 
 
