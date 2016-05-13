@@ -6,6 +6,7 @@ use Controllers\Controller as Controller;
 use Models\Business\Worker as Worker;
 use Models\Business\Order as Order;
 use App\Core\View as View;
+use App\Utility\Debug as Debug;
 
 class WorkerController extends Controller {
 
