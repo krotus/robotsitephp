@@ -47,7 +47,7 @@ class Request{
 
 			$isAdminPage = in_array("admin", $request);
 			if($isAdminPage){ //peticio a una pagina admin
-				if(Session::get("user") instanceof Worker){ //si ets un treballador redireccionem a la primera pagina
+				if(unserialize(Session::get("user")) instanceof Worker){ //si ets un treballador redireccionem a la primera pagina
 					$alert = "alert_access_denied";
 					View::redirect(FIRST_PAGE, compact('alert'));
 					exit;

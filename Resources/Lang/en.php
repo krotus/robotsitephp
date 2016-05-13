@@ -2,7 +2,7 @@
 
 return [
 	"title"	=> "Main view of worker",
-
+	"sign_in"	=> "Sign in",
 
 
 	//alerts

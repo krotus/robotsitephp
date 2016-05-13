@@ -2,7 +2,7 @@
 
 return [
 	"title"	=> "Vista principal del treballador",
-
+	"sign_in"	=> "Iniciar sessión",
 
 
 	//alerts

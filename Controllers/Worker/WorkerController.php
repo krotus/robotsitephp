@@ -43,15 +43,8 @@ class WorkerController extends Controller {
         foreach ($orders as $ord) {
             array_push($ordArrays, $ord->objectToArray($ord));
         }
-        Debug::log($ordArrays);
+        echo json_encode($ordArrays);
     }
-
-
-	public function ajax(){
-		$order = new Order();
-		var_dump($order->getAll());
-	}
-
 
 }
 
