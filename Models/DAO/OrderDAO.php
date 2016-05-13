@@ -86,6 +86,14 @@ class OrderDAO extends AbstractDAO{
 
 		return $order;
 	}
+
+	public function getAllByStatus($worker, $status){
+		$url = WEBSERVICE. "orders/getOrdersByStatus/" . $worker ."/" . $status;
+		$this->HTTPRequest->setUrl($url);
+		$this->HTTPRequest->setMethod("GET");
+		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+		return $arrayResponse;
+	}
 }
 
 

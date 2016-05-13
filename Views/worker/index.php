@@ -89,7 +89,8 @@ if (isset($data)) {
 
 <script type="text/javascript">
     $(document).ready(function () {
-        //pendingOrders();
+        var idWorker = <?php echo unserialize(\App\Core\Session::get("user"))->getId(); ?>;
+        pendingOrders( idWorker, "<?php echo URL;?>");
         initOrders();
         completedOrders();
         uncompletedOrders();

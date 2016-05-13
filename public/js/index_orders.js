@@ -37,15 +37,16 @@ var dataSet = [
     ["Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675"]
 ];
 
-$(document).ready(function () {
+function pendingOrders(idWorker, baseUrl) {
 
     $.ajax({
         type: "GET",
-        url: "worker/getOrdersByAjax",
+        url: baseUrl+"worker/getOrdersByAjax/"+idWorker+"/pending",
         success: function (data) {
             $('#pending-ord').html('');
-            pendingOrders();
-            alert(JSON.parse(data));
+            //pendingOrders();
+            //var datos = JSON.parse(data);
+            console.log(data);
         },
         error: function (err) {
             console.log(err);
@@ -54,12 +55,7 @@ $(document).ready(function () {
             $('#pending-ord').html('cargando');
         }
     });
-
-});
-
-function pendingOrders() {
-
-
+/*
     $('#pending-ord').DataTable({
         data: dataSet,
         columns: [
@@ -75,7 +71,7 @@ function pendingOrders() {
         },
         "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
 
-    });
+    });*/
 }
 function initOrders() {
 
