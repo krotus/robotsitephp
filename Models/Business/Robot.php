@@ -15,6 +15,7 @@ class Robot extends DataObject{
     
     function __construct($id = null, $code = null, $name = null, $ipAddress = null, 
             $latitude = null, $longitude = null, $statusRobot = null) {
+        $this->setId($id);
         $this->setCode($code);
         $this->setName($name);
         $this->setIpAddress($ipAddress);

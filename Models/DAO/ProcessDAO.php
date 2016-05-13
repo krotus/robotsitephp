@@ -2,12 +2,12 @@
 
 namespace Models\DAO;
 
-use Models\DAO\AbstractDAO as AbstractDAO;
 use Models\DAO\HTTPRequest as HTTPRequest;
+use Models\DAO\AbstractDAO as AbstractDAO;
 use App\Utility\Debug as Debug;
 
 
-class StatusRobotDAO extends AbstractDAO{
+class ProcessDAO extends AbstractDAO{
 
 	private $HTTPRequest;
 
@@ -17,23 +17,23 @@ class StatusRobotDAO extends AbstractDAO{
 
 
 	public function getById($id){
-		$url = WEBSERVICE. "status_robot/getById/" . $id;
+		$url = WEBSERVICE ."processes/getById/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToStatusRobot($arrayResponse);
+		return $this->arrayToProcess($arrayResponse);
 	}
 
 	public function getAll(){
-		$url = WEBSERVICE. "status_robot/getAll";
+		$url = WEBSERVICE. "processes/getAll";
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToStatusRobot($arrayResponse);
+		return $this->arrayToProcess($arrayResponse);
 	}
 
 	public function create($object){
-		$url = WEBSERVICE. "status_robot/create";
+		$url = WEBSERVICE. "processes/create";
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("POST");
 		$this->HTTPRequest->setData($object);
@@ -43,7 +43,7 @@ class StatusRobotDAO extends AbstractDAO{
 
 	public function update($object){
 		$id = $object->getId();
-		$url = WEBSERVICE. "status_robot/updateAll/" . $id;
+		$url = WEBSERVICE. "processes/updateAll/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("PUT");
 		$this->HTTPRequest->setData($object);
@@ -52,21 +52,20 @@ class StatusRobotDAO extends AbstractDAO{
 	}
 
 	public function delete($id){
-		$url = WEBSERVICE. "status_robot/deleteById/" . $id;
+		$url = WEBSERVICE. "processes/deleteById/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("DELETE");
 		$response = $this->HTTPRequest->sendHTTPRequest();
 		return $response;
 	}
 
-
-	public function arrayToStatusRobot($statusRobots){
-		$arrayStatusRobot = array();
-		for ($i=0; $i < count($statusRobots); $i++) { 
-			$statusRobot = $this->arrayToObject($statusRobots[$i]);
-			array_push($arrayStatusRobot, $statusRobot);
+	public function arrayToProcess($processes){
+		$arrayProcesses = array();
+		for ($i=0; $i < count($processes); $i++) { 
+			$process = $this->arrayToObject($processes[$i]);
+			array_push($arrayProcesses, $process);
 		}
-		return $arrayStatusRobot;
+		return $arrayProcesses;
 	}
 
 }

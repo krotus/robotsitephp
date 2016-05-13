@@ -10,6 +10,7 @@ class Process extends DataObject{
     protected $description;
     
     function __construct($id = null, $code = null, $description = null) {
+        $this->setId($id);
         $this->setCode($code);
         $this->setDescription($description);
     }

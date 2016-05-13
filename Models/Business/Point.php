@@ -14,6 +14,7 @@ class Point extends DataObject{
     
     function __construct($id = null, $posX = null, $posY = null, $posZ = null, 
             $tweezer = null, $process = null) {
+        $this->setId($id);
         $this->setPosX($posX);
         $this->setPosY($posY);
         $this->setPosZ($posZ);

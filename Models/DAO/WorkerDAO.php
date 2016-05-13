@@ -30,8 +30,7 @@ class WorkerDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		$workers = $this->arrayToWorkers($arrayResponse);
-		return $workers;
+		return $this->arrayToWorkers($arrayResponse);
 	}
 
 	public function create($object){
