@@ -89,7 +89,7 @@ if (isset($data)) {
 
 <script type="text/javascript">
     $(document).ready(function () {
-        pendingOrders();
+        //pendingOrders();
         initOrders();
         completedOrders();
         uncompletedOrders();

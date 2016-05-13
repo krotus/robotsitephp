@@ -13,11 +13,11 @@ class Template {
                 $login = false;
                 $admin = false;
                 if (isset($_GET['url'])) {
-                    $expUrl = explode(DS, $_GET['url']);
+                    $expUrl = explode("/", $_GET['url']);
                     if ($expUrl[0] == "login") {
                         $login = true;
                     } elseif ($expUrl[0] == "admin") {
-                        $admin = false;
+                        $admin = true;
                     }
                 }
                 ?>
@@ -135,10 +135,20 @@ class Template {
                         <?php
                     }
                 }
-                ?>
-        </body>
-        </html>
-        <?php
+                if (isset($_GET['url'])) {
+
+                    if (strpos($_GET['url'], "Ajax") === false) {
+                        ?>
+                </body>
+                </html>
+                <?php
+            }
+        } else {
+            ?>
+            </body>
+            </html>
+            <?php
+        }
     }
 
 }

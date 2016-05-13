@@ -37,12 +37,16 @@ class WorkerController extends Controller {
     }
 
     public function getOrdersByAjax() {
+        ob_end_clean();
         $order = new Order();
         $orders = $order->getAll();
+        //Debug::log($orders);
+        //exit();
         $ordArrays = array();
         foreach ($orders as $ord) {
             array_push($ordArrays, $ord->objectToArray($ord));
         }
+        //Debug::log($ordArrays);
         echo json_encode($ordArrays);
     }
 

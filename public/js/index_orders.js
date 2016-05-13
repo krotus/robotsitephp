@@ -36,7 +36,29 @@ var dataSet = [
     ["Martena Mccray", "Post-Sales support", "Edinburgh", "8240", "2011/03/09", "$324,050"],
     ["Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675"]
 ];
+
+$(document).ready(function () {
+
+    $.ajax({
+        type: "GET",
+        url: "worker/getOrdersByAjax",
+        success: function (data) {
+            $('#pending-ord').html('');
+            pendingOrders();
+            alert(JSON.parse(data));
+        },
+        error: function (err) {
+            console.log(err);
+        },
+        beforeSend: function () {
+            $('#pending-ord').html('cargando');
+        }
+    });
+
+});
+
 function pendingOrders() {
+
 
     $('#pending-ord').DataTable({
         data: dataSet,
@@ -52,7 +74,7 @@ function pendingOrders() {
             "url": "public/datatables/json/es.json"
         },
         "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
-        
+
     });
 }
 function initOrders() {
