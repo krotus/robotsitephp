@@ -41,12 +41,32 @@ function pendingOrders(idWorker, baseUrl) {
 
     $.ajax({
         type: "GET",
-        url: baseUrl+"worker/getOrdersByAjax/"+idWorker+"/pending",
+        url: baseUrl + "worker/getOrdersByAjax/" + idWorker + "/pending",
         success: function (data) {
+            var dades = JSON.parse(data);
             $('#pending-ord').html('');
             //pendingOrders();
             //var datos = JSON.parse(data);
-            console.log(data);
+            $('#pending-ord').DataTable({
+                data: dades,
+                columns: [
+                    {title: "Id Orden"},
+                    {title: "Código de orden"},
+                    {title: "Descripción de orden"},
+                    {title: "Prioridad"},
+                    {title: "Fecha"},
+                    {title: "Ejecuciones necesarias"},
+                    {title: "Código robot"},
+                    {title: "Nombre robot"},
+                    {title: "Estado del robot"},
+                    {title: "Opciones"}
+                ],
+                "language": {
+                    "url": "public/datatables/json/es.json"
+                },
+                "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+
+            });
         },
         error: function (err) {
             console.log(err);
@@ -55,93 +75,157 @@ function pendingOrders(idWorker, baseUrl) {
             $('#pending-ord').html('cargando');
         }
     });
-/*
-    $('#pending-ord').DataTable({
-        data: dataSet,
-        columns: [
-            {title: "Name"},
-            {title: "Position"},
-            {title: "Office"},
-            {title: "Extn."},
-            {title: "Start date"},
-            {title: "Salary"}
-        ],
-        "language": {
-            "url": "public/datatables/json/es.json"
-        },
-        "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
 
-    });*/
 }
-function initOrders() {
+function initOrders(idWorker, baseUrl) {
 
-    $('#init-ord').DataTable({
-        data: dataSet,
-        columns: [
-            {title: "Name"},
-            {title: "Position"},
-            {title: "Office"},
-            {title: "Extn."},
-            {title: "Start date"},
-            {title: "Salary"}
-        ],
-        "language": {
-            "url": "public/datatables/json/es.json"
+    $.ajax({
+        type: "GET",
+        url: baseUrl + "worker/getOrdersByAjax/" + idWorker + "/initiated",
+        success: function (data) {
+            var dades = JSON.parse(data);
+            $('#init-ord').html('');
+            
+            $('#init-ord').DataTable({
+                data: dades,
+                columns: [
+                    {title: "Id Orden"},
+                    {title: "Código de orden"},
+                    {title: "Descripción de orden"},
+                    {title: "Prioridad"},
+                    {title: "Fecha"},
+                    {title: "Ejecuciones necesarias"},
+                    {title: "Código robot"},
+                    {title: "Nombre robot"},
+                    {title: "Estado del robot"},
+                    {title: "Opciones"}
+                ],
+                "language": {
+                    "url": "public/datatables/json/es.json"
+                },
+                "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+
+            });
         },
-        "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+        error: function (err) {
+            console.log(err);
+        },
+        beforeSend: function () {
+            $('#init-ord').html('cargando');
+        }
     });
 }
-function completedOrders() {
+function completedOrders(idWorker, baseUrl) {
 
-    $('#completed-ord').DataTable({
-        data: dataSet,
-        columns: [
-            {title: "Name"},
-            {title: "Position"},
-            {title: "Office"},
-            {title: "Extn."},
-            {title: "Start date"},
-            {title: "Salary"}
-        ],
-        "language": {
-            "url": "public/datatables/json/es.json"
+    $.ajax({
+        type: "GET",
+        url: baseUrl + "worker/getOrdersByAjax/" + idWorker + "/completed",
+        success: function (data) {
+            var dades = JSON.parse(data);
+            $('#completed-ord').html('');
+            
+            $('#completed-ord').DataTable({
+                data: dades,
+                columns: [
+                    {title: "Id Orden"},
+                    {title: "Código de orden"},
+                    {title: "Descripción de orden"},
+                    {title: "Prioridad"},
+                    {title: "Fecha"},
+                    {title: "Ejecuciones necesarias"},
+                    {title: "Código robot"},
+                    {title: "Nombre robot"},
+                    {title: "Estado del robot"},
+                    {title: "Opciones"}
+                ],
+                "language": {
+                    "url": "public/datatables/json/es.json"
+                },
+                "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+
+            });
         },
-        "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+        error: function (err) {
+            console.log(err);
+        },
+        beforeSend: function () {
+            $('#completed-ord').html('cargando');
+        }
     });
 }
-function uncompletedOrders() {
+function uncompletedOrders(idWorker, baseUrl) {
 
-    $('#uncompleted-ord').DataTable({
-        data: dataSet,
-        columns: [
-            {title: "Name"},
-            {title: "Position"},
-            {title: "Office"},
-            {title: "Extn."},
-            {title: "Start date"},
-            {title: "Salary"}
-        ],
-        "language": {
-            "url": "public/datatables/json/es.json"
+    $.ajax({
+        type: "GET",
+        url: baseUrl + "worker/getOrdersByAjax/" + idWorker + "/uncompleted",
+        success: function (data) {
+            var dades = JSON.parse(data);
+            $('#uncompleted-ord').html('');
+            
+            $('#uncompleted-ord').DataTable({
+                data: dades,
+                columns: [
+                    {title: "Id Orden"},
+                    {title: "Código de orden"},
+                    {title: "Descripción de orden"},
+                    {title: "Prioridad"},
+                    {title: "Fecha"},
+                    {title: "Ejecuciones necesarias"},
+                    {title: "Código robot"},
+                    {title: "Nombre robot"},
+                    {title: "Estado del robot"},
+                    {title: "Opciones"}
+                ],
+                "language": {
+                    "url": "public/datatables/json/es.json"
+                },
+                "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+
+            });
         },
-        "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+        error: function (err) {
+            console.log(err);
+        },
+        beforeSend: function () {
+            $('#uncompleted-ord').html('cargando');
+        }
     });
 }
-function cancelledOrders() {
+function cancelledOrders(idWorker, baseUrl) {
 
-    $('#cancelled-ord').DataTable({
-        data: dataSet,
-        columns: [
-            {title: "Name"},
-            {title: "Position"},
-            {title: "Office"},
-            {title: "Extn."},
-            {title: "Start date"},
-            {title: "Salary"}
-        ],
-        "language": {
-            "url": "public/datatables/json/es.json"
+     $.ajax({
+        type: "GET",
+        url: baseUrl + "worker/getOrdersByAjax/" + idWorker + "/cancelled",
+        success: function (data) {
+            var dades = JSON.parse(data);
+            $('#cancelled-ord').html('');
+            
+            $('#cancelled-ord').DataTable({
+                data: dades,
+                columns: [
+                    {title: "Id Orden"},
+                    {title: "Código de orden"},
+                    {title: "Descripción de orden"},
+                    {title: "Prioridad"},
+                    {title: "Fecha"},
+                    {title: "Ejecuciones necesarias"},
+                    {title: "Código robot"},
+                    {title: "Nombre robot"},
+                    {title: "Estado del robot"},
+                    {title: "Opciones"}
+                ],
+                "language": {
+                    "url": "public/datatables/json/es.json"
+                },
+                "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+
+            });
         },
-        "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
+        error: function (err) {
+            console.log(err);
+        },
+        beforeSend: function () {
+            $('#cancelled-ord').html('cargando');
+        }
     });
 }

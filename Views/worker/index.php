@@ -91,9 +91,9 @@ if (isset($data)) {
     $(document).ready(function () {
         var idWorker = <?php echo unserialize(\App\Core\Session::get("user"))->getId(); ?>;
         pendingOrders( idWorker, "<?php echo URL;?>");
-        initOrders();
-        completedOrders();
-        uncompletedOrders();
-        cancelledOrders();
+        initOrders(idWorker, "<?php echo URL;?>");
+        completedOrders(idWorker, "<?php echo URL;?>");
+        uncompletedOrders(idWorker, "<?php echo URL;?>");
+        cancelledOrders(idWorker, "<?php echo URL;?>");
     });
 </script>

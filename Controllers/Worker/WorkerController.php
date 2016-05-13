@@ -40,7 +40,18 @@ class WorkerController extends Controller {
         ob_end_clean();
         $order = new Order();
         $orders = $order->getAllByStatus($idWorker, $status);
-        echo json_encode($orders);
+        //Debug::log($orders);
+        $arrToPass = array();
+        for ($i = 0; $i < count($orders); $i++) {
+            $auxArray = array();
+            foreach ($orders[$i] as $ord) {
+                array_push($auxArray, $ord);
+            }
+            array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'>");
+            array_push($arrToPass, $auxArray);
+        }
+        
+        echo json_encode($arrToPass);
     }
 
 }
