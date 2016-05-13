@@ -20,7 +20,11 @@ class TeamDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+<<<<<<< HEAD
 		return $this->arrayToTeam($arrayResponse);
+=======
+		return $this->toTeam($arrayResponse);
+>>>>>>> 4f4442077560858781e45b057cdcf82aaad6c8e3
 	}
 
 	public function getAll(){
