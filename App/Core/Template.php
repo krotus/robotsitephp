@@ -77,7 +77,7 @@ class Template {
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="../navbar/">Default</a></li>
+                            <li><a href="<?php echo URL . 'worker/logout' ?>">Logout</a></li>
                             <li><a href="../navbar-static-top/">Static top</a></li>
                             <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
                         </ul>
