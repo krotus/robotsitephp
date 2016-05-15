@@ -4,6 +4,7 @@ namespace Controllers\Login;
 
 use App\Core\View as View;
 use App\Core\Session as Session;
+use App\Core\Cookie as Cookie;
 use Models\Business\Worker as Worker;
 use Models\Business\Admin as Admin;
 use Models\Business\User as User;
@@ -23,6 +24,13 @@ class LoginController {
                     $user = new Admin($user->getId());
                 }else{
                     $user = new Worker($user->getId());
+                }
+                if(isset($_POST["remember-me"])){
+                    Cookie::set("username", $_POST["login-user"]);
+                    Cookie::set("password", $_POST["login-password"]);
+                }else{
+                    Cookie::destroy("username");
+                    Cookie::destroy("password");
                 }
                 $user = $user->get();       
                 Session::set("user", serialize($user));

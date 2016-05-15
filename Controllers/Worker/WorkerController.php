@@ -6,6 +6,7 @@ use Controllers\Controller as Controller;
 use Models\Business\Worker as Worker;
 use Models\Business\Order as Order;
 use App\Core\View as View;
+use App\Core\Session as Session;
 use App\Utility\Debug as Debug;
 
 class WorkerController extends Controller {
@@ -13,11 +14,8 @@ class WorkerController extends Controller {
     private $worker;
 
     public function index() {
-        $worker = new Worker();
-        $worker->setUsername("Andreu");
-        $hola = "Hola treballador";
-        $marc = "Marc";
-        View::to("worker.index", compact("hola", "worker", "marc"));
+        $workerName = unserialize(Session::get('user'))->getName();
+        View::to("worker.index", compact("workerName"));
     }
 
     public function edit($id) {

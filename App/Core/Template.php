@@ -26,6 +26,7 @@ class Template {
                 <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap.min.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap-theme.min.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap-datetimepicker.min.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/css/switch-pro.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/css/login.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/css/heading.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/css/index-orders.css">

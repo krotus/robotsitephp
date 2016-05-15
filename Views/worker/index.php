@@ -65,12 +65,17 @@ if (isset($data)) {
 
     </div>
 </div>
-
-<h2><?php
-    //echo $trans['title'];
-    echo "Ordenes de " . $data["marc"]
-    ?></h2>
-<!--<a href="<?php echo URL . 'worker/language' ?>">switch language</a>-->
+<div class="row">
+    <div class="col-md-1 hidden-xs">
+    </div>
+    <div class="col-md-10 col-xs-12" style="padding-left: 0px">
+        <h2>
+            <?php echo "Ordenes de " . $data["workerName"]; ?>
+        </h2>
+    </div>
+    <div class="col-md-1 hidden-xs">
+    </div>
+</div>
 <div class="row">
     <div class="col-md-1 hidden-xs">
     </div>
