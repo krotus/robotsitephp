@@ -136,7 +136,6 @@ function completedOrders(idWorker, baseUrl) {
                     {title: "Código robot"},
                     {title: "Nombre robot"},
                     {title: "Estado del robot"},
-                    {title: "Opciones"}
                 ],
                 "language": {
                     "url": "public/datatables/json/es.json"
@@ -174,7 +173,6 @@ function uncompletedOrders(idWorker, baseUrl) {
                     {title: "Código robot"},
                     {title: "Nombre robot"},
                     {title: "Estado del robot"},
-                    {title: "Opciones"}
                 ],
                 "language": {
                     "url": "public/datatables/json/es.json"
@@ -228,4 +226,12 @@ function cancelledOrders(idWorker, baseUrl) {
             $('#cancelled-ord').html('cargando');
         }
     });
+}
+
+function setCompletedTime(idOrder){
+    $('#completedModal').modal('toggle');
+}
+
+function specifyIssue(idOrder){
+    $('#cancelledModal').modal('toggle');
 }

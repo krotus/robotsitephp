@@ -41,16 +41,27 @@ class WorkerController extends Controller {
         $order = new Order();
         $orders = $order->getAllByStatus($idWorker, $status);
         //Debug::log($orders);
-        $arrToPass = array();
+        $arrToPass = array();       
         for ($i = 0; $i < count($orders); $i++) {
             $auxArray = array();
             foreach ($orders[$i] as $ord) {
                 array_push($auxArray, $ord);
             }
-            array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'>");
+            switch ($status) {
+                case 'pending':
+                    array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(".$orders[$i]['id'].")'>");
+                    break;
+                case 'initiated':
+                    array_push($auxArray, "<button class='btn btn-success' value='' onclick='setCompletedTime(".$orders[$i]['id'].")'><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-danger' value='' onclick='specifyIssue(".$orders[$i]['id'].")'><span class='glyphicon glyphicon-remove'></span></button>");
+                    break;
+                case 'cancelled':
+                    array_push($auxArray, "<input type='button' class='btn btn-info' value='Marcar como pendiente' onclick='setOrderPending(".$orders[$i]['id'].")'>");
+                    break;
+                default:
+            }
             array_push($arrToPass, $auxArray);
         }
-        
+
         echo json_encode($arrToPass);
     }
 
