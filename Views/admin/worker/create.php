@@ -38,10 +38,11 @@ if(isset($data)){
 		<label for="worker_category">Category:</label>
 		<input type="text" class="form-control" name="worker_category" id="worker_category">
 	</div>
-	<div class="form-group">
-		<label for="worker_team">Team:</label>
-		<input type="text" class="form-control" name="worker_team" id="worker_team">
-	</div>
+    <div class="form-group">
+    <?php 
+    	App\Utility\QuickForm::createSelect("worker_team", "name", $data['teams']);
+     ?>
+    </div>
 	<div class="form-group">
 		<label for="worker_is_admin">Is Admin:</label>
 		<label class="radio-inline"><input type="radio" name="worker_is_admin">Yes</label>

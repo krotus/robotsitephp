@@ -5,8 +5,11 @@ namespace Controllers\Admin;
 use Controllers\Controller as Controller;
 use Models\Business\Worker as Worker;
 use Models\Business\Worker as Admin;
+use Models\Business\Team as Team;
 use App\Core\Session as Session;
 use App\Core\View as View;
+use App\Utility\QuickForm as QuickForm;
+use App\Utility\Debug as Debug;
 use Respect\Validation\Validator as v;
 
 class WorkerController extends Controller {
@@ -27,7 +30,10 @@ class WorkerController extends Controller {
 
     public function create() {
         if(!$_POST){
-            View::to("admin.worker.create");
+            $team = new Team();
+            $teams = $team->getAll();
+            //exit;
+            View::to("admin.worker.create", compact('teams'));
         }else{
             $error = "";
             $username = $_POST["worker_username"];
