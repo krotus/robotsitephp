@@ -1,10 +1,3 @@
-<?php 
-if(isset($data)){
-	if (array_key_exists("error", $data)) {
-		echo '<div class="alert alert-danger" role="alert">' . $data["error"] . '</div>';
-	}	
-}
-?>
 <form role="form" action="" method="POST">
 	<div class="form-group">
 		<label for="worker_username">Username:</label>
@@ -50,3 +43,14 @@ if(isset($data)){
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 </form>
+<?php 
+if(isset($data)){
+	if (array_key_exists("error", $data)) {
+		echo '<div class="alert alert-danger" role="alert"><ul>';
+		foreach ($data["error"] as $key => $error) {
+			echo "<li>".$error."</li>";
+		}
+		echo '</ul></div>';
+	}	
+}
+?>

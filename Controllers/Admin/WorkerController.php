@@ -51,11 +51,11 @@ class WorkerController extends Controller {
             $rules = array(
                 'worker_username'       =>  'required|alpha_numeric|min_len,3',
                 'worker_password'       =>  'required|max_len,50|min_len,3',
-                'worker_re_password'    =>  'required|max_len,50|min_len,3',
+                'worker_re_password'    =>  'required|equalsfield,worker_password',
                 'worker_nif'            =>  'required|valid_nif',
                 'worker_name'           =>  'required|max_len,50|min_len,3',
                 'worker_surname'        =>  'required|max_len,50|min_len,3',
-                'worker_telephone'      =>  'required|numeric|exact_len,1',
+                'worker_telephone'      =>  'required|numeric|exact_len,9',
                 'worker_category'       =>  'required|max_len,50|min_len,3',
                 'worker_team'           =>  'required',
                 'worker_is_admin'       =>  'required',
@@ -65,7 +65,8 @@ class WorkerController extends Controller {
             if($validated === TRUE){
                 echo "create worker";
             }else{
-                print_r($validated);
+                $error = $validator->get_readable_errors(false);
+                View::redirect("admin.worker.create", compact('error'));
             }
         }
     }
