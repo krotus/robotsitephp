@@ -19,8 +19,8 @@ if(isset($data)){
 		<input type="password" class="form-control" name="worker_re_password" id="worker_re_password">
 	</div>
 	<div class="form-group">
-		<label for="worker_NIF">NIF:</label>
-		<input type="text" class="form-control" name="worker_NIF" id="worker_NIF">
+		<label for="worker_nif">NIF:</label>
+		<input type="text" class="form-control" name="worker_nif" id="worker_nif">
 	</div>
 	<div class="form-group">
 		<label for="worker_name">Name:</label>

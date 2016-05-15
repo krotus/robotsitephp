@@ -10,7 +10,8 @@ use App\Core\Session as Session;
 use App\Core\View as View;
 use App\Utility\QuickForm as QuickForm;
 use App\Utility\Debug as Debug;
-use Respect\Validation\Validator as v;
+use App\Utility\FormValidator as FormValidator;
+use Wixel\Gump\GUMP as Gump;
 
 class WorkerController extends Controller {
 
@@ -32,72 +33,40 @@ class WorkerController extends Controller {
         if(!$_POST){
             $team = new Team();
             $teams = $team->getAll();
-            //exit;
             View::to("admin.worker.create", compact('teams'));
         }else{
-            $error = "";
-            $username = $_POST["worker_username"];
-            if(v::notEmpty()->validate($username)){
-                $password = $_POST["worker_password"];
-                if(v::notEmpty()->validate($password)){
-                    $rePassword = $_POST["worker_re_password"];
-                    if(v::equals($password)->validate($rePassword)){
-                        $nif = $_POST["worker_NIF"];
-                        if(v::notEmpty()->validate($nif)){
-                            if(v::IdentityCardEs()->validate($nif)){
-                                $name = $_POST["worker_name"];
-                                if(v::notEmpty()->validate($name)){
-                                    $surname = $_POST["worker_surname"];
-                                    if(v::notEmpty()->validate($surname)){
-                                        $telephone = $_POST["worker_telephone"];
-                                        if(v::length(9,null)->validate($telephone)){
-                                            $category = $_POST["worker_category"];
-                                            if(v::notEmpty()->validate($category)){
-                                                $teamId = $_POST["worker_team"];
-                                                if(v::notEmpty()->validate($teamId)){
-                                                    $isAdmin = $_POST["worker_is_admin"];
-                                                    if(v::notEmpty()->validate($isAdmin)){
+            $validator = new Gump();
+            $inputs = array(
+                'worker_username'       =>  $_POST["worker_username"],
+                'worker_password'       =>  $_POST["worker_password"],
+                'worker_re_password'    =>  $_POST["worker_re_password"],
+                'worker_nif'            =>  $_POST["worker_nif"],
+                'worker_name'           =>  $_POST["worker_name"],
+                'worker_surname'        =>  $_POST["worker_surname"],
+                'worker_telephone'      =>  $_POST["worker_telephone"],
+                'worker_category'       =>  $_POST["worker_category"],
+                'worker_team'           =>  $_POST["worker_team"],
+                'worker_is_admin'       =>  $_POST["worker_is_admin"]
+            );
+            $rules = array(
+                'worker_username'       =>  'required|alpha_numeric|min_len,3',
+                'worker_password'       =>  'required|max_len,50|min_len,3',
+                'worker_re_password'    =>  'required|max_len,50|min_len,3',
+                'worker_nif'            =>  'required|valid_nif',
+                'worker_name'           =>  'required|max_len,50|min_len,3',
+                'worker_surname'        =>  'required|max_len,50|min_len,3',
+                'worker_telephone'      =>  'required|numeric|exact_len,1',
+                'worker_category'       =>  'required|max_len,50|min_len,3',
+                'worker_team'           =>  'required',
+                'worker_is_admin'       =>  'required',
+            );
+            $validated = $validator->validate($inputs, $rules);
 
-                                                    }else{
-                                                        $error = "select is/not admin";
-                                                    }
-                                                }else{
-                                                    $error = "empty team";
-                                                }
-                                            }else{
-                                                $error = "empty category";
-                                            }
-                                        }else{
-                                            $error = "incorrect telephone";
-                                        }
-                                    }else{
-                                        $error = "empty surname";
-                                    }
-                                }else{
-                                    $error = "empty name";
-                                }
-                            }else{
-                                $error = "nif incorrect";
-                            }
-                        }else{
-                            $error = "empty nif";
-                        }
-                    }else{
-                        $error = "passwords not match";
-                    }
-                }else{
-                    $error = "empty password";
-                }
-            }else{
-                $error = "empty username";
-            }
-
-            if(v::notEmpty()->validate($error)){
-                View::redirect("admin.worker.create", compact('error'));
-            }else{
+            if($validated === TRUE){
                 echo "create worker";
+            }else{
+                print_r($validated);
             }
-
         }
     }
 
