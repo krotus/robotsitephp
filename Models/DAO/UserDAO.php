@@ -99,8 +99,7 @@ class UserDAO extends AbstractDAO{
 				$object->getMobile(),
 				$object->getTelephone(),
 				$object->getCategory(),
-				$object->getTeam(),
-				$object->getIsAdmin()
+				$object->getTeam()
 			);
 		}else{
 			$user = new Worker(
@@ -113,8 +112,7 @@ class UserDAO extends AbstractDAO{
 				$object->getMobile(),
 				$object->getTelephone(),
 				$object->getCategory(),
-				$object->getTeam(),
-				$object->getIsAdmin()
+				$object->getTeam()
 			);
 		}
 		return $user;
