@@ -14,7 +14,7 @@ class QuickForm{
 	public static function createSelect($idName, $atribute, $array){
 		$atribute = "get" . ucfirst($atribute);
 		?>
-		<select class="selectpicker" name="<?php echo $idName ?>"> 
+		<select class="selectpicker form-control" name="<?php echo $idName ?>"> 
 		<?php
 		foreach ($array as $item) {
 			?>
