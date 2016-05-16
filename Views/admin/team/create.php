@@ -1,4 +1,4 @@
-<h2>Añadir trabajador</h2>
+<h2>Añadir Equipo</h2>
 <div class="row">
     <div class="col-xs-12">
         <form role="form" action="" method="POST">
