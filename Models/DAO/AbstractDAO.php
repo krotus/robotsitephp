@@ -35,6 +35,20 @@ abstract class AbstractDAO{
   		$class = new $class;
   		return $class->getSetters();
     }
+    
+	//testejar.
+    public function ObjectToInt($object)
+    {
+    	$id = null;
+        foreach ($object as $key => $value) {
+        	if (is_object($value)) {
+        		$id = $value->getId();
+        		$setter ="set".$key;
+        		$object->$setter($id);
+        	}
+		}
+		return $object;
+    }
 
 }
 

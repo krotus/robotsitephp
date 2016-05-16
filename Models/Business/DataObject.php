@@ -63,6 +63,20 @@ abstract class DataObject{
         return $data;
     }
 
+    //testejar.
+    public function ObjectToInt($object)
+    {
+    	$id = null;
+        foreach ($object as $key => $value) {
+        	if (is_object($value)) {
+        		$id = $value->getId();
+        		$setter ="set".ucfirst($key);
+        		$object->$setter($id);
+        	}
+		}
+		return $object;
+    }
+
 }
 
 ?>
