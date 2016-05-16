@@ -37,6 +37,7 @@ var dataSet = [
     ["Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675"]
 ];
 
+
 function pendingOrders(idWorker, baseUrl) {
 
     $.ajax({
@@ -45,8 +46,6 @@ function pendingOrders(idWorker, baseUrl) {
         success: function (data) {
             var dades = JSON.parse(data);
             $('#pending-ord').html('');
-            //pendingOrders();
-            //var datos = JSON.parse(data);
             $('#pending-ord').DataTable({
                 data: dades,
                 columns: [
@@ -62,7 +61,7 @@ function pendingOrders(idWorker, baseUrl) {
                     {title: "Opciones"}
                 ],
                 "language": {
-                    "url": "public/datatables/json/es.json"
+                    "url": "public/datatables/json/"+lang+".json"
                 },
                 "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
 
@@ -101,7 +100,7 @@ function initOrders(idWorker, baseUrl) {
                     {title: "Opciones"}
                 ],
                 "language": {
-                    "url": "public/datatables/json/es.json"
+                    "url": "public/datatables/json/"+lang+".json"
                 },
                 "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
 
@@ -138,7 +137,7 @@ function completedOrders(idWorker, baseUrl) {
                     {title: "Estado del robot"},
                 ],
                 "language": {
-                    "url": "public/datatables/json/es.json"
+                    "url": "public/datatables/json/"+lang+".json"
                 },
                 "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
 
@@ -175,7 +174,7 @@ function uncompletedOrders(idWorker, baseUrl) {
                     {title: "Estado del robot"},
                 ],
                 "language": {
-                    "url": "public/datatables/json/es.json"
+                    "url": "public/datatables/json/"+lang+".json"
                 },
                 "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
 
@@ -213,7 +212,7 @@ function cancelledOrders(idWorker, baseUrl) {
                     {title: "Opciones"}
                 ],
                 "language": {
-                    "url": "public/datatables/json/es.json"
+                    "url": "public/datatables/json/"+lang+".json"
                 },
                 "aLengthMenu": [[5, 10, 25, 50, 75, -1], [5, 10, 25, 50, 75, "Todos"]]
 
