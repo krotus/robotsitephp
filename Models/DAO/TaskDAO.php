@@ -64,9 +64,9 @@ class TaskDAO extends AbstractDAO{
 
 	public function arrayToTask($tasks){
 		$arrayTasks = array();
-		for ($i=0; $i < count($tasks); $i++) { 
+		for ($i=0; $i < count($tasks); $i++) {
 			$task = $this->arrayToObject($tasks[$i]);
-			array_push($arrayTasks, $this->fixForeingTask($task));
+			array_push($arrayTasks,$this->fixForeingTask($task));
 		}
 		return $arrayTasks;
 	}
@@ -78,9 +78,14 @@ class TaskDAO extends AbstractDAO{
 		$order = new Order($task->getOrder());
 		$order = $order->get();
 		$task->setOrder($order);
-		$worker = new Worker($task->getWorker());
-		$worker = $worker->get();
-		$task->setWorker($worker);
+                if($task->getWorker() != null){
+                    $worker = new Worker($task->getWorker());
+                    $worker = $worker->get();
+                    $task->setWorker($worker);
+                }else{
+                    $task->setWorker("NULL");
+                }
+		
 		return $task;
 	}
 
