@@ -20,6 +20,7 @@ class Worker extends User {
         $dao = new TaskDAO;
         $dao->update($task);
     }
+
 }
 
 ?>

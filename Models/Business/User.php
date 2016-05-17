@@ -146,7 +146,9 @@ class User extends DataObject {
     public function logout(){
         Session::destroy('user');
     }
-
+    public function toJson() {
+        return json_encode($this);
+    }
 
 }
 

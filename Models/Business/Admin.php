@@ -19,6 +19,12 @@ class Admin extends User{
         $dao = new TaskDAO;
         $dao->update($task);
     }
+
+    public function createWorker($worker)  {
+        $worker->create();
+    }
+
+
 }
 
 ?>

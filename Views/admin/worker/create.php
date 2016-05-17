@@ -27,6 +27,10 @@
                 <input type="text" class="form-control" name="worker_surname" id="worker_surname">
             </div>
             <div class="form-group col-md-6 col-xs-12">
+                <label for="worker_mobile">Mobile:</label>
+                <input type="text" class="form-control" name="worker_mobile" id="worker_mobile">
+            </div>
+            <div class="form-group col-md-6 col-xs-12">
                 <label for="worker_telephone">Teléfono:</label>
                 <input type="text" class="form-control" name="worker_telephone" id="worker_telephone">
             </div>
