@@ -20,7 +20,7 @@ class TaskDAO extends AbstractDAO{
 
 
 	public function getById($id){
-		$url = WEBSERVICE. "task/getById/" . $id;
+		$url = WEBSERVICE. "tasks/getById/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
@@ -28,7 +28,7 @@ class TaskDAO extends AbstractDAO{
 	}
 
 	public function getAll(){
-		$url = WEBSERVICE. "task/getAll";
+		$url = WEBSERVICE. "tasks/getAll";
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
@@ -36,7 +36,7 @@ class TaskDAO extends AbstractDAO{
 	}
 
 	public function create($object){
-		$url = WEBSERVICE. "task/create";
+		$url = WEBSERVICE. "tasks/create";
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("POST");
 		$this->HTTPRequest->setData($object);
@@ -46,7 +46,7 @@ class TaskDAO extends AbstractDAO{
 
 	public function update($object){
 		$id = $object->getId();
-		$url = WEBSERVICE. "task/updateAll/" . $id;
+		$url = WEBSERVICE. "tasks/updateAll/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("PUT");
 		$this->HTTPRequest->setData($object);
@@ -55,7 +55,7 @@ class TaskDAO extends AbstractDAO{
 	}
 
 	public function delete($id){
-		$url = WEBSERVICE. "task/deleteById/" . $id;
+		$url = WEBSERVICE. "tasks/deleteById/" . $id;
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("DELETE");
 		$response = $this->HTTPRequest->sendHTTPRequest();
