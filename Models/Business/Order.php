@@ -112,4 +112,9 @@ class Order extends DataObject{
         $dao->getOrdersByTeamId($team);
     }
 
+    function getAllByStatus($idWorker, $status){
+        $dao = new OrderDAO();
+        return $dao->getAllByStatus($idWorker, $status);   
+    }
+
 }

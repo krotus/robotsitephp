@@ -13,11 +13,11 @@ class Template {
                 $login = false;
                 $admin = false;
                 if (isset($_GET['url'])) {
-                    $expUrl = explode(DS, $_GET['url']);
+                    $expUrl = explode("/", $_GET['url']);
                     if ($expUrl[0] == "login") {
                         $login = true;
                     } elseif ($expUrl[0] == "admin") {
-                        $admin = false;
+                        $admin = true;
                     }
                 }
                 ?>
@@ -25,6 +25,8 @@ class Template {
                 <title>Admin Robotsite</title>
                 <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap.min.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap-theme.min.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap-datetimepicker.min.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/css/switch-pro.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/css/login.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/css/heading.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/css/index-orders.css">
@@ -32,6 +34,8 @@ class Template {
                 <link rel="stylesheet" href="<?php echo URL; ?>public/datatables/css/datatables.bootstrap.min.css">
                 <script src="<?php echo URL; ?>public/js/jquery.js"></script>
                 <script src="<?php echo URL; ?>public/bootstrap/js/bootstrap.min.js"></script>
+                <script src="<?php echo URL; ?>public/bootstrap/js/moment.js"></script>
+                <script src="<?php echo URL; ?>public/bootstrap/js/bootstrap-datetimepicker.js"></script>
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.min.js"></script>
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.bootstrap.min.js"></script>
                 <script src="<?php echo URL; ?>public/js/index_orders.js"></script>
@@ -39,6 +43,8 @@ class Template {
                 <?php if ($admin) {
                     ?>
                     <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminSidebar.css">
+                    <script src="<?php echo URL; ?>public/js/admin/index_workers.js"></script>
+                    <script src="<?php echo URL; ?>public/js/admin/index_teams.js"></script>
                     <?php
                 }
                 ?>
@@ -77,7 +83,7 @@ class Template {
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="../navbar/">Default</a></li>
+                            <li><a href="<?php echo URL . 'worker/logout' ?>">Logout</a></li>
                             <li><a href="../navbar-static-top/">Static top</a></li>
                             <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
                         </ul>
@@ -135,10 +141,20 @@ class Template {
                         <?php
                     }
                 }
-                ?>
-        </body>
-        </html>
-        <?php
+                if (isset($_GET['url'])) {
+
+                    if (strpos($_GET['url'], "Ajax") === false) {
+                        ?>
+                </body>
+                </html>
+                <?php
+            }
+        } else {
+            ?>
+            </body>
+            </html>
+            <?php
+        }
     }
 
 }

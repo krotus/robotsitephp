@@ -20,8 +20,6 @@ class HTTPRequest {
 			if (!is_null($data)) {
 				$this->setData($data);
 			}
-
-
 	}
 
 	//inicialitza envia la request
@@ -156,8 +154,8 @@ class HTTPRequest {
 		if ($output["state"] == 200) {
 			return $output["data"];
 		} else {
-                    throw new Exception($output["state"]);
-		}
+            throw new \Exception($output["state"]);
+		}	
 	}
 
 

@@ -11,9 +11,13 @@ if(isset($data)){
     <div class="panel-body">
         <h2><?php echo $trans["sign_in"] ?></h2>
         <form method="post" action="">
-            <input type="text" class="form-control" name="login-user" placeholder="Usuario">
-            <input type="password" class="form-control" name="login-password" placeholder="Contraseña">
-            <input type="submit" class="btn btn-primary form-control" value="Entrar" name="entrar">
+            <input type="text" class="form-control" name="login-user" placeholder="Usuario" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : '';?>">
+            <input type="password" class="form-control" name="login-password" placeholder="Contraseña" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : '';?>">
+            <div class="material-switch pull-left">
+                <input id="remember-me" name="remember-me" type="checkbox" <?php echo isset($_COOKIE['password']) ? 'checked' : '';?>/>
+                <label for="remember-me" class="label-primary"><span>Remember Me</span></label>
+            </div>
+            <input type="submit" class="col-xs-5 btn btn-primary pull-right" value="Entrar" name="entrar">
         </form>
     </div>
 </div>

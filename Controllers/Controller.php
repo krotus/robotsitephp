@@ -21,6 +21,11 @@ abstract class Controller{
 		}
         View::redirect("worker.index");
 	}
+
+	public function logout(){
+		Session::destroy("user");
+        View::redirect("login.index");
+	}
 }
 
 ?>

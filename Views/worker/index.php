@@ -5,11 +5,77 @@ if (isset($data)) {
     }
 }
 ?>
-<h2><?php
-    //echo $trans['title'];
-    echo "Ordenes de " . $data["marc"]
-    ?></h2>
-<!--<a href="<?php echo URL . 'worker/language' ?>">switch language</a>-->
+
+<!-- Modal completed-->
+<div id="completedModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Completar orden</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker3'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker3').datetimepicker({
+                            format: 'hh:mm:ss'
+                        });
+                    });
+                </script>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Modal cancelled-->
+<div id="cancelledModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cancelar orden</h4>
+            </div>
+            <div class="modal-body">
+                <p>Especifique el motivo de la cancelación de la orden:</p>
+                <div class="form-group">
+                    <textarea class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 hidden-xs">
+    </div>
+    <div class="col-md-10 col-xs-12" style="padding-left: 0px">
+        <h2>
+            <?php echo "Ordenes de " . $data["workerName"]; ?>
+        </h2>
+    </div>
+    <div class="col-md-1 hidden-xs">
+    </div>
+</div>
 <div class="row">
     <div class="col-md-1 hidden-xs">
     </div>
@@ -84,15 +150,16 @@ if (isset($data)) {
     </div>
 </div>
 <?php
-    
 ?>
 
 <script type="text/javascript">
+    var lang = "<?php echo \App\Core\Session::get('lang'); ?>";
     $(document).ready(function () {
-        pendingOrders();
-        initOrders();
-        completedOrders();
-        uncompletedOrders();
-        cancelledOrders();
+        var idWorker = "<?php echo unserialize(\App\Core\Session::get('user'))->getId(); ?>";
+        pendingOrders(idWorker, "<?php echo URL; ?>");
+        initOrders(idWorker, "<?php echo URL; ?>");
+        completedOrders(idWorker, "<?php echo URL; ?>");
+        uncompletedOrders(idWorker, "<?php echo URL; ?>");
+        cancelledOrders(idWorker, "<?php echo URL; ?>");
     });
 </script>
