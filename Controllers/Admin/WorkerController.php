@@ -43,6 +43,7 @@ class WorkerController extends Controller {
                 'worker_nif'            =>  $_POST["worker_nif"],
                 'worker_name'           =>  $_POST["worker_name"],
                 'worker_surname'        =>  $_POST["worker_surname"],
+                'worker_mobile'         =>  $_POST["worker_mobile"],
                 'worker_telephone'      =>  $_POST["worker_telephone"],
                 'worker_category'       =>  $_POST["worker_category"],
                 'worker_team'           =>  $_POST["worker_team"],
@@ -55,6 +56,7 @@ class WorkerController extends Controller {
                 'worker_nif'            =>  'required|valid_nif',
                 'worker_name'           =>  'required|max_len,50|min_len,3',
                 'worker_surname'        =>  'required|max_len,50|min_len,3',
+                'worker_mobile'         =>  'required|numeric|exact_len,9',
                 'worker_telephone'      =>  'required|numeric|exact_len,9',
                 'worker_category'       =>  'required|max_len,50|min_len,3',
                 'worker_team'           =>  'required',
@@ -64,6 +66,22 @@ class WorkerController extends Controller {
 
             if($validated === TRUE){
                 echo "create worker";
+                $admin = unserialize(Session::get("user"));
+                $admin->createWorker(new Worker(
+                    null,
+                    $_POST["worker_username"],
+                    $_POST["worker_password"],
+                    $_POST["worker_nif"],
+                    $_POST["worker_name"],
+                    $_POST["worker_surname"],
+                    $_POST["worker_mobile"],
+                    $_POST["worker_telephone"],
+                    $_POST["worker_category"],
+                    $_POST["worker_team"],
+                    $_POST["worker_is_admin"]
+                    ));
+                $msg = "s'ha creat satisfactoriament.";
+                View::redirect("admin.worker", compact("msg"));
             }else{
                 $error = $validator->get_readable_errors(false);
                 View::redirect("admin.worker.create", compact('error'));

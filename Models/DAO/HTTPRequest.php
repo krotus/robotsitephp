@@ -59,8 +59,7 @@ class HTTPRequest {
 		$this->initRequestParameters();
 		// execute the request
 		$ch = $this->getCurlHandler();
-		$output = curl_exec($ch);
-		$output = json_decode($output,true);
+		$output = json_decode(curl_exec($ch), true);
 		// close curl resource to free up system resources
 		curl_close($ch);
 		// output the profile information - includes the header
@@ -78,11 +77,7 @@ class HTTPRequest {
 		// s'ha de passar a string les dades abans de ser enviades en POST o PUT
 		$data = $this->getData();
 		if (!is_null($data)) {
-			if (is_array($data) || is_object($data)) {
-				$data_string = json_encode($data);
-			} else {
-				$data_string = $data;
-			}
+			$data_string = json_encode($data->objectToArray($data));
 			curl_setopt($ch, CURLOPT_POST, true);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
@@ -90,7 +85,8 @@ class HTTPRequest {
 			    'Content-Length: ' . strlen($data_string)                                                                       
 			));       
 			// execute the request
-			$output = curl_exec($ch);
+			$output = json_decode(curl_exec($ch), true);
+			//var_dump(curl_exec($ch));
 			// close curl resource to free up system resources
 			curl_close($ch);
 			// output the profile information - includes the header
@@ -110,11 +106,7 @@ class HTTPRequest {
 		// s'ha de passar a string les dades abans de ser enviades en POST o PUT
 		$data = $this->getData();
 		if (!is_null($data)) {
-			if (is_array($data) || is_object($data)) {
-				$data_string = json_encode($data);
-			} else {
-				$data_string = $data;
-			}
+			$data_string = json_encode($data->objectToArray($data));
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
@@ -122,7 +114,7 @@ class HTTPRequest {
 			    'Content-Length: ' . strlen($data_string)                                                                       
 			));       
 			// execute the request
-			$output = curl_exec($ch);
+			$output = json_decode(curl_exec($ch), true);
 			// close curl resource to free up system resources
 			curl_close($ch);
 			// output the profile information - includes the header
@@ -139,8 +131,7 @@ class HTTPRequest {
 		$ch = $this->getCurlHandler();
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
 		// execute the request
-		$output = curl_exec($ch);
-
+		$output = json_decode(curl_exec($ch), true);
 		// output the profile information - includes the header
 		//echo($output) . PHP_EOL;
 		// close curl resource to free up system resources
@@ -151,10 +142,11 @@ class HTTPRequest {
 
 	private function validateResponse()	{
 		$output = $this->getOutput();
+
 		if ($output["state"] == 200) {
 			return $output["data"];
 		} else {
-            throw new \Exception($output["state"]);
+            throw new Exception($output["state"]);
 		}	
 	}
 

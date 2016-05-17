@@ -64,7 +64,7 @@ abstract class DataObject{
     }
 
     //testejar.
-    public function ObjectToInt($object)
+    public function objectToInt($object)
     {
     	$id = null;
         foreach ($object as $key => $value) {
@@ -75,6 +75,10 @@ abstract class DataObject{
         	}
 		}
 		return $object;
+    }
+
+    public function toJson() {
+        return json_encode($this);
     }
 
 }
