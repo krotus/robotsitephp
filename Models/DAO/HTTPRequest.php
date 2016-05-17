@@ -142,7 +142,7 @@ class HTTPRequest {
 
 	private function validateResponse()	{
 		$output = $this->getOutput();
-                var_dump($output);
+                //var_dump($output);
                 exit;
 		if ($output["state"] == 200) {
 			return $output["data"];
