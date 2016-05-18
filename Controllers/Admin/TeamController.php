@@ -40,11 +40,12 @@ class TeamController extends Controller {
             if($validated === TRUE){
                 $admin = unserialize(Session::get("user"));
                 $admin->updateTeam(new Team(
-                    null,
+                    $id,
                     $_POST["team_code"],
                     $_POST["team_name"]
                     ));
-                $msg = "S'ha creat satisfactoriament.";
+                
+                $msg = "S'ha editat satisfactoriament.";
                 View::redirect("admin.team", compact("msg"));
             }else{
                 $error = $validator->get_readable_errors(false);

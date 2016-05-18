@@ -60,7 +60,7 @@ class WorkerController extends Controller {
             if($validated === TRUE){
                 $admin = unserialize(Session::get("user"));
                 $admin->updateWorker(new Worker(
-                    null,
+                    $id,
                     $_POST["worker_username"],
                     $_POST["worker_password"],
                     $_POST["worker_nif"],
@@ -72,7 +72,7 @@ class WorkerController extends Controller {
                     $_POST["worker_team"],
                     $_POST["worker_is_admin"]
                     ));
-                $msg = "s'ha creat satisfactoriament.";
+                $msg = "s'ha editat satisfactoriament.";
                 View::redirect("admin.worker", compact("msg"));
             }else{
                 $error = $validator->get_readable_errors(false);
