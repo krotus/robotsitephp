@@ -37,8 +37,9 @@ class Admin extends User{
     public function createTeam($team)  {
         $team->create();
     }
-
-
+    public function updateTeam($team){
+        $team->update();
+    }
 }
 
 ?>
