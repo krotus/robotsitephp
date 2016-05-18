@@ -23,11 +23,6 @@ class WorkerController extends Controller {
         //TODO
     }
 
-    public function profile() {
-        $worker = unserialize(Session::get('user'));
-        View::to("worker.profile", compact("worker"));
-    }
-
     public function delete($id) {
         //TODO
     }
