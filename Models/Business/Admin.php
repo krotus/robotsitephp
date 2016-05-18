@@ -44,7 +44,9 @@ class Admin extends User{
         $robot->create();
     }
 
-
+    public function updateTeam($team){
+        $team->update();
+    }
 }
 
 ?>

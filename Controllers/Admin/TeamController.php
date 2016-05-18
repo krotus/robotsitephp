@@ -21,9 +21,36 @@ class TeamController extends Controller {
     }
 
     public function edit($id) {
+        if(!$_POST){
         $team = new Team($id);
         $team = $team->get();
         View::to("admin.team.edit", compact('team'));
+        }else{
+            $validator = new Gump();
+            $inputs = array(
+                'team_code'       =>  $_POST["team_code"],
+                'team_name'       =>  $_POST["team_name"]
+            );
+            $rules = array(
+                'team_code'       =>  'required|numeric|min_len,3',
+                'team_name'       =>  'required|max_len,50|min_len,3',
+            );
+            $validated = $validator->validate($inputs, $rules);
+
+            if($validated === TRUE){
+                $admin = unserialize(Session::get("user"));
+                $admin->updateTeam(new Team(
+                    null,
+                    $_POST["team_code"],
+                    $_POST["team_name"]
+                    ));
+                $msg = "S'ha creat satisfactoriament.";
+                View::redirect("admin.team", compact("msg"));
+            }else{
+                $error = $validator->get_readable_errors(false);
+                View::redirect("admin.team.edit.". $id, compact('error'));
+            }
+        }
     }
 
     public function delete($id) {

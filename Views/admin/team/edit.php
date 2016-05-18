@@ -11,7 +11,7 @@
                 <input type="text" class="form-control" name="team_name" id="team_name" value="<?php echo $data['team']->getName() ?>">
             </div>
             <div class="col-xs-12">
-                <input type="submit" class="btn btn-primary" value="Crear" name="team_create">
+                <input type="submit" class="btn btn-primary" value="Editar" name="team_edit">
             </div>
         </form>
     </div>

@@ -189,10 +189,12 @@ function cancelledOrders(idWorker, baseUrl) {
 }
 
 function setCompletedTime(idOrder) {
+    $('#order-id-comp').html(idOrder);
     $('#completedModal').modal('toggle');
 }
 
 function specifyIssue(idOrder) {
+    $('#order-id-can').html(idOrder);
     $('#cancelledModal').modal('toggle');
 }
 
@@ -201,6 +203,7 @@ function executeOrder(idOrd, status, idWork, baseUrl) {
         type: "get",
         url: "http://testservice.xyz/v1/orders/updateExecute/" + idOrd + "/" + status + "/" + idWork,
         crossDomain: true,
+        async: false,
         success: function (data) {
             $('#confirmModal>div>div').attr('class', 'alert alert-success');
             $('#confirmModal>div>div').html(data.message);
@@ -210,7 +213,7 @@ function executeOrder(idOrd, status, idWork, baseUrl) {
             initOrders(idWork, baseUrl);
             setTimeout(function () {
                 $('#confirmModal').modal('toggle');
-            }, 3500);
+            }, 1000);
         },
         error: function (err) {
             $('#confirmModal>div>div').attr('class', 'alert alert-danger');
@@ -218,7 +221,134 @@ function executeOrder(idOrd, status, idWork, baseUrl) {
             console.log(err);
             setTimeout(function () {
                 $('#confirmModal').modal('toggle');
-            }, 3500);
+            }, 1000);
+        },
+        beforeSend: function () {
+            $('#confirmModal>div>div').html('cargando...');
+            $('#confirmModal').modal('toggle');
+        }
+    });
+}
+
+function completeOrder(idWork, baseUrl) {
+    var completedTime = $('#completed-time').val();
+    if (completedTime.trim().length == 0) {
+        $('#completedModal .modal-body').prepend('<p class="alert alert-danger">Por favor introduzca una hora válida.</p>')
+    } else {
+        var orderId = $('#order-id-comp').html();
+        var statusId = 3;
+        var today = new Date();
+        var year = today.getFullYear().toString();
+        var month = (today.getMonth() + 1).toString();
+        if (month.length == 1) {
+            month = "0" + month;
+        }
+        var day = today.getDate().toString();
+        var datetimeToSend = year + "-" + month + "-" + day + " " + completedTime;
+        $('#completedModal').modal('toggle');
+        $.ajax({
+            type: "get",
+            url: "http://testservice.xyz/v1/orders/completedByTask/" + orderId + "/" + statusId,
+            data: {"dataExtra": datetimeToSend},
+            crossDomain: true,
+            async: false,
+            success: function (data) {
+                $('#confirmModal>div>div').attr('class', 'alert alert-success');
+                $('#confirmModal>div>div').html(data.message);
+                $('#init-ord').DataTable().destroy();
+                initOrders(idWork, baseUrl);
+                $('#completed-ord').DataTable().destroy();
+                completedOrders(idWork, baseUrl);
+                setTimeout(function () {
+                    $('#confirmModal').modal('toggle');
+                }, 1000);
+            },
+            error: function (err) {
+                $('#confirmModal>div>div').attr('class', 'alert alert-danger');
+                $('#confirmModal>div>div').html(err.message);
+                console.log(err);
+                setTimeout(function () {
+                    $('#confirmModal').modal('toggle');
+                }, 1000);
+            },
+            beforeSend: function () {
+                $('#confirmModal>div>div').attr('class', 'alert');
+                $('#confirmModal>div>div').html('cargando...');
+                $('#confirmModal').modal('toggle');
+            }
+        });
+
+    }
+}
+
+function cancelOrder(idWork, baseUrl) {
+    var justification = $('#cancel-justification').val();
+    if (justification.trim().length == 0) {
+        $('#cancelledModal .modal-body').prepend('<p class="alert alert-danger">Por favor introduzca una justificación válida.</p>')
+    } else {
+        var orderId = $('#order-id-can').html();
+        var statusId = 5;
+        $('#cancelledModal').modal('toggle');
+        $.ajax({
+            type: "get",
+            url: "http://testservice.xyz/v1/orders/completedByTask/" + orderId + "/" + statusId,
+            data: {"dataExtra": justification},
+            async: false,
+            crossDomain: true,
+            success: function (data) {
+                $('#confirmModal>div>div').attr('class', 'alert alert-success');
+                $('#confirmModal>div>div').html(data.message);
+                $('#init-ord').DataTable().destroy();
+                initOrders(idWork, baseUrl);
+                $('#cancelled-ord').DataTable().destroy();
+                cancelledOrders(idWork, baseUrl);
+                setTimeout(function () {
+                    $('#confirmModal').modal('toggle');
+                }, 1000);
+            },
+            error: function (err) {
+                $('#confirmModal>div>div').attr('class', 'alert alert-danger');
+                $('#confirmModal>div>div').html(err.message);
+                console.log(err);
+                setTimeout(function () {
+                    $('#confirmModal').modal('toggle');
+                }, 1000);
+            },
+            beforeSend: function () {
+                $('#confirmModal>div>div').attr('class', 'alert');
+                $('#confirmModal>div>div').html('cargando...');
+                $('#confirmModal').modal('toggle');
+            }
+        });
+
+
+    }
+}
+
+function setOrderPending(idOrd, status, idWork, baseUrl) {
+    $.ajax({
+        type: "get",
+        url: "http://testservice.xyz/v1/orders/changeOrderStatus/" + idOrd + "/" + status,
+        crossDomain: true,
+        async: false,
+        success: function (data) {
+            $('#confirmModal>div>div').attr('class', 'alert alert-success');
+            $('#confirmModal>div>div').html(data.message);
+            $('#cancelled-ord').DataTable().destroy();
+            cancelledOrders(idWork, baseUrl);
+            $('#pending-ord').DataTable().destroy();
+            pendingOrders(idWork, baseUrl);
+            setTimeout(function () {
+                $('#confirmModal').modal('toggle');
+            }, 1000);
+        },
+        error: function (err) {
+            $('#confirmModal>div>div').attr('class', 'alert alert-danger');
+            $('#confirmModal>div>div').html(err.message);
+            console.log(err);
+            setTimeout(function () {
+                $('#confirmModal').modal('toggle');
+            }, 1000);
         },
         beforeSend: function () {
             $('#confirmModal>div>div').html('cargando...');
