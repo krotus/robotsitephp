@@ -4,7 +4,7 @@ namespace Controllers\Admin;
 
 use Controllers\Controller as Controller;
 use Models\Business\Worker as Worker;
-use Models\Business\Worker as Admin;
+use Models\Business\Admin as Admin;
 use Models\Business\Team as Team;
 use App\Core\Session as Session;
 use App\Core\View as View;

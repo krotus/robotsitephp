@@ -47,6 +47,10 @@ class Admin extends User{
     public function updateTeam($team){
         $team->update();
     }
+    
+    public function updateRobot($robot){
+        $robot->update();
+    }
 }
 
 ?>
