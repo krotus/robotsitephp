@@ -41,6 +41,8 @@ class WorkerController extends Controller {
         $orders = $order->getAllByStatus($idWorker, $status);
         $task = new Task();
         $tasks = $task->getAll();
+//        Debug::log($orders);
+//        exit();
         $arrToPass = array();
         for ($i = 0; $i < count($orders); $i++) {
             $auxArray = array();
@@ -52,10 +54,20 @@ class WorkerController extends Controller {
                     array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ", \"" . URL . "\")'>");
                     break;
                 case 'initiated':
-                    array_push($auxArray, "<button class='btn btn-success' value='' onclick='setCompletedTime(" . $orders[$i]['id'] . ")'><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-danger' value='' onclick='specifyIssue(" . $orders[$i]['id'] . ")'><span class='glyphicon glyphicon-remove'></span></button>");
+                    $taskFound = new Task();
+                    for ($j = 0; $j < count($tasks); $j++) {
+                        if ($tasks[$j]->getOrder() == $orders[$i]['id']) {
+                            $taskFound = $tasks[$j];
+                        }
+                    }
+                    if ($taskFound->getWorker() == $idWorker) {
+                        array_push($auxArray, "<button class='btn btn-success' value='' onclick='setCompletedTime(" . $orders[$i]['id'] . ")'><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-danger' value='' onclick='specifyIssue(" . $orders[$i]['id'] . ")'><span class='glyphicon glyphicon-remove'></span></button>");
+                    } else {
+                        array_push($auxArray, "<button class='btn btn-disabled' value=''><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-disabled' value=''><span class='glyphicon glyphicon-remove'></span></button>");
+                    }
                     break;
                 case 'cancelled':
-                    array_push($auxArray, "<input type='button' class='btn btn-info' value='Marcar como pendiente' onclick='setOrderPending(" . $orders[$i]['id'] . ")'>");
+                    array_push($auxArray, "<input type='button' class='btn btn-info' value='Marcar como pendiente' onclick='setOrderPending(" . $orders[$i]['id'] . ", 1, " . unserialize(\App\Core\Session::get('user'))->getId() . ", \"" . URL . "\")'>");
                     break;
                 default:
             }
