@@ -55,9 +55,9 @@
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="worker_is_admin">Admin:</label>
-                <label class="radio-inline"><input type="radio" name="worker_is_admin"
+                <label class="radio-inline"><input type="radio" value="1" name="worker_is_admin"
                     <?php echo ($data['worker']->getIsAdmin() == 1) ? 'checked' : ''; ?>>Sí</label>
-                <label class="radio-inline"><input type="radio" name="worker_is_admin" 
+                <label class="radio-inline"><input type="radio" value="0" name="worker_is_admin" 
                     <?php echo ($data['worker']->getIsAdmin() == 0) ? 'checked' : ''; ?>>No</label>
             </div>
             <div class="col-xs-12">
