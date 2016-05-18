@@ -87,7 +87,6 @@ class HTTPRequest {
 			));       
 			// execute the request
 			$output = json_decode(curl_exec($ch), true);
-			//var_dump(curl_exec($ch));
 			// close curl resource to free up system resources
 			curl_close($ch);
 			// output the profile information - includes the header
@@ -107,7 +106,7 @@ class HTTPRequest {
 		// s'ha de passar a string les dades abans de ser enviades en POST o PUT
 		$data = $this->getData();
 		if (!is_null($data)) {
-			$data_string = json_encode($data->objectToArray($data));
+			$data_string = json_encode($data->objectToArray($data));                
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
