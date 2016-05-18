@@ -198,7 +198,7 @@ function specifyIssue(idOrder) {
 
 function executeOrder(idOrd, status, idWork, baseUrl) {
     $.ajax({
-        type: "GET",
+        type: "get",
         url: "http://testservice.xyz/v1/orders/updateExecute/" + idOrd + "/" + status + "/" + idWork,
         crossDomain: true,
         success: function (data) {

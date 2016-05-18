@@ -1,0 +1,73 @@
+<link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/map.css">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+<script src="<?php echo URL; ?>public/js/admin/geolocation.js"></script>
+<!-- Modal Map-->
+<div id="mapModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Mapa</h4>
+            </div>
+            
+                <p id = 'mapdiv'></p> 
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left">Grabar </button>
+                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div> 
+<h2>Añadir Robot</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <form role="form" action="" method="POST">
+            <div class="form-group col-md-6 col-xs-12">
+                <label for="robot_code">Codigo:</label>
+                <input type="text" class="form-control" name="robot_code" id="robot_code">
+            </div>
+            <div class="form-group col-md-6 col-xs-12">
+                <label for="robot_name">Nombre:</label>
+                <input type="text" class="form-control" name="robot_name" id="robot_name">
+            </div>
+            <div class="form-group col-md-6 col-xs-12">
+                <div class="row">
+                    <input type="button" class="btn btn-primary" onclick="openMap()" value="Abrir Mapa" />
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="padding-left:0px">
+                        <label for="robot_latitude">Latitud:</label>
+                        <input type="text" class="form-control" name="robot_latitude" id="robot_latitude">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="robot_longitude">Longitud:</label>
+                        <input type="text" class="form-control" name="robot_longitude" id="robot_longitude">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6 col-xs-12">
+            <label>Estat:</label>
+                <?php
+                App\Utility\QuickForm::createSelect("robot_state", "description", $data['status']);
+                ?>
+            </div>
+            <div class="col-xs-12">
+                <input type="submit" class="btn btn-primary" value="Crear" name="team_create">
+            </div>
+        </form>
+    </div>
+</div>
+<?php
+if (isset($data)) {
+    if (array_key_exists("error", $data)) {
+        echo '<div class="alert alert-danger" role="alert"><ul>';
+        foreach ($data["error"] as $key => $error) {
+            echo "<li>" . $error . "</li>";
+        }
+        echo '</ul></div>';
+    }
+}
+?>

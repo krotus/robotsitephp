@@ -67,6 +67,7 @@ class RobotDAO  extends AbstractDAO{
 			if($foreigns){
 				$robot = $this->fixForeingRobot($robot);
 			}
+			$robot = $this->fixCanBeNull($robot);
 			array_push($arrayRobots, $robot);
 		}
 		return $arrayRobots;
@@ -77,6 +78,13 @@ class RobotDAO  extends AbstractDAO{
 		$statusRobot = $statusRobot->get();
 		$robot->setStatusRobot($statusRobot);
 		return $robot;
+	}
+
+	public function fixCanBeNull($robot){
+		if($robot->getIpAddress() == null){
+            $robot->setIpAddress("NULL");
+        }
+        return $robot;
 	}
 
 

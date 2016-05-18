@@ -45,6 +45,7 @@ class Template {
                     <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminSidebar.css">
                     <script src="<?php echo URL; ?>public/js/admin/index_workers.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_teams.js"></script>
+                    <script src="<?php echo URL; ?>public/js/admin/index_robots.js"></script>
                     <?php
                 }
                 ?>
