@@ -11,15 +11,29 @@ class QuickForm{
 	 * @param array $array Items to walk zombie.
 	 * @return void
 	 */
-	public static function createSelect($idName, $atribute, $array){
+	public static function createSelect($idName, $atribute, $array, $idSelected = false){
 		$atribute = "get" . ucfirst($atribute);
 		?>
 		<select class="selectpicker form-control" name="<?php echo $idName ?>"> 
 		<?php
 		foreach ($array as $item) {
-			?>
-			<option value='<?php echo $item->getId(); ?>'><?php echo $item->{$atribute}(); ?></option>
-			<?php
+                        if(is_numeric($idSelected)){ 
+                            if($item->getId() == $idSelected){ 
+                            ?>
+                                <option value='<?php echo $item->getId(); ?>' selected><?php echo $item->{$atribute}(); ?></option>
+                            <?php 
+                            }else{ 
+                            ?>
+                                <option value='<?php echo $item->getId(); ?>'><?php echo $item->{$atribute}(); ?></option>
+                            <?php 
+                            }
+                        ?>     
+                        <?php 
+                        }else{ 
+                        ?>
+                            <option value='<?php echo $item->getId(); ?>'><?php echo $item->{$atribute}(); ?></option>
+                        <?php
+                        }
 		} 
 		?>
 		</select>

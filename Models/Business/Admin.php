@@ -31,7 +31,9 @@ class Admin extends User{
     public function createWorker($worker)  {
         $worker->create();
     }
-
+    public function updateWorker($worker){
+        $worker->update();
+    }
     public function createTeam($team)  {
         $team->create();
     }
