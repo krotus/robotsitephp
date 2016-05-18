@@ -17,9 +17,10 @@ if (isset($data)) {
                 <h4 class="modal-title">Completar orden</h4>
             </div>
             <div class="modal-body">
+                <span id="order-id-comp" style="display: none;"></span>
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker3'>
-                        <input type='text' class="form-control" />
+                        <input id="completed-time" type='text' class="form-control" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-time"></span>
                         </span>
@@ -34,7 +35,7 @@ if (isset($data)) {
                 </script>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success pull-left"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-success pull-left" onclick="completeOrder('<?php echo unserialize(\App\Core\Session::get('user'))->getId(); ?>', '<?php echo URL; ?>')"><span class="glyphicon glyphicon-ok"></span></button>
                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
         </div>
@@ -53,12 +54,13 @@ if (isset($data)) {
             </div>
             <div class="modal-body">
                 <p>Especifique el motivo de la cancelación de la orden:</p>
+                <span id="order-id-can" style="display: none;"></span>
                 <div class="form-group">
-                    <textarea class="form-control"></textarea>
+                    <textarea id="cancel-justification" class="form-control"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success pull-left"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-success pull-left" onclick="cancelOrder('<?php echo unserialize(\App\Core\Session::get('user'))->getId(); ?>', '<?php echo URL; ?>')"><span class="glyphicon glyphicon-ok"></span></button>
                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
         </div>
