@@ -102,7 +102,10 @@ class Order extends DataObject{
     function setProcess($process) {
         $this->process = $process;
     }
-
+/**
+ * Metode que retorna les ordres assignades a un equip
+ * @param type $team
+ */
     function checkOrdersAssigned($team){
         $dao = new OrderDAO();
         //provisional

@@ -5,6 +5,7 @@ namespace Controllers\Admin;
 use Controllers\Controller as Controller;
 use Models\Business\Worker as Worker;
 use Models\Business\Worker as Admin;
+use Models\Business\Worker as Robot;
 use Models\Business\StatusRobot as StatusRobot;
 use App\Core\Session as Session;
 use App\Core\View as View;
@@ -21,7 +22,11 @@ class RobotController extends Controller {
     }
 
     public function edit($id) {
-        View::to("admin.robot.edit");
+        $robot = new Robot($id);
+        $robot = $robot->get();
+        $statusRobot = new StatusRobot();
+        $status = $statusRobot->getAll();
+        View::to("admin.robot.edit", compact('robot', 'status'));
     }
 
     public function delete($id) {
