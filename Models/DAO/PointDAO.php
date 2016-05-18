@@ -22,7 +22,7 @@ class PointDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToPoint($arrayResponse);
+		return $this->arrayToPoint($arrayResponse, true);
 	}
 
 	public function getAll(){
@@ -30,7 +30,7 @@ class PointDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToPoint($arrayResponse);
+		return $this->arrayToPoint($arrayResponse, false);
 	}
 
 	public function create($object){
@@ -60,11 +60,14 @@ class PointDAO extends AbstractDAO{
 		return $response;
 	}
 
-	public function arrayToPoint($points){
+	public function arrayToPoint($points, $foreigns = false){
 		$arrayPoints = array();
 		for ($i=0; $i < count($points); $i++) { 
 			$point = $this->arrayToObject($points[$i]);
-			array_push($arrayPoints, $this->fixForeingPoint($point));
+			if($foreigns){
+				$point = $this->fixForeingPoint($point);
+			}
+			array_push($arrayPoints, $point);
 		}
 		return $arrayPoints;
 	}

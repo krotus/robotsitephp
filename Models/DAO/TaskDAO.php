@@ -24,7 +24,7 @@ class TaskDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToTask($arrayResponse);
+		return $this->arrayToTask($arrayResponse, true);
 	}
 
 	public function getAll(){
@@ -32,7 +32,7 @@ class TaskDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToTask($arrayResponse);
+		return $this->arrayToTask($arrayResponse, false);
 	}
 
 	public function create($object){
@@ -62,11 +62,15 @@ class TaskDAO extends AbstractDAO{
 		return $response;
 	}
 
-	public function arrayToTask($tasks){
+	public function arrayToTask($tasks,$foreigns = false){
 		$arrayTasks = array();
 		for ($i=0; $i < count($tasks); $i++) {
 			$task = $this->arrayToObject($tasks[$i]);
-			array_push($arrayTasks,$this->fixForeingTask($task));
+			if($foreigns){
+				$task = $this->fixForeingTask($task);
+			}
+			$task = $this->fixCanBeNull($task);
+			array_push($arrayTasks,$task);
 		}
 		return $arrayTasks;
 	}
@@ -78,15 +82,24 @@ class TaskDAO extends AbstractDAO{
 		$order = new Order($task->getOrder());
 		$order = $order->get();
 		$task->setOrder($order);
-                if($task->getWorker() != null){
-                    $worker = new Worker($task->getWorker());
-                    $worker = $worker->get();
-                    $task->setWorker($worker);
-                }else{
-                    $task->setWorker("NULL");
-                }
-		
+        $worker = new Worker($task->getWorker());
+        $worker = $worker->get();
+        $task->setWorker($worker);
 		return $task;
+	}
+
+	public function fixCanBeNull($task){
+		if($task->getWorker() == null){
+            $task->setWorker("NULL");
+        }
+        if($task->getDateCompletion() == null){
+        	$task->setDateCompletion("NULL");
+        }
+        if($task->getJustification() == null){
+        	$task->setJustification("NULL");
+        }
+
+        return $task;
 	}
 
 }

@@ -21,7 +21,7 @@ class StatusOrderDAO  extends AbstractDAO {
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToStatusOrder($arrayResponse);
+		return $this->arrayToStatusOrder($arrayResponse, true);
 	}
 
 	public function getAll(){
@@ -29,7 +29,7 @@ class StatusOrderDAO  extends AbstractDAO {
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToStatusOrder($arrayResponse);
+		return $this->arrayToStatusOrder($arrayResponse, false);
 	}
 
 	public function create($object){
@@ -59,7 +59,7 @@ class StatusOrderDAO  extends AbstractDAO {
 		return $response;
 	}
 
-	public function arrayToStatusOrder($statusOrders){
+	public function arrayToStatusOrder($statusOrders,$foreigns = false){
 		$arrayStatusOrder = array();
 		for ($i=0; $i < count($statusOrders); $i++) { 
 			$statusOrder = $this->arrayToObject($statusOrders[$i]);

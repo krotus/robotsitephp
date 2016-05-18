@@ -38,13 +38,9 @@ class WorkerController extends Controller {
     public function getOrdersByAjax($idWorker, $status) {
         ob_end_clean();
         $order = new Order();
-        //$orders = $order->getAllByStatus($idWorker, $status);
+        $orders = $order->getAllByStatus($idWorker, $status);
         $task = new Task();
         $tasks = $task->getAll();
-        Debug::log($tasks);
-        exit();
-
-        //Debug::log($orders);
         $arrToPass = array();
         for ($i = 0; $i < count($orders); $i++) {
             $auxArray = array();

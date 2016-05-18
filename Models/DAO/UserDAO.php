@@ -25,7 +25,7 @@ class UserDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToUser($arrayResponse);
+		return $this->arrayToUser($arrayResponse, true);
 	}
 
 	public function getAll(){
@@ -33,7 +33,7 @@ class UserDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToUser($arrayResponse);
+		return $this->arrayToUser($arrayResponse, false);
 	}
 
 	public function create($object){
@@ -63,11 +63,14 @@ class UserDAO extends AbstractDAO{
 		return $response;
 	}
 
-	public function arrayToUser($users){
+	public function arrayToUser($users,$foreigns = false){
 		$arrayUsers = array();
 		for ($i=0; $i < count($users); $i++) { 
 			$user = $this->arrayToObject($users[$i]);
-			array_push($arrayUsers, $this->fixForeingUser($user));
+			if($foreigns){
+				$user = $this->fixForeingUser($user);
+			}
+			array_push($arrayUsers, $user);
 		}
 		return $arrayUsers;
 	}
