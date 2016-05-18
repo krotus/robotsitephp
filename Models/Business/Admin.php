@@ -20,12 +20,16 @@ class Admin extends User{
         $dao->update($task);
     }
 
-    public function createWorker($worker)  {
+    public function createWorker($worker){
         $worker->create();
     }
 
-    public function createTeam($team)  {
+    public function createTeam($team){
         $team->create();
+    }
+
+    public function createRobot($robot){
+        $robot->create();
     }
 
 

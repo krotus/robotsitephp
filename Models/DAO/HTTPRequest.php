@@ -87,7 +87,6 @@ class HTTPRequest {
 			));       
 			// execute the request
 			$output = json_decode(curl_exec($ch), true);
-			//var_dump(curl_exec($ch));
 			// close curl resource to free up system resources
 			curl_close($ch);
 			// output the profile information - includes the header

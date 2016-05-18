@@ -11,11 +11,9 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Mapa</h4>
             </div>
-            
-                <p id = 'mapdiv'></p> 
-            
+                <div id = 'mapdiv'></div> 
             <div class="modal-footer">
-                <button type="button" class="btn btn-success pull-left">Grabar </button>
+                <button type="button" id="save_ubication" class="btn btn-success pull-left">Grabar </button>
                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -35,7 +33,8 @@
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <div class="row">
-                    <input type="button" class="btn btn-primary" onclick="openMap()" value="Abrir Mapa" />
+                    <button type="button" class="btn btn-info" onclick="toggleMap()" />
+                        <i class="glyphicon glyphicon-map-marker"></i> Abrir Mapa</button>
                 </div>
                 <div class="row">
                     <div class="col-md-6" style="padding-left:0px">

@@ -3,9 +3,8 @@
 namespace Controllers\Admin;
 
 use Controllers\Controller as Controller;
-use Models\Business\Worker as Worker;
-use Models\Business\Worker as Admin;
 use Models\Business\StatusRobot as StatusRobot;
+use Models\Business\Robot as Robot;
 use App\Core\Session as Session;
 use App\Core\View as View;
 use App\Utility\QuickForm as QuickForm;
@@ -37,11 +36,15 @@ class RobotController extends Controller {
             $validator = new Gump();
             $inputs = array(
                 'robot_code'       =>  $_POST["robot_code"],
-                'robot_name'       =>  $_POST["robot_name"]
+                'robot_name'       =>  $_POST["robot_name"],
+                'robot_latitude'   =>  $_POST["robot_latitude"],
+                'robot_longitude'  =>  $_POST["robot_longitude"]
             );
             $rules = array(
                 'robot_code'       =>  'required|numeric|min_len,3',
                 'robot_name'       =>  'required|max_len,50|min_len,3',
+                'robot_latitude'   =>  'required',
+                'robot_longitude'  =>  'required'
             );
             $validated = $validator->validate($inputs, $rules);
 
@@ -50,7 +53,11 @@ class RobotController extends Controller {
                 $admin->createRobot(new Robot(
                     null,
                     $_POST["robot_code"],
-                    $_POST["robot_name"]
+                    $_POST["robot_name"],
+                    null,
+                    $_POST["robot_latitude"],
+                    $_POST["robot_longitude"],
+                    $_POST["robot_state"]
                     ));
                 $msg = "S'ha creat satisfactoriament.";
                 View::redirect("admin.robot", compact("msg"));
