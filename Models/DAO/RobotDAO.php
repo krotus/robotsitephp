@@ -22,7 +22,7 @@ class RobotDAO  extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToRobots($arrayResponse);
+		return $this->arrayToRobots($arrayResponse, true);
 	}
 
 	public function getAll(){
@@ -30,7 +30,7 @@ class RobotDAO  extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToRobots($arrayResponse);
+		return $this->arrayToRobots($arrayResponse, false);
 	}
 
 	public function create($object){
@@ -60,11 +60,15 @@ class RobotDAO  extends AbstractDAO{
 		return $response;
 	}
 
-	public function arrayToRobots($robots){
+	public function arrayToRobots($robots, $foreigns = false){
 		$arrayRobots = array();
 		for ($i=0; $i < count($robots); $i++) { 
 			$robot = $this->arrayToObject($robots[$i]);
-			array_push($arrayRobots, $this->fixForeingRobot($robot));
+			if($foreigns){
+				$robot = $this->fixForeingRobot($robot);
+			}
+			$robot = $this->fixCanBeNull($robot);
+			array_push($arrayRobots, $robot);
 		}
 		return $arrayRobots;
 	}
@@ -74,6 +78,13 @@ class RobotDAO  extends AbstractDAO{
 		$statusRobot = $statusRobot->get();
 		$robot->setStatusRobot($statusRobot);
 		return $robot;
+	}
+
+	public function fixCanBeNull($robot){
+		if($robot->getIpAddress() == null){
+            $robot->setIpAddress("NULL");
+        }
+        return $robot;
 	}
 
 

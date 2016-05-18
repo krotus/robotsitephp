@@ -21,7 +21,7 @@ class StatusRobotDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToStatusRobot($arrayResponse);
+		return $this->arrayToStatusRobot($arrayResponse, true);
 	}
 
 	public function getAll(){
@@ -29,7 +29,7 @@ class StatusRobotDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToStatusRobot($arrayResponse);
+		return $this->arrayToStatusRobot($arrayResponse, false);
 	}
 
 	public function create($object){
@@ -60,7 +60,7 @@ class StatusRobotDAO extends AbstractDAO{
 	}
 
 
-	public function arrayToStatusRobot($statusRobots){
+	public function arrayToStatusRobot($statusRobots, $foreigns = false){
 		$arrayStatusRobot = array();
 		for ($i=0; $i < count($statusRobots); $i++) { 
 			$statusRobot = $this->arrayToObject($statusRobots[$i]);
@@ -68,6 +68,7 @@ class StatusRobotDAO extends AbstractDAO{
 		}
 		return $arrayStatusRobot;
 	}
+
 
 }
 

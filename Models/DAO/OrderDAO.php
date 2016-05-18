@@ -24,7 +24,7 @@ class OrderDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToOrder($arrayResponse);
+		return $this->arrayToOrder($arrayResponse, true);
 	}
 
 	public function getAll(){
@@ -32,7 +32,7 @@ class OrderDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToOrder($arrayResponse);
+		return $this->arrayToOrder($arrayResponse, false);
 	}
 
 	public function create($object){
@@ -62,14 +62,18 @@ class OrderDAO extends AbstractDAO{
 		return $response;
 	}
 
-	public function arrayToOrder($orders){
+	public function arrayToOrder($orders, $foreigns = false){
 		$arrayOrders = array();
 		for ($i=0; $i < count($orders); $i++) { 
 			$order = $this->arrayToObject($orders[$i]);
-			array_push($arrayOrders, $this->fixForeingOrder($order));
+			if($foreigns){
+				$order = $this->fixForeingOrder($order);
+			}
+			array_push($arrayOrders, $order);
 		}
 		return $arrayOrders;
 	}
+
 
 	public function fixForeingOrder($order){
 		$process = new Process($order->getProcess());

@@ -65,6 +65,13 @@ if (isset($data)) {
 
     </div>
 </div>
+
+<!--Confirmation modal-->
+<div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="alert alert-info"></div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-1 hidden-xs">
     </div>

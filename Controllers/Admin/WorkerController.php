@@ -10,7 +10,6 @@ use App\Core\Session as Session;
 use App\Core\View as View;
 use App\Utility\QuickForm as QuickForm;
 use App\Utility\Debug as Debug;
-use App\Utility\FormValidator as FormValidator;
 use Wixel\Gump\GUMP as Gump;
 
 class WorkerController extends Controller {
@@ -65,7 +64,6 @@ class WorkerController extends Controller {
             $validated = $validator->validate($inputs, $rules);
 
             if($validated === TRUE){
-                echo "create worker";
                 $admin = unserialize(Session::get("user"));
                 $admin->createWorker(new Worker(
                     null,

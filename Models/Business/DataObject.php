@@ -25,8 +25,8 @@ abstract class DataObject{
     }
 
 	public function get(){
-		$dao = $this->buildDAO();
-		return $dao->getById($this->getId())[0];
+            $dao = $this->buildDAO();
+            return $dao->getById($this->getId())[0];
 	}
 
 	public function getAll(){

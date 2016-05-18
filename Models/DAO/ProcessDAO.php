@@ -21,7 +21,7 @@ class ProcessDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToProcess($arrayResponse);
+		return $this->arrayToProcess($arrayResponse, true);
 	}
 
 	public function getAll(){
@@ -29,7 +29,7 @@ class ProcessDAO extends AbstractDAO{
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
-		return $this->arrayToProcess($arrayResponse);
+		return $this->arrayToProcess($arrayResponse, false);
 	}
 
 	public function create($object){
@@ -59,7 +59,7 @@ class ProcessDAO extends AbstractDAO{
 		return $response;
 	}
 
-	public function arrayToProcess($processes){
+	public function arrayToProcess($processes, $foreigns = false){
 		$arrayProcesses = array();
 		for ($i=0; $i < count($processes); $i++) { 
 			$process = $this->arrayToObject($processes[$i]);
