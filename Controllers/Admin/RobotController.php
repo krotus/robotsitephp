@@ -3,12 +3,8 @@
 namespace Controllers\Admin;
 
 use Controllers\Controller as Controller;
-<<<<<<< HEAD
-=======
 use Models\Business\Worker as Worker;
 use Models\Business\Worker as Admin;
-use Models\Business\Worker as Robot;
->>>>>>> 08f0a9466ba31eee1ee1d90f077e720dc51ab3e1
 use Models\Business\StatusRobot as StatusRobot;
 use Models\Business\Robot as Robot;
 use App\Core\Session as Session;
