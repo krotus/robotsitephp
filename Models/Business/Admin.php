@@ -40,16 +40,24 @@ class Admin extends User{
         $team->create();
     }
 
-    public function createRobot($robot){
-        $robot->create();
-    }
-
     public function updateTeam($team){
         $team->update();
+    }
+
+    public function createRobot($robot){
+        $robot->create();
     }
     
     public function updateRobot($robot){
         $robot->update();
+    }
+
+    public function createProcess($process){
+        $process->create();
+    }
+
+    public function updateProcess($process){
+        $process->update();
     }
 }
 
