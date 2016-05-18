@@ -21,7 +21,64 @@ class WorkerController extends Controller {
     }
 
     public function edit($id) {
-        View::to("admin.worker.edit");
+        if(!$_POST){
+            $worker = new Worker($id);
+            $worker = $worker->get();
+            $team = new Team();
+            $teams = $team->getAll();
+            View::to("admin.worker.edit", compact('worker', 'teams'));
+        } else {
+            $validator = new Gump();
+            $inputs = array(
+                'worker_username'       =>  $_POST["worker_username"],
+                'worker_password'       =>  $_POST["worker_password"],
+                'worker_re_password'    =>  $_POST["worker_re_password"],
+                'worker_nif'            =>  $_POST["worker_nif"],
+                'worker_name'           =>  $_POST["worker_name"],
+                'worker_surname'        =>  $_POST["worker_surname"],
+                'worker_mobile'         =>  $_POST["worker_mobile"],
+                'worker_telephone'      =>  $_POST["worker_telephone"],
+                'worker_category'       =>  $_POST["worker_category"],
+                'worker_team'           =>  $_POST["worker_team"],
+                'worker_is_admin'       =>  $_POST["worker_is_admin"]
+            );
+            $rules = array(
+                'worker_username'       =>  'required|alpha_numeric|min_len,3',
+                'worker_password'       =>  'required|max_len,50|min_len,3',
+                'worker_re_password'    =>  'required|equalsfield,worker_password',
+                'worker_nif'            =>  'required|valid_nif',
+                'worker_name'           =>  'required|max_len,50|min_len,3',
+                'worker_surname'        =>  'required|max_len,50|min_len,3',
+                'worker_mobile'         =>  'required|numeric|exact_len,9',
+                'worker_telephone'      =>  'required|numeric|exact_len,9',
+                'worker_category'       =>  'required|max_len,50|min_len,3',
+                'worker_team'           =>  'required',
+                'worker_is_admin'       =>  'required',
+            );
+            $validated = $validator->validate($inputs, $rules);
+            
+            if($validated === TRUE){
+                $admin = unserialize(Session::get("user"));
+                $admin->updateWorker(new Worker(
+                    null,
+                    $_POST["worker_username"],
+                    $_POST["worker_password"],
+                    $_POST["worker_nif"],
+                    $_POST["worker_name"],
+                    $_POST["worker_surname"],
+                    $_POST["worker_mobile"],
+                    $_POST["worker_telephone"],
+                    $_POST["worker_category"],
+                    $_POST["worker_team"],
+                    $_POST["worker_is_admin"]
+                    ));
+                $msg = "s'ha creat satisfactoriament.";
+                View::redirect("admin.worker", compact("msg"));
+            }else{
+                $error = $validator->get_readable_errors(false);
+                View::redirect("admin.worker.edit.".$id, compact('error'));
+            }
+        }
     }
 
     public function delete($id) {

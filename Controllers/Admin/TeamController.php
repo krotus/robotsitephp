@@ -21,7 +21,9 @@ class TeamController extends Controller {
     }
 
     public function edit($id) {
-        View::to("admin.team.edit");
+        $team = new Team($id);
+        $team = $team->get();
+        View::to("admin.team.edit", compact('team'));
     }
 
     public function delete($id) {

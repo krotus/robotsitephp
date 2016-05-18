@@ -11,10 +11,18 @@ class Admin extends User{
         parent::__construct($id, $username, $password, $nif, $name, $surname, $mobile, $telephone, $category, $team);
         $this->setIsAdmin(1);
 	}
+         /**
+         * Metode que assigna una ordre a un equip mitjançant una tasca
+         * @param type $task
+         */
     public function assignOrderToTeam($task){
         $dao = new TaskDAO;
         $dao->create($task);
     }
+    /**
+     * Ens permet reasignar una ordre a partir de la tasca
+     * @param type $task 
+     */
     public function reassignOrder($task){
         $dao = new TaskDAO;
         $dao->update($task);
@@ -24,7 +32,11 @@ class Admin extends User{
         $worker->create();
     }
 
-    public function createTeam($team){
+    public function updateWorker($worker){
+        $worker->update();
+    }
+    
+    public function createTeam($team)  {
         $team->create();
     }
 
