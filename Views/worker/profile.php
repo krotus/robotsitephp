@@ -1,7 +1,7 @@
 <h2>Editar perfil</h2>
 <div class="row">
     <div class="col-xs-12">
-        <form role="form" action="" method="POST">
+        <form id="worker_profile" role="form" action="" method="POST" novalidate>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="worker_username">Usuario:</label>
                 <input type="text" class="form-control" name="worker_username" 
@@ -59,7 +59,19 @@
         </form>
     </div>
 </div>
-
+<script type="text/javascript">
+    $("#worker_profile").validate({
+        rules:{
+            worker_username: {
+                required: true,
+                lettersonly: true
+            },
+        },
+        submitHandler: function() {
+            alert("formulario enviado");
+        }
+    });
+</script>
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {
