@@ -25,7 +25,8 @@ class TaskController extends Controller {
     }
 
     public function delete($id) {
-        View::to("admin.task.delete");
+        $task = new Task($id);
+        $task->delete();
     }
 
     public function create() {
