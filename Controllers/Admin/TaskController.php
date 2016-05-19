@@ -21,7 +21,7 @@ class TaskController extends Controller {
     }
 
     public function edit($id) {
-
+        View::to("admin.task.edit");
     }
 
     public function delete($id) {
@@ -29,45 +29,58 @@ class TaskController extends Controller {
     }
 
     public function create() {
-        if(!$_POST){
+        if (!$_POST) {
             $team = new Team();
             $teams = $team->getAll();
             $order = new Order();
             $orders = $order->getAll();
-            View::to("admin.task.create", compact('teams','orders'));
-        }else{
+            View::to("admin.task.create", compact('teams', 'orders'));
+        } else {
             $validator = new Gump();
             $inputs = array(
-                'task_team'              =>  $_POST["task_team"],
-                'task_order'             =>  $_POST["task_order"]
+                'task_team' => $_POST["task_team"],
+                'task_order' => $_POST["task_order"]
             );
             $rules = array(
-                'task_team'               =>  'required',
-                'task_order'              =>  'required'
+                'task_team' => 'required',
+                'task_order' => 'required'
             );
             $validated = $validator->validate($inputs, $rules);
 
-            if($validated === TRUE){
+            if ($validated === TRUE) {
                 $admin = unserialize(Session::get("user"));
                 $admin->createTask(new Task(
-                    null,
-                    $_POST["task_team"],
-                    $_POST["task_order"],
-                    null, //worker
-                    null, //date assignació per sql
-                    null, //data completion
-                    null //justification
-                    ));
+                        null, $_POST["task_team"], $_POST["task_order"], null, //worker
+                        null, //date assignació per sql
+                        null, //data completion
+                        null //justification
+                ));
                 $msg = "s'ha creat satisfactoriament.";
                 View::redirect("admin.task", compact("msg"));
-            }else{
+            } else {
                 $error = $validator->get_readable_errors(false);
                 View::redirect("admin.task.create", compact('error'));
             }
         }
     }
 
-}
+    function getTasksByAjax() {
+        ob_end_clean();
+        $task = new Task();
+        $tasks = $task->getAllTasksAdmin();
+        $arrayToSend = array();
+        for ($i = 0; $i < count($tasks); $i++) {
+            $auxArray = array();
+            foreach ($tasks[$i] as $nTask) {
+                array_push($auxArray, $nTask);
+            }
+            array_push($auxArray, "<a href='" . URL . "admin/task/edit/" . $tasks[$i]['id'] . "'><button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'></span></button></a><button class='btn btn-danger' onclick='deleteTask(" . $tasks[$i]['id'] . ", \"" . URL . "\");'><span class='glyphicon glyphicon-remove'></span></button>");
+            array_push($arrayToSend, $auxArray);
+        }
+//        Debug::log($tasks);
+        echo json_encode($arrayToSend);
+    }
 
+}
 
 ?>

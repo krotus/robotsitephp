@@ -1,24 +1,21 @@
 function taskListShow(baseUrl) {
 
-//    $.ajax({
-//        type: "GET",
-//        url: baseUrl + "worker/getOrdersByAjax/" + idWorker + "/pending",
-//        success: function (data) {
-//            var dades = JSON.parse(data);
-//            $('#pending-ord').html('');
+    $.ajax({
+        type: "GET",
+        url: baseUrl + "admin/task/getTasksByAjax",
+        success: function (data) {
+            var dades = JSON.parse(data);
+            $('#tasksList').html('');
             $('#tasksList').DataTable({
-                data: dataSet,
+                data: dades,
                 columns: [
-                    {title: "Id Trabajador"},
-                    {title: "Usuario"},
-                    {title: "NIF"},
-                    {title: "Nombre"},
-                    {title: "Apellido"},
-                    {title: "Móvil"},
-                    {title: "Teléfono"},
-                    {title: "Categoría"},
+                    {title: "Id Tarea"},
                     {title: "Equipo"},
-                    {title: "Administrador"},
+                    {title: "Descripción"},
+                    {title: "Ejecutada por"},
+                    {title: "Fecha de asignación"},
+                    {title: "Completada el"},
+                    {title: "Cancelada por"},
                     {title: "Opciones"}
                 ],
                 "language": {
@@ -27,13 +24,13 @@ function taskListShow(baseUrl) {
                 "aLengthMenu": [[15, 25, 50, 75, -1], [15, 25, 50, 75, "Todos"]]
 
             });
-//        },
-//        error: function (err) {
-//            console.log(err);
-//        },
-//        beforeSend: function () {
-//            $('#pending-ord').html('cargando');
-//        }
-//    });
+        },
+        error: function (err) {
+            console.log(err);
+        },
+        beforeSend: function () {
+            $('#tasksList').html('cargando');
+        }
+    });
 
 }
