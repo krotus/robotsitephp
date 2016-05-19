@@ -21,7 +21,44 @@ class TaskController extends Controller {
     }
 
     public function edit($id) {
-        View::to("admin.task.edit");
+        if(!$_POST){
+            $task = new Task($id);
+            $task = $task->get();
+            $team = new Team();
+            $teams = $team->getAll();
+            $order = new Order();
+            $orders = $order->getAll();
+            View::to("admin.task.edit", compact('task','teams','orders'));
+        }else{
+            $validator = new Gump();
+            $inputs = array(
+                'task_team'              =>  $_POST["task_team"],
+                'task_order'             =>  $_POST["task_order"]
+            );
+            $rules = array(
+                'task_team'               =>  'required',
+                'task_order'              =>  'required'
+            );
+            $validated = $validator->validate($inputs, $rules);
+
+            if($validated === TRUE){
+                $admin = unserialize(Session::get("user"));
+                $admin->updateTask(new Task(
+                    $id,
+                    $_POST["task_team"],
+                    $_POST["task_order"],
+                    null, //worker
+                    null, //date assignació per sql
+                    null, //data completion
+                    null //justification
+                    ));
+                $msg = "s'ha editat satisfactoriament.";
+                View::redirect("admin.task", compact("msg"));
+            }else{
+                $error = $validator->get_readable_errors(false);
+                View::redirect("admin.task.edit", compact('error'));
+            }
+        }
     }
 
     public function delete($id) {
