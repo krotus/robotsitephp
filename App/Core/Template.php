@@ -32,8 +32,10 @@ class Template {
                 <link rel="stylesheet" href="<?php echo URL; ?>public/css/index-orders.css">
                 <!--<link rel="stylesheet" href="<?php echo URL; ?>public/datatables/css/datatables.min.css">-->
                 <link rel="stylesheet" href="<?php echo URL; ?>public/datatables/css/datatables.bootstrap.min.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/css/bootstrap-slider.min.css">
                 <script src="<?php echo URL; ?>public/js/jquery.js"></script>
                 <script src="<?php echo URL; ?>public/bootstrap/js/bootstrap.min.js"></script>
+                <script src="<?php echo URL; ?>public/js/bootstrap-slider.min.js"></script>
                 <script src="<?php echo URL; ?>public/bootstrap/js/moment.js"></script>
                 <script src="<?php echo URL; ?>public/bootstrap/js/bootstrap-datetimepicker.js"></script>
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.min.js"></script>
@@ -47,6 +49,7 @@ class Template {
                     <script src="<?php echo URL; ?>public/js/admin/index_teams.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_robots.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_processes.js"></script>
+                    <script src="<?php echo URL; ?>public/js/admin/index_orders.js"></script>
                     <?php
                 }
                 ?>

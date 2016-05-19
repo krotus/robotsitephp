@@ -59,6 +59,14 @@ class Admin extends User{
     public function updateProcess($process){
         $process->update();
     }
+
+    public function createOrder($order){
+        $order->create();
+    }
+
+    public function updateOrder($order){
+        $order->update();
+    }
 }
 
 ?>
