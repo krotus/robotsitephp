@@ -67,8 +67,7 @@ class TeamDAO extends AbstractDAO{
 		return $arrayTeams;
 	}
 
-	public function getAllTeamsAdmin()
-	{
+	public function getAllTeamsAdmin() {
 		$url = WEBSERVICE. "teams/getAllTeamsAdmin";
 		$this->HTTPRequest->setUrl($url);
 		$this->HTTPRequest->setMethod("GET");

@@ -3,6 +3,8 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
+use Models\DAO\RobotDAO as RobotDAO;
+
 
 class Robot extends DataObject{
     protected $id;
@@ -79,6 +81,11 @@ class Robot extends DataObject{
 
     function setStatusRobot($statusRobot) {
         $this->statusRobot = $statusRobot;
+    }
+    public function getAllRobotsAdmin()
+    {
+        $dao = new RobotDAO();
+        return $dao->getAllRobotsAdmin();
     }
 
 

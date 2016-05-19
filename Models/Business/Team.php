@@ -3,6 +3,7 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
+use Models\DAO\TeamDAO as TeamDAO;
 
 class Team extends DataObject{
     protected $id;

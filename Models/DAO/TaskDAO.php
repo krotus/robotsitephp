@@ -102,6 +102,15 @@ class TaskDAO extends AbstractDAO{
         return $task;
 	}
 
+	public function getAllTasksAdmin()
+	{
+		$url = WEBSERVICE. "tasks/getAllTasksAdmin";
+		$this->HTTPRequest->setUrl($url);
+		$this->HTTPRequest->setMethod("GET");
+		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+		return $arrayResponse;
+	}
+
 }
 
 
