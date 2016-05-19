@@ -45,7 +45,9 @@ class Template {
                 <?php if ($admin) {
                     ?>
                     <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminSidebar.css">
-                    <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminCreateWorker.css">
+                    <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminCreateButtons.css">
+                    <link rel="stylesheet" href="<?php echo URL; ?>public/sweetalert/css/sweetalert.css">
+                    <script src="<?php echo URL; ?>public/sweetalert/js/sweetalert.min.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_workers.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_teams.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_robots.js"></script>
