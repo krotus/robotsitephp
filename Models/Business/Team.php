@@ -40,5 +40,11 @@ class Team extends DataObject{
         $this->name = $name;
     }
 
+    public function getAllTeamsAdmin()
+    {
+        $dao = new TeamDAO();
+        return $dao->getAllTeamsAdmin();
+    }
+
 
 }
