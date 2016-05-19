@@ -12,6 +12,10 @@
                 <input type="text" class="form-control" name="process_description" 
                        id="process_description" value="<?php echo $data['process']->getDescription()?>">
             </div>
+            <div class="form-group col-md-6 col-xs-12">
+                <label for="process_description">Description:</label>
+                <input type="text" class="form-control" name="process_description" id="process_description">
+            </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Editar" name="process_edit">
             </div>
