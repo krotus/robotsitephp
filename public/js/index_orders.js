@@ -170,7 +170,6 @@ function cancelledOrders(idWorker, baseUrl) {
                     {title: "Código robot"},
                     {title: "Nombre robot"},
                     {title: "Estado del robot"},
-                    {title: "Opciones"}
                 ],
                 "language": {
                     "url": "public/datatables/json/" + lang + ".json"

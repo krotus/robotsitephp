@@ -117,4 +117,9 @@ class Order extends DataObject{
         return $dao->getAllByStatus($idWorker, $status);   
     }
 
+    function getAllOrdersAdmin(){
+        $dao = new OrderDAO();
+        return $dao->getAllOrdersAdmin();   
+    }
+
 }

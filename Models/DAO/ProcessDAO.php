@@ -67,6 +67,14 @@ class ProcessDAO extends AbstractDAO{
 		}
 		return $arrayProcesses;
 	}
+	public function getAllProcessesAdmin()
+	{
+		$url = WEBSERVICE. "processes/getAllProcessesAdmin";
+		$this->HTTPRequest->setUrl($url);
+		$this->HTTPRequest->setMethod("GET");
+		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+		return $arrayResponse;
+	}
 
 }
 

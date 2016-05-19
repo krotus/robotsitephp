@@ -3,6 +3,8 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
+use Models\DAO\ProcessDAO as ProcessDAO;
+
 
 class Process extends DataObject{
     protected $id;
@@ -38,6 +40,11 @@ class Process extends DataObject{
 
     function setDescription($description) {
         $this->description = $description;
+    }
+    public function getAllProcessesAdmin()
+    {
+        $dao = new ProcessDAO();
+        return $dao->getAllProcessesAdmin();
     }
 
 

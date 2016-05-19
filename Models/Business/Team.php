@@ -3,6 +3,7 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
+use Models\DAO\TeamDAO as TeamDAO;
 
 class Team extends DataObject{
     protected $id;
@@ -38,6 +39,12 @@ class Team extends DataObject{
 
     function setName($name) {
         $this->name = $name;
+    }
+
+    public function getAllTeamsAdmin()
+    {
+        $dao = new TeamDAO();
+        return $dao->getAllTeamsAdmin();
     }
 
 
