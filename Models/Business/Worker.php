@@ -4,6 +4,7 @@ namespace Models\Business;
 
 use Models\Business\User as User;
 use Models\DAO\TaskDAO as TaskDAO;
+use Models\DAO\WorkerDAO as WorkerDAO;
 
 class Worker extends User {
 

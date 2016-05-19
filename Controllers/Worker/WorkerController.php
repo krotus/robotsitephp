@@ -127,9 +127,6 @@ class WorkerController extends Controller {
                         array_push($auxArray, "<button class='btn btn-disabled' value=''><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-disabled' value=''><span class='glyphicon glyphicon-remove'></span></button>");
                     }
                     break;
-                case 'cancelled':
-                    array_push($auxArray, "<input type='button' class='btn btn-info' value='Marcar como pendiente' onclick='setOrderPending(" . $orders[$i]['id'] . ", 1, " . unserialize(\App\Core\Session::get('user'))->getId() . ", \"" . URL . "\")'>");
-                    break;
                 default:
             }
             array_push($arrToPass, $auxArray);
