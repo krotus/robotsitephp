@@ -1,4 +1,4 @@
-<h2>Añadir tasca</h2>
+<h2>Añadir tarea</h2>
 <div class="row">
     <div class="col-xs-12">
         <form role="form" action="" method="POST">

@@ -106,7 +106,7 @@ class HTTPRequest {
 		// s'ha de passar a string les dades abans de ser enviades en POST o PUT
 		$data = $this->getData();
 		if (!is_null($data)) {
-			$data_string = json_encode($data->objectToArray($data));     
+			$data_string = json_encode($data->objectToArray($data)); 
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
@@ -142,7 +142,6 @@ class HTTPRequest {
 
 	private function validateResponse()	{
 		$output = $this->getOutput();
-                //exit;
 		if ($output["state"] == 200) {
                     return $output["data"];
 		} else {
