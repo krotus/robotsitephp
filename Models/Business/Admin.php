@@ -67,6 +67,14 @@ class Admin extends User{
     public function updateOrder($order){
         $order->update();
     }
+
+    public function createTask($task){
+        $task->create();
+    }
+
+    public function updateTask($task){
+        $task->update();
+    }
 }
 
 ?>

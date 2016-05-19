@@ -29,7 +29,7 @@ if (isset($data)) {
                 <script type="text/javascript">
                     $(function () {
                         $('#datetimepicker3').datetimepicker({
-                            format: 'hh:mm:ss'
+                            format: 'HH:mm:ss'
                         });
                     });
                 </script>

@@ -45,11 +45,13 @@ class Template {
                 <?php if ($admin) {
                     ?>
                     <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminSidebar.css">
+                    <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminCreateWorker.css">
                     <script src="<?php echo URL; ?>public/js/admin/index_workers.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_teams.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_robots.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_processes.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_orders.js"></script>
+                    <script src="<?php echo URL; ?>public/js/admin/index_tasks.js"></script>
                     <?php
                 }
                 ?>
