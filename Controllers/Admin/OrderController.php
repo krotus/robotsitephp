@@ -95,6 +95,7 @@ class OrderController extends Controller {
                 'order_code'              =>  $_POST["order_code"],
                 'order_description'       =>  $_POST["order_description"],
                 'order_priority'          =>  $_POST["order_priority"],
+                'order_date'              =>  $_POST["order_date"],
                 'order_quantity'          =>  $_POST["order_quantity"],
                 'order_robot'             =>  $_POST["order_robot"],
                 'order_process'           =>  $_POST["order_process"]
@@ -103,6 +104,7 @@ class OrderController extends Controller {
                 'order_code'              =>  'required|numeric|min_len,3',
                 'order_description'       =>  'required|max_len,50|min_len,3',
                 'order_priority'          =>  'required',
+                'order_date'              =>  'required',
                 'order_quantity'          =>  'required|numeric|min_len,1',
                 'order_robot'             =>  'required',
                 'order_process'           =>  'required'
@@ -116,7 +118,7 @@ class OrderController extends Controller {
                     $_POST["order_code"],
                     $_POST["order_description"],
                     $_POST["order_priority"],
-                    null,//date des del sql
+                    $_POST["order_date"],
                     $_POST["order_quantity"],
                     1,//statusOrder "pending"
                     $_POST["order_robot"],

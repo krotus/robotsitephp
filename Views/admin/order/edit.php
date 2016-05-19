@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/datetimepicker-custom.css">
 <h2>Editar orden</h2>
 <div class="row">
     <div class="col-xs-12">
@@ -9,6 +10,15 @@
             <div class="form-group col-md-6 col-xs-12">
                 <label for="order_description">Descripción:</label>
                 <input type="text" class="form-control" name="order_description" id="order_description" value="<?php echo $data['order']->getDescription(); ?>">
+            </div>
+            <div class="form-group col-md-6 col-xs-12">
+                <label for="process_description">Fecha de ejecución:</label>
+                <div class='input-group date' id='datepickertask'>
+                    <input type='text' class="form-control" id="order_date" name="order_date"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="order_quantity">Cantidad:</label>
@@ -27,12 +37,6 @@
                 ?>
             </div>
             <div class="form-group col-md-6 col-xs-12">
-            <label>Proceso:</label>
-                <?php
-                App\Utility\QuickForm::createSelect("order_process", "description", $data['processes'], $data['order']->getProcess()->getId());
-                ?>
-            </div>
-            <div class="form-group col-md-6 col-xs-12">
                 <label for="order_priority">Prioridad:</label><br>
                 <input id="order_priority" name="order_priority" style="width:100%"
                     type="number"
@@ -45,12 +49,25 @@
                     data-slider-value="<?php echo $data['order']->getPriority()?>"
                     data-slider-tooltip="show" />
             </div>
+            <div class="form-group col-md-6 col-xs-12">
+            <label>Proceso:</label>
+                <?php
+                App\Utility\QuickForm::createSelect("order_process", "description", $data['processes'], $data['order']->getProcess()->getId());
+                ?>
+            </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Editar" name="process_edit">
             </div>
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $('#datepickertask').datetimepicker({
+            format: 'YYYY/MM/DD HH:mm:ss'
+        });
+    });
+</script>
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {
