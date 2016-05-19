@@ -1,17 +1,21 @@
-<h2>Editar Equipo</h2>
+<h2>Editar tarea</h2>
 <div class="row">
     <div class="col-xs-12">
         <form role="form" action="" method="POST">
             <div class="form-group col-md-6 col-xs-12">
-                <label for="team_code">Codigo:</label>
-                <input type="text" class="form-control" name="team_code" id="team_code" value="<?php echo $data['team']->getCode() ?>">
+            <label>Equipo:</label>
+                <?php
+                App\Utility\QuickForm::createSelect("task_team", "name", $data['teams'], $data['task']->getTeam()->getId());
+                ?>
             </div>
             <div class="form-group col-md-6 col-xs-12">
-                <label for="team_name">Nombre:</label>
-                <input type="text" class="form-control" name="team_name" id="team_name" value="<?php echo $data['team']->getName() ?>">
+            <label>Orden:</label>
+                <?php
+                App\Utility\QuickForm::createSelect("task_order", "description", $data['orders'], $data['task']->getWorker()->getId());
+                ?>
             </div>
             <div class="col-xs-12">
-                <input type="submit" class="btn btn-primary" value="Editar" name="team_edit">
+                <input type="submit" class="btn btn-primary" value="Editar" name="task_edit">
             </div>
         </form>
     </div>
