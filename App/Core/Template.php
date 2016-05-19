@@ -51,6 +51,7 @@ class Template {
                     <script src="<?php echo URL; ?>public/js/admin/index_processes.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_orders.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_tasks.js"></script>
+                    <script src="<?php echo URL; ?>public/js/admin/stadistics_orders.js"></script>
                     <?php
                 }
                 ?>
