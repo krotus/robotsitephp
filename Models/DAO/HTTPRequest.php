@@ -106,7 +106,9 @@ class HTTPRequest {
 		// s'ha de passar a string les dades abans de ser enviades en POST o PUT
 		$data = $this->getData();
 		if (!is_null($data)) {
-			$data_string = json_encode($data->objectToArray($data));     
+			$data_string = json_encode($data->objectToArray($data));   
+                        //var_dump($data_string);
+                        //exit();
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          

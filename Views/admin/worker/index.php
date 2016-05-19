@@ -2,6 +2,7 @@
 
 <div class="row">
     <div class="col-xs-12">
+        <button class="btn btn-primary" onclick="window.location.replace('<?php echo URL."admin/worker/create" ?>')">Añadir Trabajador</button>
         <table id="workersList" class="table table-bordered table-condensed">
         </table>
     </div>
