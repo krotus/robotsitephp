@@ -29,6 +29,12 @@ class Worker extends User {
         $dao->update($task);
     }
 
+    public function getAllWorkersAdmin()
+    {
+        $dao = new WorkerDAO();
+        return $dao->getAllWorkersAdmin();
+    }
+
 }
 
 ?>
