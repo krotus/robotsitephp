@@ -17,7 +17,7 @@
             <div class="form-group col-md-6 col-xs-12">
             <label>Robot:</label>
                 <?php
-                App\Utility\QuickForm::createSelect("orden_robot", "name", $data['robots']);
+                App\Utility\QuickForm::createSelect("order_robot", "name", $data['robots']);
                 ?>
             </div>
             <div class="form-group col-md-6 col-xs-12">
@@ -36,7 +36,7 @@
             <div class="form-group col-md-6 col-xs-12">
             <label>Proceso:</label>
                 <?php
-                App\Utility\QuickForm::createSelect("orden_proceso", "description", $data['processes']);
+                App\Utility\QuickForm::createSelect("order_process", "description", $data['processes']);
                 ?>
             </div>
             <div class="col-xs-12">

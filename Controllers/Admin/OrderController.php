@@ -4,6 +4,7 @@ namespace Controllers\Admin;
 
 use Controllers\Controller as Controller;
 use Models\Business\Process as Process;
+use Models\Business\StatusOrder as StatusOrder;
 use Models\Business\Robot as Robot;
 use Models\Business\Order as Order;
 use Models\Business\Admin as Admin;
@@ -24,16 +25,32 @@ class OrderController extends Controller {
         if(!$_POST){
             $order = new Order($id);
             $order = $order->get();
-            View::to("admin.order.edit", compact('order'));
+            $robot = new Robot();
+            $robots = $robot->getAll();
+            $process = new Process();
+            $processes = $process->getAll();
+            $statusOrder = new StatusOrder();
+            $statusOrders = $statusOrder->getAll();
+            View::to("admin.order.edit", compact('order','robots','processes','statusOrders'));
         } else {
             $validator = new Gump();
             $inputs = array(
-                'process_code'              =>  $_POST["process_code"],
-                'process_description'       =>  $_POST["process_description"],
+                'order_code'              =>  $_POST["order_code"],
+                'order_description'       =>  $_POST["order_description"],
+                'order_priority'          =>  $_POST["order_priority"],
+                'order_quantity'          =>  $_POST["order_quantity"],
+                'order_status'            =>  $_POST["order_status"],
+                'order_robot'             =>  $_POST["order_robot"],
+                'order_process'           =>  $_POST["order_process"]
             );
             $rules = array(
-                'process_code'              =>  'required|numeric|min_len,3',
-                'process_description'       =>  'required|max_len,50|min_len,3',
+                'order_code'              =>  'required|numeric|min_len,3',
+                'order_description'       =>  'required|max_len,50|min_len,3',
+                'order_priority'          =>  'required',
+                'order_quantity'          =>  'required|numeric|min_len,1',
+                'order_status'            =>  'required',
+                'order_robot'             =>  'required',
+                'order_process'           =>  'required'
             );
             $validated = $validator->validate($inputs, $rules);
             
@@ -41,8 +58,14 @@ class OrderController extends Controller {
                 $admin = unserialize(Session::get("user"));
                 $admin->updateOrder(new Order(
                     $id,
-                    $_POST["process_code"],
-                    $_POST["process_description"]
+                    $_POST["order_code"],
+                    $_POST["order_description"],
+                    $_POST["order_priority"],
+                    null,//date des del sql
+                    $_POST["order_quantity"],
+                    $_POST["order_status"],
+                    $_POST["order_robot"],
+                    $_POST["order_process"]
                     ));
                 $msg = "s'ha editat satisfactoriament.";
                 View::redirect("admin.order", compact("msg"));
@@ -71,16 +94,16 @@ class OrderController extends Controller {
                 'order_description'       =>  $_POST["order_description"],
                 'order_priority'          =>  $_POST["order_priority"],
                 'order_quantity'          =>  $_POST["order_quantity"],
-                'orden_robot'             =>  $_POST["orden_robot"],
-                'orden_proceso'           =>  $_POST["orden_proceso"]
+                'order_robot'             =>  $_POST["order_robot"],
+                'order_process'           =>  $_POST["order_process"]
             );
             $rules = array(
                 'order_code'              =>  'required|numeric|min_len,3',
                 'order_description'       =>  'required|max_len,50|min_len,3',
                 'order_priority'          =>  'required',
                 'order_quantity'          =>  'required|numeric|min_len,1',
-                'orden_robot'             =>  'required',
-                'orden_proceso'           =>  'required'
+                'order_robot'             =>  'required',
+                'order_process'           =>  'required'
             );
             $validated = $validator->validate($inputs, $rules);
 
@@ -94,8 +117,8 @@ class OrderController extends Controller {
                     null,//date des del sql
                     $_POST["order_quantity"],
                     1,//statusOrder "pending"
-                    $_POST["orden_robot"],
-                    $_POST["orden_proceso"]
+                    $_POST["order_robot"],
+                    $_POST["order_process"]
                     ));
                 $msg = "s'ha creat satisfactoriament.";
                 View::redirect("admin.order", compact("msg"));
