@@ -3,6 +3,8 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
+use Models\DAO\TaskDAO as TaskDAO;
+
 
 class Task extends DataObject{
     protected $id;
@@ -81,5 +83,10 @@ class Task extends DataObject{
         $this->justification = $justification;
     }
 
+    public function getAllTasksAdmin()
+    {
+        $dao = new TaskDAO();
+        return $dao->getAllTasksAdmin();
+    }
 
 }

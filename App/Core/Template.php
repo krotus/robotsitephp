@@ -41,10 +41,16 @@ class Template {
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.min.js"></script>
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.bootstrap.min.js"></script>
                 <script src="<?php echo URL; ?>public/js/index_orders.js"></script>
+                <script src="<?php echo URL; ?>public/js/validators/jquery.validate.js"></script>
+                <script src="<?php echo URL; ?>public/js/validators/additional-methods.js"></script>
+                <script src="<?php echo URL; ?>public/js/validators/messages_es.js"></script>
 
                 <?php if ($admin) {
                     ?>
                     <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminSidebar.css">
+                    <link rel="stylesheet" href="<?php echo URL; ?>public/css/adminCreateButtons.css">
+                    <link rel="stylesheet" href="<?php echo URL; ?>public/sweetalert/css/sweetalert.css">
+                    <script src="<?php echo URL; ?>public/sweetalert/js/sweetalert.min.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_workers.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_teams.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_robots.js"></script>
@@ -147,9 +153,11 @@ class Template {
                     if (isset($_GET['url'])) {
                         $expUrl = explode(DS, $_GET['url']);
                         if ($expUrl[0] == "admin") {
+                            if (strpos($_GET['url'], "Ajax") === false) {
                             ?>
                         </div>
                         <?php
+                    }
                     }
                 }
                 if (isset($_GET['url'])) {

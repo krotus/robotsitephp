@@ -14,7 +14,17 @@ class WorkerDAO extends UserDAO{
 		parent::__construct();
 	}
 
+	public function getAllWorkersAdmin() {
+		$url = WEBSERVICE. "workers/getAllWorkersAdmin";
+		$this->HTTPRequest->setUrl($url);
+		$this->HTTPRequest->setMethod("GET");
+		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+		return $arrayResponse;
+	}
+
+
 }
+
 
 
 ?>

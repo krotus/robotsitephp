@@ -87,6 +87,14 @@ class RobotDAO  extends AbstractDAO{
         return $robot;
 	}
 
+	public function getAllRobotsAdmin(){
+		$url = WEBSERVICE. "robots/getAllRobotsAdmin";
+		$this->HTTPRequest->setUrl($url);
+		$this->HTTPRequest->setMethod("GET");
+		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+		return $arrayResponse;
+	}
+
 
 }
 
