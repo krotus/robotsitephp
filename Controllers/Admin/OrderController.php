@@ -45,7 +45,7 @@ class OrderController extends Controller {
                 'order_process'           =>  $_POST["order_process"]
             );
             $rules = array(
-                'order_code'              =>  'required|numeric|min_len,3',
+                'order_code'              =>  'required|numeric|min_len,2',
                 'order_description'       =>  'required|max_len,50|min_len,3',
                 'order_priority'          =>  'required',
                 'order_date'              =>  'required',

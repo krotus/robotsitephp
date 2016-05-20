@@ -14,7 +14,7 @@
             <div class="form-group col-md-6 col-xs-12">
                 <label for="process_description">Fecha de ejecución:</label>
                 <div class='input-group date' id='datepickertask'>
-                    <input type='text' class="form-control" id="order_date" name="order_date"/>
+                    <input type='text' class="form-control" id="order_date" name="order_date" value="<?php echo $data['order']->getDate() ?>"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>

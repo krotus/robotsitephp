@@ -1,21 +1,3 @@
-<style type="text/css">
-    .form-control-feedback{
-        pointer-events: all;
-        cursor:pointer;
-    }
-    em{
-        position: absolute !important;
-    }
-    em.error-box-custom{
-        right: 0;
-        top: -37px;
-        width: auto;
-        border-radius: 3px;
-        padding: 5px;
-        color:#fff !important;
-        background-color: #a94442;
-    }
-</style>
 <div class="row">
     <div class="col-xs-12">
         <div class="col-md-12">

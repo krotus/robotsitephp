@@ -33,6 +33,7 @@ class Template {
                 <!--<link rel="stylesheet" href="<?php echo URL; ?>public/datatables/css/datatables.min.css">-->
                 <link rel="stylesheet" href="<?php echo URL; ?>public/datatables/css/datatables.bootstrap.min.css">
                 <link rel="stylesheet" href="<?php echo URL; ?>public/css/bootstrap-slider.min.css">
+                <link rel="stylesheet" href="<?php echo URL; ?>public/css/validation.css">
                 <script src="<?php echo URL; ?>public/js/jquery.js"></script>
                 <script src="<?php echo URL; ?>public/bootstrap/js/bootstrap.min.js"></script>
                 <script src="<?php echo URL; ?>public/js/bootstrap-slider.min.js"></script>
@@ -42,6 +43,7 @@ class Template {
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.bootstrap.min.js"></script>
                 <script src="<?php echo URL; ?>public/js/index_orders.js"></script>
                 <script src="<?php echo URL; ?>public/js/validation/jquery.validate.js"></script>
+                <script src="<?php echo URL; ?>public/js/validation/localization/messages_<?php echo Session::get('lang') ?>.js"></script>
 
                 <?php if ($admin) {
                     ?>

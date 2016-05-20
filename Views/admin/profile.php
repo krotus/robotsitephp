@@ -55,11 +55,34 @@
             </div>
             
             <div class="col-xs-12">
-                <input type="submit" class="btn btn-primary" value="Editar" name="worker_edit">
+                <input type="submit" class="btn btn-primary" value="Guardar canvios" name="worker_edit" disabled>
             </div>
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var inputsValues = [];
+        var newChanges = false;
+        $("input").each(function(){
+            inputsValues[this.id] = $(this).val();
+        });
+        console.log(inputsValues);
+        $("input").keyup(function(){
+            if(inputsValues[this.id] != $(this).val()){
+                newChanges = true;
+            }else{
+                newChanges = false;
+            }
+            if(newChanges == true){
+                $("input[name=worker_edit]").prop("disabled", false);
+            }else{
+                $("input[name=worker_edit]").prop("disabled", true);
+            }
+        })
+
+    });
+</script>
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {
