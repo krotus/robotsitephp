@@ -82,21 +82,23 @@ class TaskDAO extends AbstractDAO{
 		$order = new Order($task->getOrder());
 		$order = $order->get();
 		$task->setOrder($order);
-        $worker = new Worker($task->getWorker());
-        $worker = $worker->get();
-        $task->setWorker($worker);
+		if($task->getWorker() != null){
+        	$worker = new Worker($task->getWorker());
+        	$worker = $worker->get();
+        	$task->setWorker($worker);
+    	}
 		return $task;
 	}
 
 	public function fixCanBeNull($task){
 		if($task->getWorker() == null){
-            $task->setWorker("NULL");
+            $task->setWorker(new Worker(0));
         }
         if($task->getDateCompletion() == null){
-        	$task->setDateCompletion("NULL");
+        	$task->setDateCompletion("");
         }
         if($task->getJustification() == null){
-        	$task->setJustification("NULL");
+        	$task->setJustification("");
         }
 
         return $task;
