@@ -12,7 +12,6 @@ use App\Core\Session as Session;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 
-
 class WorkerController extends Controller {
 
     private $worker;
@@ -29,7 +28,7 @@ class WorkerController extends Controller {
     public function delete($id) {
         //TODO
     }
-    
+
     public function profile() {
         if (!$_POST) {
             $worker = unserialize(Session::get('user'));
@@ -63,16 +62,7 @@ class WorkerController extends Controller {
             if ($validated === TRUE) {
                 $worker = unserialize(Session::get("user"));
                 $nWorker = new Worker(
-                        $worker->getId(), 
-                        $_POST["worker_username"], 
-                        $_POST["worker_password"], 
-                        $_POST["worker_nif"], 
-                        $_POST["worker_name"], 
-                        $_POST["worker_surname"], 
-                        $_POST["worker_mobile"], 
-                        $_POST["worker_telephone"], 
-                        $_POST["worker_category"], 
-                        $worker->getTeam()->getId()
+                        $worker->getId(), $_POST["worker_username"], $_POST["worker_password"], $_POST["worker_nif"], $_POST["worker_name"], $_POST["worker_surname"], $_POST["worker_mobile"], $_POST["worker_telephone"], $_POST["worker_category"], $worker->getTeam()->getId()
                 );
                 $team = new Team($worker->getTeam()->getId());
                 $team = $team->get();
@@ -112,7 +102,11 @@ class WorkerController extends Controller {
             }
             switch ($status) {
                 case 'pending':
-                    array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ", \"" . URL . "\")'>");
+                    if ($orders[$i]['desc_sr'] != 'online') {
+                        array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar' disabled>");
+                    } else {
+                        array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ", \"" . URL . "\")'>");
+                    }
                     break;
                 case 'initiated':
                     $taskFound = new Task();
@@ -134,7 +128,6 @@ class WorkerController extends Controller {
 
         echo json_encode($arrToPass);
     }
-    
 
 }
 
