@@ -52,7 +52,8 @@ class ProcessController extends Controller {
     }
 
     public function delete($id) {
-        View::to("admin.process.delete");
+       $process = new Process($id);
+       $process->delete();
     }
 
     public function create() {
@@ -86,6 +87,26 @@ class ProcessController extends Controller {
         }
     }
 
+    
+    function getProcessesByAjax(){
+        ob_end_clean();
+        $process = new Process();
+        $processes = $process->getAllProcessesAdmin();
+//        Debug::log($processes);
+//        exit();
+        $arrayToSend = array();
+        for ($i = 0; $i < count($processes); $i++) {
+            $auxArray = array();
+            foreach ($processes[$i] as $nProcess) {
+                array_push($auxArray, $nProcess);
+            }
+                array_push($auxArray, "<a href='" . URL . "admin/process/edit/" . $processes[$i]['id'] . "'><button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'></span></button></a><button class='btn btn-danger' onclick='deleteProcess(" . $processes[$i]['id'] . ", \"" . URL . "\");'><span class='glyphicon glyphicon-remove'></span></button>");
+                array_shift($auxArray);
+                $auxArray[2] = str_replace(",", "<br>", $auxArray[2]);
+                array_push($arrayToSend, $auxArray);
+        }
+        echo json_encode($arrayToSend);
+    }
 }
 
 ?>
