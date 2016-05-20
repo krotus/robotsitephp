@@ -55,6 +55,7 @@
             </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Crear" name="team_create">
+                <a href="../robot" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>

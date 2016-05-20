@@ -63,7 +63,7 @@ class RobotController extends Controller {
         $robot = new Robot($id);
         $robot->delete();
     }
-
+// 
     public function create() {
         if (!$_POST) {
             $statusRobot = new StatusRobot();

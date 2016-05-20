@@ -51,6 +51,7 @@
             </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Crear" name="worker_create">
+                <a href="../worker" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>
