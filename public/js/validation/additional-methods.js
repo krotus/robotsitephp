@@ -1057,4 +1057,9 @@ $.validator.addMethod("exactlength", function(value, element, param) {
  return this.optional(element) || value.length == param;
 }, "Please enter exactly {0} characters.");
 
+// add the rule here
+$.validator.addMethod("valueNotEquals", function(value, element, arg){
+return arg != value;
+}, "Value must not equal arg.");
+
 }));

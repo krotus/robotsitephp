@@ -3,19 +3,28 @@ var newChanges = false;
 $("input").each(function(){
     inputsValues[this.id] = $(this).val();
 });
+
 $("input").keyup(function(){
+    checkNewChanges();
+});
+
+function changeStateButton(changes){
+    if(changes === true){
+        $("input[name=worker_profile]").prop("disabled", false);
+    }else{
+        $("input[name=worker_profile]").prop("disabled", true);
+    }
+}
+
+function checkNewChanges(){
     newChanges = false;
     $("input").each(function(){
         if(inputsValues[this.id] != $(this).val()){
             newChanges = true;
         }
     });
-    if(newChanges === true){
-        $("input[name=worker_profile]").prop("disabled", false);
-    }else{
-        $("input[name=worker_profile]").prop("disabled", true);
-    }
-});
+    changeStateButton(newChanges);
+}
 
 $("#worker_profile").validate({
     rules:{

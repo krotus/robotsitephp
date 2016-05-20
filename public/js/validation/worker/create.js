@@ -1,36 +1,4 @@
-var inputsValues = [];
-var newChanges = false;
-$("input").each(function(){
-    inputsValues[this.id] = $(this).val();
-});
-$("select").change(function(){
-    newChanges = true;
-    changeStateButton(newChanges);
-});
-
-$("input").keyup(function(){
-    checkNewChanges();
-});
-
-function changeStateButton(changes){
-    if(changes === true){
-        $("input[name=admin_profile]").prop("disabled", false);
-    }else{
-        $("input[name=admin_profile]").prop("disabled", true);
-    }
-}
-
-function checkNewChanges(){
-    newChanges = false;
-    $("input").each(function(){
-        if(inputsValues[this.id] != $(this).val()){
-            newChanges = true;
-        }
-    });
-    changeStateButton(newChanges);
-}
-
-$("#admin_profile").validate({
+$("#worker_create").validate({
     rules:{
         worker_username: {
             required: true,
