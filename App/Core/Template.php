@@ -90,15 +90,21 @@ class Template {
                     <div id="navbar" class="navbar-collapse collapse">
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="<?php echo URL . 'worker/logout' ?>">Logout</a></li>
+                            <li><a href="<?php echo URL . 'worker/logout' ?>">Cerrar sesión
+                                        <span id="logout-btn" class="glyphicon glyphicon-log-out" title="Cerrar sesión"></span></a></li>
+                            
                             <?php
                             if ($admin) {
                                 ?>
-                                <li id="max-right"><a href="<?php echo URL . 'admin/profile' ?>">Mi perfil</a></li>
+                                <li id="max-right"><a href="<?php echo URL . 'admin/profile' ?>">Mi perfil
+                                        <span id="profile-btn" class="glyphicon glyphicon-user" title="Mi perfil"></span>
+                                    </a></li>
                                 <?php
                             } else {
                                 ?>
-                                <li id="max-right"><a href="<?php echo URL . 'worker/profile' ?>">Mi perfil</a></li>
+                                <li id="max-right"><a href="<?php echo URL . 'worker/profile' ?>">Mi perfil
+                                    <span id="profile-btn" class="glyphicon glyphicon-user" title="Mi perfil"></span>
+                                    </a></li>
                                 <?php
                             }
                             ?>

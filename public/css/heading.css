@@ -9,3 +9,15 @@
 #max-right{
     padding-right: 1em;
 }
+
+#logout-btn, #profile-btn{
+    font-size: 12pt;
+}
+
+#logout-btn{
+    color: #c9302c;
+}
+
+#profile-btn{
+    color: #337ab7;
+}
