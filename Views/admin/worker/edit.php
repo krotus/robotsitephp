@@ -62,6 +62,7 @@
             </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Editar" name="worker_edit">
+                <a href=".." class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>
