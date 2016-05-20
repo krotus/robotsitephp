@@ -41,9 +41,7 @@ class Template {
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.min.js"></script>
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.bootstrap.min.js"></script>
                 <script src="<?php echo URL; ?>public/js/index_orders.js"></script>
-                <script src="<?php echo URL; ?>public/js/validators/jquery.validate.js"></script>
-                <script src="<?php echo URL; ?>public/js/validators/additional-methods.js"></script>
-                <script src="<?php echo URL; ?>public/js/validators/messages_es.js"></script>
+                <script src="<?php echo URL; ?>public/js/validation/jquery.validate.js"></script>
 
                 <?php if ($admin) {
                     ?>
@@ -57,6 +55,7 @@ class Template {
                     <script src="<?php echo URL; ?>public/js/admin/index_processes.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_orders.js"></script>
                     <script src="<?php echo URL; ?>public/js/admin/index_tasks.js"></script>
+                    <script src="<?php echo URL; ?>public/js/admin/stadistics_orders.js"></script>
                     <?php
                 }
                 ?>

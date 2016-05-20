@@ -14,8 +14,8 @@ function taskListShow(baseUrl) {
                     {title: "Descripción"},
                     {title: "Ejecutada por"},
                     {title: "Fecha de asignación"},
-                    {title: "Completada el"},
-                    {title: "Cancelada por"},
+                    {title: "Fecha completada"},
+                    {title: "Justificación"},
                     {title: "Opciones"}
                 ],
                 "language": {

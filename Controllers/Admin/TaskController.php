@@ -28,7 +28,9 @@ class TaskController extends Controller {
             $teams = $team->getAll();
             $order = new Order();
             $orders = $order->getAll();
-            View::to("admin.task.edit", compact('task','teams','orders'));
+            $worker = new Worker();
+            $workers = $worker->getAll();
+            View::to("admin.task.edit", compact('task','teams','orders','workers'));
         }else{
             $validator = new Gump();
             $inputs = array(
@@ -47,10 +49,10 @@ class TaskController extends Controller {
                     $id,
                     $_POST["task_team"],
                     $_POST["task_order"],
-                    null, //worker
+                    $_POST["task_worker"], //worker
                     null, //date assignació per sql
-                    null, //data completion
-                    null //justification
+                    $_POST["task_date_completion"], //data completion
+                    $_POST["task_justification"]
                     ));
                 $msg = "s'ha editat satisfactoriament.";
                 View::redirect("admin.task", compact("msg"));
@@ -88,7 +90,10 @@ class TaskController extends Controller {
             if ($validated === TRUE) {
                 $admin = unserialize(Session::get("user"));
                 $admin->createTask(new Task(
-                        null, $_POST["task_team"], $_POST["task_order"], null, //worker
+                        null, 
+                        $_POST["task_team"], 
+                        $_POST["task_order"], 
+                        null, //worker
                         null, //date assignació per sql
                         null, //data completion
                         null //justification
