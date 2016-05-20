@@ -43,6 +43,7 @@ class Template {
                 <script src="<?php echo URL; ?>public/datatables/js/datatables.bootstrap.min.js"></script>
                 <script src="<?php echo URL; ?>public/js/index_orders.js"></script>
                 <script src="<?php echo URL; ?>public/js/validation/jquery.validate.js"></script>
+                <script src="<?php echo URL; ?>public/js/validation/additional-methods.js"></script>
                 <script src="<?php echo URL; ?>public/js/validation/localization/messages_<?php echo Session::get('lang') ?>.js"></script>
 
                 <?php if ($admin) {

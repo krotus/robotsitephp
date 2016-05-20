@@ -64,94 +64,12 @@
             </div>
             
             <div class="col-xs-12">
-                <input type="submit" class="btn btn-primary" value="Editar" name="worker_edit">
+                <input type="submit" class="btn btn-primary" value="Guardar canvios" name="worker_profile" disabled>
             </div>
         </form>
     </div>
 </div>
-<script type="text/javascript">
-    $("#worker_profile").validate({
-        rules:{
-            worker_username: {
-                required: true
-            },
-            worker_nif: {
-                required: true
-            },
-            worker_password: {
-                required: true
-            },
-            worker_re_password: {
-                required: true
-            },
-            worker_name: {
-                required: true
-            },
-            worker_surname: {
-                required: true
-            },
-            worker_mobile: {
-                required: true
-            },
-            worker_telephone: {
-                required: true
-            },
-            worker_category: {
-                required: true
-            }
-        },
-        messages:{
-            worker_username: "Por favor, el campo no puede estar vacio."
-        },
-        errorElement: "em",
-        errorPlacement: function ( error, element ) {
-            // Add the `help-block` class to the error element
-            error.addClass( "help-block" );
-            error.addClass( "error-box-custom" );
-
-            // Add `has-feedback` class to the parent div.form-group
-            // in order to add icons to inputs
-            element.parents( ".magic-span" ).addClass( "has-feedback" );
-
-            if ( element.prop( "type" ) === "checkbox" ) {
-                error.insertAfter( element.parent( "label" ) );
-            } else {
-                error.insertAfter( element );
-            }
-
-            // Add the span element, if doesn't exists, and apply the icon classes to it.
-            if ( !element.next( "span" )[ 0 ] ) {
-                var span = $( "<span class='glyphicon glyphicon-remove form-control-feedback'></span>" );
-                span.mouseover(function(){
-                    console.log("mamita");
-                });
-                span.insertAfter( element );
-            }
-        },
-        success: function ( label, element ) {
-            // Add the span element, if doesn't exists, and apply the icon classes to it.
-            if ( !$( element ).next( "span" )[ 0 ] ) {
-                $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
-            }
-        },
-        highlight: function ( element, errorClass, validClass ) {
-            $( element ).parents( ".magic-span" ).addClass( "has-error" ).removeClass( "has-success" );
-            $( element ).next( "span" ).addClass( "glyphicon-remove" ).removeClass( "glyphicon-ok" );
-            $( element ).next( "span" ).next("em").addClass("error-box-custom");
-        },
-        unhighlight: function ( element, errorClass, validClass ) {
-            $( element ).parents( ".magic-span" ).addClass( "has-success" ).removeClass( "has-error" );
-            $( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
-            $( element ).next( "span" ).next("em").removeClass("error-box-custom");
-        }
-    });
-
-    $.validator.setDefaults( {
-        submitHandler: function (form) {
-            form.submit();
-        }
-    } );
-</script>
+<script src="<?php echo URL; ?>public/js/validation/profile/worker.js"></script>
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {
