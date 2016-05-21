@@ -105,7 +105,8 @@ class AdminTemplate {
                                         <img src="<?php echo URL; ?>public/admin-lte/img/avatar.png" class="img-circle" alt="Profile Image">
 
                                         <p>
-                                            <?php echo $user->getUsername() . " - " . $user->getTeam()->getName();  ?>
+                                            <?php echo $user->getName() . " " . $user->getSurname();  ?>
+                                            <small>Forma parte del equipo: <?php echo $user->getTeam()->getName() ?></small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
@@ -195,19 +196,6 @@ class AdminTemplate {
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
             
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        Page Header
-                        <small>Optional description</small>
-                    </h1>
-                </section>
-
-                <!-- Main content -->
-                <section class="content">
-
-                    <!-- Your Page Content Here -->
-
     <?php
     }
 

@@ -1,22 +1,29 @@
-<h2>Editar Equipo</h2>
-<div class="row">
-    <div class="col-xs-12">
-        <form role="form" action="" method="POST">
-            <div class="form-group col-md-6 col-xs-12">
-                <label for="team_code">Codigo:</label>
-                <input type="text" class="form-control" name="team_code" id="team_code" value="<?php echo $data['team']->getCode() ?>">
-            </div>
-            <div class="form-group col-md-6 col-xs-12">
-                <label for="team_name">Nombre:</label>
-                <input type="text" class="form-control" name="team_name" id="team_name" value="<?php echo $data['team']->getName() ?>">
-            </div>
-            <div class="col-xs-12">
-                <input type="submit" class="btn btn-primary" value="Editar" name="team_edit">
-                <a href=".." class="btn btn-danger">Cancelar</a>
-            </div>
-        </form>
+<section class="content-header">
+    <h1>
+        Editar equipo
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <form role="form" action="" method="POST">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="team_code">Codigo:</label>
+                    <input type="text" class="form-control" name="team_code" id="team_code" value="<?php echo $data['team']->getCode() ?>">
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="team_name">Nombre:</label>
+                    <input type="text" class="form-control" name="team_name" id="team_name" value="<?php echo $data['team']->getName() ?>">
+                </div>
+                <div class="col-xs-12">
+                    <input type="submit" class="btn btn-primary" value="Editar" name="team_edit">
+                    <a href=".." class="btn btn-danger">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {

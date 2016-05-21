@@ -97,7 +97,8 @@ class WorkerTemplate {
                                         <img src="<?php echo URL; ?>public/admin-lte/img/avatar.png" class="img-circle" alt="Profile Image">
 
                                         <p>
-                                            <?php echo $user->getUsername() . " - " . $user->getTeam()->getName();  ?>
+                                            <?php echo $user->getName() . " " . $user->getSurname();  ?>
+                                            <small>Forma parte del equipo: <?php echo $user->getTeam()->getName() ?></small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
@@ -116,18 +117,7 @@ class WorkerTemplate {
                 </nav>
             </header>
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="margin-left:0px">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        Panel de control del trabajador
-                    </h1>
-                </section>
-
-                <!-- Main content -->
-                <section class="content">
-
-                    <!-- Your Page Content Here -->
+            <div class="content-wrapper" style="margin-left:0px"> 
     <?php
     }
 

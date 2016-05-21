@@ -4,6 +4,7 @@ namespace App\Core;
 
 use App\Core\Session as Session;
 use App\Utility\Debug as Debug;
+use App\Core\View as View;
 
 class Bootstrap{
 
@@ -37,10 +38,10 @@ class Bootstrap{
 					call_user_func_array(array($controller, $method), $argument);
 				}
 			}else{
-				echo "error 404";
+				View::to('404');
 			}
 		}else{
-			echo "error 404 no route found.";
+			View::to('404');
 		}
 	}
 }
