@@ -2,29 +2,19 @@
 
 namespace App\Core;
 
-class Template {
+use App\Utility\Debug as Debug;
+
+class WorkerTemplate {
 
     public function __construct() {
-        $login = false;
-        $admin = false;
-        if(Session::isLogged()){
-            $user = unserialize(Session::get('user'));
-        }
-        if (isset($_GET['url'])) {
-            $expUrl = explode("/", $_GET['url']);
-            if ($expUrl[0] == "login") {
-                $login = true;
-            } elseif ($expUrl[0] == "admin") {
-                $admin = true;
-            }
-        }
+        $user = unserialize(Session::get('user'));
     ?>
     <!DOCTYPE html>
     <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Armduino | Dashboard</title>
+        <title>Armduino | Worker</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
@@ -40,8 +30,6 @@ class Template {
 
         <!-- Andreu -->
         <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap-datetimepicker.min.css">
-        <link rel="stylesheet" href="<?php echo URL; ?>public/css/switch-pro.css">
-        <link rel="stylesheet" href="<?php echo URL; ?>public/css/login.css">
         <link rel="stylesheet" href="<?php echo URL; ?>public/css/index-orders.css">
         <link rel="stylesheet" href="<?php echo URL; ?>public/admin-lte/plugins/datatables/dataTables.bootstrap.css">
         <link rel="stylesheet" href="<?php echo URL; ?>public/css/bootstrap-slider.min.css">
@@ -71,35 +59,15 @@ class Template {
         <script src="<?php echo URL; ?>public/js/validation/additional-methods.js"></script>
         <script src="<?php echo URL; ?>public/js/validation/localization/messages_<?php echo Session::get('lang') ?>.js"></script>
         <script src="<?php echo URL; ?>public/sweetalert/js/sweetalert.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/admin/index_workers.js"></script>
-        <script src="<?php echo URL; ?>public/js/admin/index_teams.js"></script>
-        <script src="<?php echo URL; ?>public/js/admin/index_robots.js"></script>
-        <script src="<?php echo URL; ?>public/js/admin/index_processes.js"></script>
-        <script src="<?php echo URL; ?>public/js/admin/index_orders.js"></script>
-        <script src="<?php echo URL; ?>public/js/admin/index_tasks.js"></script>
-        <script src="<?php echo URL; ?>public/js/admin/stadistics_orders.js"></script>
+        <script src="<?php echo URL; ?>public/three/three.min.js"></script>
 
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
-        <?php 
-        if(Session::isLogged()){
-            $user = unserialize(Session::get('user'));
-        ?>
             <!-- Main Header -->
             <header class="main-header">
                 <!-- Logo -->
-                <?php
-                if ($admin) {
-                ?>
-                    <a href="<?php echo URL; ?>admin" class="logo">
-                <?php
-                }else{
-                ?>
-                    <a href="<?php echo URL; ?>worker" class="logo">
-                <?php
-                }
-                ?>
+                <a href="<?php echo URL; ?>worker" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>A</b>RM</span>
                     <!-- logo for regular state and mobile devices -->
@@ -108,7 +76,7 @@ class Template {
                 <!-- Header Navbar -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="display:none;">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
                     <!-- Navbar Right Menu -->
@@ -121,7 +89,7 @@ class Template {
                                     <!-- The user image in the navbar-->
                                     <img src="<?php echo URL; ?>public/admin-lte/img/avatar.png" class="user-image" alt="Profile">
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                    <span class="hidden-xs">Admin</span>
+                                    <span class="hidden-xs"><?php echo $user->getName();?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- The user image in the menu -->
@@ -135,17 +103,7 @@ class Template {
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                        <?php 
-                                        if($admin){ 
-                                        ?>
-                                            <a href="<?php echo URL . 'admin/profile' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> Profile</a>
-                                        <?php
-                                        } else{
-                                        ?>
                                             <a href="<?php echo URL . 'worker/profile' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> Profile</a>
-                                        <?php
-                                        }
-                                        ?>
                                         </div>
                                         <div class="pull-right">
                                             <a href="<?php echo URL . 'worker/logout' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
@@ -157,83 +115,12 @@ class Template {
                     </div>
                 </nav>
             </header>
-            
-            <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
-
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-
-                    <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="<?php echo URL; ?>public/admin-lte/img/avatar.png" class="img-circle" alt="User Image">
-                        </div>
-                        <div class="pull-left info">
-                            <p><?php echo $user->getName() . " " . $user->getSurname();  ?></p>
-                            <!-- Status -->
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Menu -->
-                    <ul class="sidebar-menu">
-                        <li class="header">MENÚ PRINCIPAL</li>
-                        <!-- Optionally, you can add icons to the links -->
-                        <li class="active">
-                            <a href="<?php echo URL; ?>admin">
-                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>admin/order">
-                                <i class="fa fa-table"></i> <span>Ordenes</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>admin/robot">
-                                <i class="fa fa-table"></i> <span>Robots</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>admin/task">
-                                <i class="fa fa-table"></i> <span>Tareas</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>admin/worker">
-                                <i class="fa fa-table"></i> <span>Trabajadores</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>admin/team">
-                                <i class="fa fa-table"></i> <span>Equipos</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>admin/process">
-                                <i class="fa fa-table"></i> <span>Procesos</span>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#"><i class="fa fa-line-chart"></i> <span>Estadisticas</span> <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-table"></i> Tabla</a></li>
-                                <li><a href="#"><i class="fa fa-area-chart"></i> Graficos</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- /.sidebar-menu -->
-                </section>
-                <!-- /.sidebar -->
-            </aside> <!-- ./left side column -->
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+            <div class="content-wrapper" style="margin-left:0px">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Page Header
-                        <small>Optional description</small>
+                        Panel de control del trabajador
                     </h1>
                 </section>
 
@@ -241,26 +128,20 @@ class Template {
                 <section class="content">
 
                     <!-- Your Page Content Here -->
-            <?php 
-            } // fi if user is logged
-            ?>
-
-
     <?php
     }
 
     public function __destruct() {
         if (isset($_GET['url'])) {
-            $expUrl = explode(DS, $_GET['url']);
-            if ($expUrl[0] == "admin") {
-                if (strpos($_GET['url'], "Ajax") === false) {
+            if (strpos($_GET['url'], "Ajax") === false) {
                 ?>
 
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
 
             <!-- Main Footer -->
-            <footer class="main-footer">
+            <footer class="main-footer" style="margin-left:0px">
+
                 <!-- To the right -->
                 <div class="pull-right hidden-xs">
                     ArduinoARM
@@ -275,37 +156,10 @@ class Template {
     </body>
     </html>
                 <?php
-                }
             }
         }
-        if (isset($_GET['url'])) {
-
-            if (strpos($_GET['url'], "Ajax") === false) {
-                ?>
-
-                </section><!-- /.content -->
-            </div><!-- /.content-wrapper -->
-
-            <!-- Main Footer -->
-            <footer class="main-footer">
-                <!-- To the right -->
-                <div class="pull-right hidden-xs">
-                    ARMduino
-                </div>
-                <!-- Default to the left -->
-                <strong>Copyright &copy; 2016 <a href="#">M12 Project</a>.</strong> All rights reserved.
-            </footer>
-        <!-- Add the sidebar's background. This div must be placed
-        immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
-        </div><!-- ./wrapper -->
-    </body>
-    </html>
-                <?php
-            }
-        }
-
     }
+
 
 }
 

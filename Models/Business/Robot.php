@@ -14,9 +14,10 @@ class Robot extends DataObject{
     protected $latitude;
     protected $longitude;
     protected $statusRobot;
+    protected $ipCam;
     
     function __construct($id = null, $code = null, $name = null, $ipAddress = null, 
-            $latitude = null, $longitude = null, $statusRobot = null) {
+            $latitude = null, $longitude = null, $statusRobot = null, $ipCam = null) {
         $this->setId($id);
         $this->setCode($code);
         $this->setName($name);
@@ -24,6 +25,7 @@ class Robot extends DataObject{
         $this->setLatitude($latitude);
         $this->setLongitude($longitude);
         $this->setStatusRobot($statusRobot);
+        $this->setIpCam($ipCam);
     }
 
     
@@ -82,6 +84,15 @@ class Robot extends DataObject{
     function setStatusRobot($statusRobot) {
         $this->statusRobot = $statusRobot;
     }
+
+    function getIpCam(){
+        return $this->ipCam;
+    }
+
+    function setIpCam($ipCam){
+        $this->ipCam = $ipCam;
+    }
+
     public function getAllRobotsAdmin()
     {
         $dao = new RobotDAO();

@@ -34,6 +34,11 @@
                        id="robot_name" value="<?php echo $data['robot']->getName() ?>">
             </div>
             <div class="form-group col-md-6 col-xs-12">
+                <label for="robot_ip_cam">IP Cam:</label>
+                <input type="text" class="form-control" name="robot_ip_cam" 
+                       id="robot_ip_cam" value="<?php echo $data['robot']->getIpCam() ?>">
+            </div>
+            <div class="form-group col-md-6 col-xs-12">
                 <div class="row">
                     <button type="button" class="btn btn-info" onclick="toggleMap()" />
                     <i class="glyphicon glyphicon-map-marker"></i> Abrir Mapa</button>
@@ -57,11 +62,11 @@
                 App\Utility\QuickForm::createSelect("robot_state", "description", $data['status'], true);
                 ?>
             </div>
-            <div class="col-md-6">
-                    <label for="robot_ip_address">Ip:</label>
-                    <input type="text" class="form-control" name="robot_ip_address" 
-                           id="robot_ip_address" value="<?php echo $data['robot']->getIpAddress() ?>">
-                </div>
+            <div class="form-group col-md-6 col-xs-12">
+                <label for="robot_ip_address">Ip:</label>
+                <input type="text" class="form-control" name="robot_ip_address" 
+                       id="robot_ip_address" value="<?php echo $data['robot']->getIpAddress() ?>">
+            </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Editar" name="team_edit">
                 <a href=".." class="btn btn-danger">Cancelar</a>

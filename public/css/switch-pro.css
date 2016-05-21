@@ -41,7 +41,7 @@
 .material-switch > label > span{
     position: absolute;
     left:50px;
-    top:-8px;
+    top:-10px;
     width:100px;
 }
 .material-switch > input[type="checkbox"]:checked + label::before {

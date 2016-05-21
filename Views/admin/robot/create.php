@@ -48,7 +48,11 @@
                 </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
-            <label>Estat:</label>
+                <label for="robot_ip_cam">IP Cam:</label>
+                <input type="text" class="form-control" name="robot_ip_cam" id="robot_ip_cam">
+            </div>
+            <div class="form-group col-md-6 col-xs-12">
+            <label>Estado:</label>
                 <?php
                 App\Utility\QuickForm::createSelect("robot_state", "description", $data['status']);
                 ?>

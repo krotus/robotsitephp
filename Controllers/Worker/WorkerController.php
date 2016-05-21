@@ -92,8 +92,6 @@ class WorkerController extends Controller {
         $orders = $order->getAllByStatus($idWorker, $status);
         $task = new Task();
         $tasks = $task->getAll();
-//        Debug::log($orders);
-//        exit();
         $arrToPass = array();
         for ($i = 0; $i < count($orders); $i++) {
             $auxArray = array();
@@ -105,7 +103,10 @@ class WorkerController extends Controller {
                     if ($orders[$i]['desc_sr'] != 'online') {
                         array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar' disabled>");
                     } else {
-                        array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ", \"" . URL . "\")'>");
+                        array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ", \"" . URL . "\")'>
+                            <button type='button' class='btn btn-info' onclick='toogleCam()' style='width:74px' />
+                        <i class='fa fa-video-camera'></i></button>");
+                        
                     }
                     break;
                 case 'initiated':
@@ -127,6 +128,10 @@ class WorkerController extends Controller {
         }
 
         echo json_encode($arrToPass);
+    }
+
+    public function robotCam(){
+        View::to("worker.robotcam");
     }
 
 }

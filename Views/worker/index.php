@@ -5,7 +5,25 @@ if (isset($data)) {
     }
 }
 ?>
-
+<script src="<?php echo URL; ?>public/js/picam.js"></script>
+<script src="<?php echo URL; ?>public/js/openCam.js"></script>
+<!-- Modal Cam-->
+<div id="camModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Visión Robot</h4>
+            </div>
+                <div id="webglviewer"></div>
+                <canvas id="tempCanvas" style="width:100%"></canvas>
+            <div class="modal-footer">  
+                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div> 
 <!-- Modal completed-->
 <div id="completedModal" class="modal fade" role="dialog">
     <div class="modal-dialog">

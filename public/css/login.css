@@ -1,6 +1,16 @@
-.form-block{
-    margin-top: 7em;
+.login-box, .register-box {
+	width: 500px;
 }
-.form-block .form-control{
-    margin-bottom: 1em;
+label[for="remember-me"] > span{
+	color: black;
+}
+.login-box-body{
+	border: 1px solid #337ab7;
+	border-radius: 5px;
+}
+@media (max-width: 768px) {
+	.login-box, .register-box {
+	    width: 90%;
+	    margin-top: 20px;
+	}
 }

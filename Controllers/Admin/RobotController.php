@@ -48,7 +48,14 @@ class RobotController extends Controller {
             if ($validated === TRUE) {
                 $admin = unserialize(Session::get("user"));
                 $admin->updateRobot(new Robot(
-                        $id, $_POST["robot_code"], $_POST["robot_name"], $_POST["robot_ip_address"], $_POST["robot_latitude"], $_POST["robot_longitude"], $_POST["robot_state"]
+                        $id, 
+                        $_POST["robot_code"], 
+                        $_POST["robot_name"], 
+                        $_POST["robot_ip_address"], 
+                        $_POST["robot_latitude"], 
+                        $_POST["robot_longitude"], 
+                        $_POST["robot_state"],
+                        $_POST["robot_ip_cam"]
                 ));
                 $msg = "S'ha editat satisfactoriament.";
                 View::redirect("admin.robot", compact("msg"));
@@ -88,7 +95,14 @@ class RobotController extends Controller {
             if ($validated === TRUE) {
                 $admin = unserialize(Session::get("user"));
                 $admin->createRobot(new Robot(
-                        null, $_POST["robot_code"], $_POST["robot_name"], null, $_POST["robot_latitude"], $_POST["robot_longitude"], $_POST["robot_state"]
+                        null, 
+                        $_POST["robot_code"], 
+                        $_POST["robot_name"], 
+                        null, 
+                        $_POST["robot_latitude"], 
+                        $_POST["robot_longitude"], 
+                        $_POST["robot_state"],
+                        $_POST["robot_ip_cam"]
                 ));
                 $msg = "S'ha creat satisfactoriament.";
                 View::redirect("admin.robot", compact("msg"));
