@@ -1,12 +1,10 @@
-
-<div class="row">
-    <div class="col-xs-12">
-		<h2>Procesos</h2>
-                <a href="<?php echo URL."admin/process/create" ?>"><button id="create-button" class="btn btn-primary">Añadir Proceso</button></a>
+<a href="<?php echo URL."admin/process/create" ?>" class="btn btn-primary" style="margin-bottom:10px">Añadir Proceso</a>
+<div class="box">
+  	<div class="box-body">
         <table id="processesList" class="table table-bordered table-condensed">
         </table>
-    </div>
-</div>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
 <script type="text/javascript">
     $(document).ready(function(){
         processListShow('<?php echo URL; ?>');

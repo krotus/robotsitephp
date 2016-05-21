@@ -1,12 +1,10 @@
-<h2>Equipos</h2>
-
-<div class="row">
-    <div class="col-xs-12">
-        <a href="<?php echo URL."admin/team/create" ?>"><button id="create-button" class="btn btn-primary">Añadir Equipo</button></a>
+<a href="<?php echo URL."admin/team/create" ?>" class="btn btn-primary" style="margin-bottom:10px">Añadir Equipo</a>
+<div class="box">
+  	<div class="box-body">
         <table id="teamsList" class="table table-bordered table-condensed">
         </table>
-    </div>
-</div>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
 <script type="text/javascript">
     $(document).ready(function(){
         teamListShow('<?php echo URL; ?>');

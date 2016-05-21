@@ -1,12 +1,10 @@
-
-<div class="row">
-    <div class="col-xs-12">
-	<h2>Tareas</h2>
-         <a href="<?php echo URL."admin/task/create" ?>"><button id="create-button" class="btn btn-primary">Añadir Tarea</button></a>
+<a href="<?php echo URL."admin/task/create" ?>" class="btn btn-primary" style="margin-bottom:10px">Añadir Tarea</a>
+<div class="box">
+  	<div class="box-body">
         <table id="tasksList" class="table table-bordered table-condensed">
         </table>
-    </div>
-</div>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
 <script type="text/javascript">
     $(document).ready(function(){
         taskListShow('<?php echo URL; ?>');
