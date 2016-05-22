@@ -145,43 +145,47 @@ class AdminTemplate {
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
                         <li class="header">MENÚ PRINCIPAL</li>
-                        <!-- Optionally, you can add icons to the links -->
-                        <li class="active">
+                        <!-- Logic active list items -->
+                        <?php 
+                            if(!isset($_GET['url'])) $_GET['url'] = NULL; 
+                        ?>
+
+                        <li <?php echo (!isset($_GET['url']) || $_GET['url'] == "admin") ? "class='active'" : ""; ?>>
                             <a href="<?php echo URL; ?>admin">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
-                        <li>
+                        <li <?php echo (strpos($_GET['url'], "order")) ? "class='active'" : ""; ?>>
                             <a href="<?php echo URL; ?>admin/order">
                                 <i class="fa fa-table"></i> <span>Ordenes</span>
                             </a>
                         </li>
-                        <li>
+                        <li <?php echo (strpos($_GET['url'], "robot")) ? "class='active'" : ""; ?>>
                             <a href="<?php echo URL; ?>admin/robot">
                                 <i class="fa fa-table"></i> <span>Robots</span>
                             </a>
                         </li>
-                        <li>
+                        <li <?php echo (strpos($_GET['url'], "task")) ? "class='active'" : ""; ?>>
                             <a href="<?php echo URL; ?>admin/task">
                                 <i class="fa fa-table"></i> <span>Tareas</span>
                             </a>
                         </li>
-                        <li>
+                        <li <?php echo (strpos($_GET['url'], "worker")) ? "class='active'" : ""; ?>>
                             <a href="<?php echo URL; ?>admin/worker">
                                 <i class="fa fa-table"></i> <span>Trabajadores</span>
                             </a>
                         </li>
-                        <li>
+                        <li <?php echo (strpos($_GET['url'], "team")) ? "class='active'" : ""; ?>>
                             <a href="<?php echo URL; ?>admin/team">
                                 <i class="fa fa-table"></i> <span>Equipos</span>
                             </a>
                         </li>
-                        <li>
+                        <li <?php echo (strpos($_GET['url'], "process")) ? "class='active'" : ""; ?>>
                             <a href="<?php echo URL; ?>admin/process">
                                 <i class="fa fa-table"></i> <span>Procesos</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview <?php echo (strpos($_GET['url'], "stadistic")) ? "active" : "" ?>" >
                             <a href="#"><i class="fa fa-line-chart"></i> <span>Estadisticas</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
                                 <li><a href="#"><i class="fa fa-table"></i> Tabla</a></li>
