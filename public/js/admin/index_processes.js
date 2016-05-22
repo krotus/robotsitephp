@@ -26,7 +26,7 @@ function processListShow(baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#processesList').html('cargando');
+            $('#processesList').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 

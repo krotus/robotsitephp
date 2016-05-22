@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="col-md-12">
-            <h2>Editar perfil</h2>
+            <h2>Modificar perfil</h2>
         </div>
         <form id="worker_profile" role="form" action="" method="POST">
             <div class="form-group col-md-6 col-xs-12">

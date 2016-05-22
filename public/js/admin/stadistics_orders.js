@@ -72,7 +72,7 @@ function ordersListStadistics() {
 //            console.log(err);
 //        },
 //        beforeSend: function () {
-//            $('#pending-ord').html('cargando');
+//            $('#pending-ord').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
 //        }
 //    });
 

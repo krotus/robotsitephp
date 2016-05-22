@@ -113,7 +113,10 @@ if (isset($data)) {
                 <h3>Ordenes pendientes</h3>
             </div>
             <div id="collapse1" class="panel-collapse collapse in">
-                <div class="panel-body"> <table id="pending-ord" class="orders-table table table-bordered table-responsive"></table></div>
+                <div class="panel-body"> 
+                    <table id="pending-ord" class="orders-table table table-bordered table-responsive">
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col-md-1 hidden-xs">

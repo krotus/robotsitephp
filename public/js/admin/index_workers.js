@@ -31,7 +31,7 @@ function workerListShow(baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#workersList').html('cargando');
+            $('#workersList').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 

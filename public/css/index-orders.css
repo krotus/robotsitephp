@@ -11,3 +11,20 @@
 .orders-table{
     width: 100% !important;
 }
+.panel .overlay, .overlay-wrapper .overlay {
+    z-index: 50;
+    background: rgba(255,255,255,0.7);
+    border-radius: 3px;
+}
+.overlay{
+    height:60px;
+}
+.panel .overlay>.fa, .overlay-wrapper .overlay>.fa {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    color: #000;
+    font-size: 30px;
+}

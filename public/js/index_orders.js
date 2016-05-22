@@ -32,7 +32,7 @@ function pendingOrders(idWorker, baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#pending-ord').html('cargando');
+            $('#pending-ord').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 
@@ -71,7 +71,7 @@ function initOrders(idWorker, baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#init-ord').html('cargando');
+            $('#init-ord').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 }
@@ -108,7 +108,7 @@ function completedOrders(idWorker, baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#completed-ord').html('cargando');
+            $('#completed-ord').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 }
@@ -145,7 +145,7 @@ function uncompletedOrders(idWorker, baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#uncompleted-ord').html('cargando');
+            $('#uncompleted-ord').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 }
@@ -182,7 +182,7 @@ function cancelledOrders(idWorker, baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#cancelled-ord').html('cargando');
+            $('#cancelled-ord').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 }

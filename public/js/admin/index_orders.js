@@ -31,7 +31,7 @@ function orderListShow(baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#ordersList').html('cargando');
+            $('#ordersList').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 

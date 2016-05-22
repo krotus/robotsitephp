@@ -27,7 +27,7 @@ function robotListShow(baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#robotsList').html('cargando');
+            $('#robotsList').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 

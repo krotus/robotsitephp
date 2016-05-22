@@ -25,7 +25,7 @@ function teamListShow(baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#teamsList').html('cargando');
+            $('#teamsList').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 

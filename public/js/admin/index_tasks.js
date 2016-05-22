@@ -29,7 +29,7 @@ function taskListShow(baseUrl) {
             console.log(err);
         },
         beforeSend: function () {
-            $('#tasksList').html('cargando');
+            $('#tasksList').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
         }
     });
 
