@@ -45,6 +45,8 @@ class AdminTemplate {
         <script src="<?php echo URL; ?>public/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="<?php echo URL; ?>public/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- ChartJS 1.0.1 -->
+        <script src="<?php echo URL; ?>public/admin-lte/plugins/chartjs/Chart.min.js"></script>
         <!-- AdminLTE App -->
         <script src="<?php echo URL; ?>public/admin-lte/js/app.min.js"></script>
 
