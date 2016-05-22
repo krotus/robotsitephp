@@ -27,6 +27,8 @@ class AdminTemplate {
         <link rel="stylesheet" href="<?php echo URL; ?>public/admin-lte/css/AdminLTE.min.css">
         <!-- AdminLTE Skin Blue  -->
         <link rel="stylesheet" href="<?php echo URL; ?>public/admin-lte/css/skins/skin-blue.min.css">
+        <!-- Scroll pro -->
+        <link rel="stylesheet" href="<?php echo URL; ?>public/css/scroll.css">
 
         <!-- Andreu -->
         <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/bootstrap-datetimepicker.min.css">

@@ -187,20 +187,22 @@ function cancelledOrders(idWorker, baseUrl) {
     });
 }
 
-function setCompletedTime(idOrder) {
+function setCompletedTime(idOrder, codeRobot) {
     $('#order-id-comp').html(idOrder);
+    $('#robot-code-comp').html(codeRobot);
     $('#completedModal').modal('toggle');
 }
 
-function specifyIssue(idOrder) {
+function specifyIssue(idOrder, codeRobot) {
     $('#order-id-can').html(idOrder);
+    $('#robot-code-can').html(codeRobot);
     $('#cancelledModal').modal('toggle');
 }
 
-function executeOrder(idOrd, status, idWork, baseUrl) {
+function executeOrder(idOrd, status, idWork, codeRobot, baseUrl) {
     $.ajax({
         type: "get",
-        url: "http://testservice.xyz/v1/orders/updateExecute/" + idOrd + "/" + status + "/" + idWork,
+        url: "http://testservice.xyz/v1/orders/updateExecute/" + idOrd + "/" + status + "/" + idWork + "/" + codeRobot,
         crossDomain: true,
         async: false,
         success: function (data) {
@@ -235,6 +237,7 @@ function completeOrder(idWork, baseUrl) {
         $('#completedModal .modal-body').prepend('<p class="alert alert-danger">Por favor introduzca una hora válida.</p>')
     } else {
         var orderId = $('#order-id-comp').html();
+        var codeRobot = $('#robot-code-comp').html();
         var statusId = 3;
         var today = new Date();
         var year = today.getFullYear().toString();
@@ -247,7 +250,7 @@ function completeOrder(idWork, baseUrl) {
         $('#completedModal').modal('toggle');
         $.ajax({
             type: "get",
-            url: "http://testservice.xyz/v1/orders/completedByTask/" + orderId + "/" + statusId,
+            url: "http://testservice.xyz/v1/orders/completedByTask/" + orderId + "/" + statusId + "/" + codeRobot,
             data: {"dataExtra": datetimeToSend},
             crossDomain: true,
             async: false,
@@ -286,11 +289,12 @@ function cancelOrder(idWork, baseUrl) {
         $('#cancelledModal .modal-body').prepend('<p class="alert alert-danger">Por favor introduzca una justificación válida.</p>')
     } else {
         var orderId = $('#order-id-can').html();
+        var codeRobot = $('#robot-code-can').html();
         var statusId = 5;
         $('#cancelledModal').modal('toggle');
         $.ajax({
             type: "get",
-            url: "http://testservice.xyz/v1/orders/completedByTask/" + orderId + "/" + statusId,
+            url: "http://testservice.xyz/v1/orders/completedByTask/" + orderId + "/" + statusId + "/" + codeRobot,
             data: {"dataExtra": justification},
             async: false,
             crossDomain: true,

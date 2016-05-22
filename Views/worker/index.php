@@ -36,6 +36,7 @@ if (isset($data)) {
             </div>
             <div class="modal-body">
                 <span id="order-id-comp" style="display: none;"></span>
+                <span id="robot-code-comp" style="display: none;"></span>
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker3'>
                         <input id="completed-time" type='text' class="form-control" />
@@ -73,6 +74,7 @@ if (isset($data)) {
             <div class="modal-body">
                 <p>Especifique el motivo de la cancelación de la orden:</p>
                 <span id="order-id-can" style="display: none;"></span>
+                <span id="robot-code-can" style="display: none;"></span>
                 <div class="form-group">
                     <textarea id="cancel-justification" class="form-control"></textarea>
                 </div>
