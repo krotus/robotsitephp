@@ -170,9 +170,33 @@ class WorkerController extends Controller {
 
             if ($validated === TRUE) {
                 $admin = unserialize(Session::get("user"));
-                $admin->createWorker(new Worker(
-                        null, $_POST["worker_username"], $_POST["worker_password"], $_POST["worker_nif"], $_POST["worker_name"], $_POST["worker_surname"], $_POST["worker_mobile"], $_POST["worker_telephone"], $_POST["worker_category"], $_POST["worker_team"], $_POST["worker_is_admin"]
-                ));
+                if($_POST["worker_is_admin"] == 1){
+                    $admin->createWorker(new Admin(
+                        null, 
+                        $_POST["worker_username"], 
+                        $_POST["worker_password"], 
+                        $_POST["worker_nif"], 
+                        $_POST["worker_name"], 
+                        $_POST["worker_surname"], 
+                        $_POST["worker_mobile"], 
+                        $_POST["worker_telephone"], 
+                        $_POST["worker_category"], 
+                        $_POST["worker_team"]
+                    ));
+                }else{
+                    $admin->createWorker(new Worker(
+                        null, 
+                        $_POST["worker_username"], 
+                        $_POST["worker_password"], 
+                        $_POST["worker_nif"], 
+                        $_POST["worker_name"], 
+                        $_POST["worker_surname"], 
+                        $_POST["worker_mobile"], 
+                        $_POST["worker_telephone"], 
+                        $_POST["worker_category"], 
+                        $_POST["worker_team"]
+                    ));
+                }
                 $msg = "s'ha creat satisfactoriament.";
                 View::redirect("admin.worker", compact("msg"));
             } else {

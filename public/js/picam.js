@@ -4,6 +4,8 @@ var scene,
     container,
     canvas,
     context,
+    widthBox = 512,
+    heightBox = 288,
     flag;
 
 $(document).ready(init);
@@ -19,8 +21,8 @@ function init() {
   container = document.getElementById('webglviewer');
 
   canvas = document.getElementById('tempCanvas');
-  canvas.width = 512;
-  canvas.height = 288;
+  canvas.width = widthBox;
+  canvas.height = heightBox;
   canvas.width = nextPowerOf2(canvas.width);
   canvas.height = nextPowerOf2(canvas.height);
 
@@ -32,7 +34,7 @@ function init() {
   texture = new THREE.Texture(canvas);
   texture.context = context;
 
-  var cameraPlane = new THREE.PlaneGeometry(512, 512);
+  var cameraPlane = new THREE.PlaneGeometry(widthBox, widthBox);
 
   cameraMesh = new THREE.Mesh(cameraPlane, new THREE.MeshBasicMaterial({
     color: 0xffffff, opacity: 1, map: texture
@@ -55,7 +57,7 @@ function render() {
       texture.needsUpdate = true;
     }
 
-    piImage.src = "http://192.168.1.41/picam/cam_pic.php?time=" + new Date().getTime();
+    piImage.src = "http://192.168.2.3/picam/cam_pic.php?time=" + new Date().getTime();
   }
   if(flag){
     requestAnimationFrame(render);
