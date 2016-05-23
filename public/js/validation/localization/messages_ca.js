@@ -29,7 +29,12 @@ $.extend( $.validator.messages, {
 	rangelength: $.validator.format( "Si us plau, escriu un valor entre {0} i {1} caracters." ),
 	range: $.validator.format( "Si us plau, escriu un valor entre {0} i {1}." ),
 	max: $.validator.format( "Si us plau, escriu un valor menor o igual a {0}." ),
-	min: $.validator.format( "Si us plau, escriu un valor major o igual a {0}." )
+	min: $.validator.format( "Si us plau, escriu un valor major o igual a {0}." ),
+	nifES: "Si us plau, escriu un NIF vàlid.",
+	nieES: "Si us plau, escriu un NIE vàlid.",
+	cifES: "Si us plau, escriu un CIF vàlid.",
+	IP4Checker: "Si us plau, escriur una IPv4 vàlida.",
+	exactlength: "Si us plau, escriu exactament {0} caràcters."
 } );
 
 }));

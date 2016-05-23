@@ -1,78 +1,10 @@
-var inputsValues = [];
-var newChanges = false;
-$("input").each(function(){
-    inputsValues[this.id] = $(this).val();
-});
-$("select").change(function(){
-    newChanges = true;
-    changeStateButton(newChanges);
-});
-
-$("input").keyup(function(){
-    checkNewChanges();
-});
-
-function changeStateButton(changes){
-    if(changes === true){
-        $("input[name=admin_profile]").prop("disabled", false);
-    }else{
-        $("input[name=admin_profile]").prop("disabled", true);
-    }
-}
-
-function checkNewChanges(){
-    newChanges = false;
-    $("input").each(function(){
-        if(inputsValues[this.id] != $(this).val()){
-            newChanges = true;
-        }
-    });
-    changeStateButton(newChanges);
-}
-
-$("#admin_profile").validate({
+$("#order_create").validate({
     rules:{
-        worker_username: {
+        order_code: {
             required: true,
-            minlength:3
-        },
-        worker_nif: {
-            required: true,
-            nifES: true
-        },
-        worker_password: {
-            required: true,
-            minlength: 5
-        },
-        worker_re_password: {
-            minlength: 5,
-            equalTo: "#worker_password",
-            required: true
-        },
-        worker_name: {
-            required: true,
-            minlength: 3
-        },
-        worker_surname: {
-            required: true,
-            minlength: 3
-        },
-        worker_mobile: {
-            required: true,
-            exactlength: 9,
+            minlength:3,
             digits: true
-        },
-        worker_telephone: {
-            required: true,
-            exactlength: 9,
-            digits: true
-        },
-        worker_category: {
-            required: true
-        },
-        worker_team: {
-            required: true
-        }
+        }  
     },
     errorElement: "em",
     errorPlacement: function ( error, element ) {

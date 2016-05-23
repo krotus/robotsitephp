@@ -117,7 +117,7 @@ class WorkerController extends Controller {
                         }
                     }
                     if ($taskFound->getWorker() == $idWorker) {
-                        array_push($auxArray, "<button class='btn btn-success' value='' onclick='setCompletedTime(" . $orders[$i]['id'] . "," . $orders[$i]['code_robot'] . ")'><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-danger' value='' onclick='specifyIssue(" . $orders[$i]['id'] . "," . $orders[$i]['code_robot'] . ")'><span class='glyphicon glyphicon-remove'></span></button>");
+                        array_push($auxArray, "<button class='btn btn-success' value='' onclick='setCompletedTime(" . $orders[$i]['id'] . "," . $orders[$i]['code_robot'] . ")'><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-danger' value='' onclick='specifyIssue(" . $orders[$i]['id'] . "," . $orders[$i]['code_robot'] . ")'><span class='glyphicon glyphicon-remove'></span></button><button type='button' class='btn btn-info' onclick='toogleCam()' style='padding-left:32px;padding-right:32px'/><i class='fa fa-video-camera'></i></button>");
                     } else {
                         array_push($auxArray, "<button class='btn btn-disabled' value=''><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-disabled' value=''><span class='glyphicon glyphicon-remove'></span></button>");
                     }

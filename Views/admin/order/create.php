@@ -9,10 +9,12 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form role="form" action="" method="POST">
+            <form id="order_create" role="form" action="" method="POST">
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_code">Codigo:</label>
-                    <input type="text" class="form-control" name="order_code" id="order_code">
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="order_code" id="order_code">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_description">Descripción:</label>
@@ -63,6 +65,7 @@
             </form>
         </div>
     </div>
+<script src="<?php echo URL; ?>public/js/validation/order/create.js"></script>
 <script type="text/javascript">
     $(function () {
         $('#datepickertask').datetimepicker({

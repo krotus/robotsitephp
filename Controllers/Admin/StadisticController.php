@@ -20,14 +20,19 @@ class StadisticController {
 
     // llistar detall de les ordres segons un període a demanar (data o mes o
     // any), per treballador o equip, per estat...
-    public function orders(){
+    public function table(){
         $team = new Team();
         $teams = $team->getAll();
         $worker = new Worker();
         $workers = $worker->getAll();
         $statusOrder = new StatusOrder();
         $statusOrders = $statusOrder->getAll();
-        View::to("admin.stadistic.orders",compact('teams','workers','statusOrders'));
+        View::to("admin.stadistic.table",compact('teams','workers','statusOrders'));
+    }
+
+    //treballadors, equips amb més/menys ordres completades per període
+    public function graphic(){
+        View::to("admin.stadistic.graphic");
     }
 
     public function getTeamsAjax(){

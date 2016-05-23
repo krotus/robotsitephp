@@ -6,6 +6,7 @@ var scene,
     context,
     widthBox = 512,
     heightBox = 288,
+    ipCam = "192.168.2.3",
     flag;
 
 $(document).ready(init);
@@ -55,9 +56,9 @@ function render() {
       //console.log('Drawing image');
       context.drawImage(piImage, 0, 0, canvas.width, canvas.height);
       texture.needsUpdate = true;
-    }
+    };
 
-    piImage.src = "http://192.168.2.3/picam/cam_pic.php?time=" + new Date().getTime();
+    piImage.src = "http://"+ ipCam +"/picam/cam_pic.php?time=" + new Date().getTime();
   }
   if(flag){
     requestAnimationFrame(render);

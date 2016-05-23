@@ -192,8 +192,8 @@ class AdminTemplate {
                         <li class="treeview <?php echo (strpos($_GET['url'], "stadistic")) ? "active" : "" ?>" >
                             <a href="#"><i class="fa fa-line-chart"></i> <span>Estadisticas</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-table"></i> Tabla</a></li>
-                                <li><a href="#"><i class="fa fa-area-chart"></i> Graficos</a></li>
+                                <li><a href="<?php echo URL; ?>admin/stadistic/table"><i class="fa fa-table"></i> Tabla</a></li>
+                                <li><a href="<?php echo URL; ?>admin/stadistic/graphic"><i class="fa fa-area-chart"></i> Graficos</a></li>
                             </ul>
                         </li>
                     </ul>

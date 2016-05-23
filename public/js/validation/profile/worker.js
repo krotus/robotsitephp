@@ -56,12 +56,12 @@ $("#worker_profile").validate({
         worker_mobile: {
             required: true,
             exactlength: 9,
-            number: true
+            digits: true
         },
         worker_telephone: {
             required: true,
             exactlength: 9,
-            number: true
+            digits: true
         },
         worker_category: {
             required: true

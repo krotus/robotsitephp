@@ -1054,12 +1054,18 @@ $.validator.addMethod( "ziprange", function( value, element ) {
 }, "Your ZIP-code must be in the range 902xx-xxxx to 905xx-xxxx" );
 
 $.validator.addMethod("exactlength", function(value, element, param) {
- return this.optional(element) || value.length == param;
+	return this.optional(element) || value.length == param;
 }, "Please enter exactly {0} characters.");
 
 // add the rule here
 $.validator.addMethod("valueNotEquals", function(value, element, arg){
-return arg != value;
+	return arg != value;
 }, "Value must not equal arg.");
+
+$.validator.addMethod('IP4Checker', function(value) {
+	var ip = "^(?:(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)\.){3}" +
+    "(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)$";
+    return value.match(ip);
+}, 'Invalid IP address');
 
 }));
