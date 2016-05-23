@@ -1,14 +1,18 @@
 <h2>Añadir proceso</h2>
 <div class="row">
     <div class="col-xs-12">
-        <form role="form" action="" method="POST">
+        <form id="process_create" role="form" action="" method="POST">
             <div class="form-group col-md-6 col-xs-12">
                 <label for="process_code">Code:</label>
-                <input type="text" class="form-control" name="process_code" id="process_code">
+                <div class="magic-span">
+                    <input type="text" class="form-control" name="process_code" id="process_code">
+                </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="process_description">Description:</label>
-                <input type="text" class="form-control" name="process_description" id="process_description">
+                <div class="magic-span">
+                    <input type="text" class="form-control" name="process_description" id="process_description">
+                </div>
             </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Crear" name="process_create">
@@ -17,6 +21,7 @@
         </form>
     </div>
 </div>
+<script src="<?php echo URL; ?>public/js/validation/process/create.js"></script>
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {
