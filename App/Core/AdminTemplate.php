@@ -23,6 +23,8 @@ class AdminTemplate {
         <link rel="stylesheet" href="<?php echo URL; ?>public/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="<?php echo URL; ?>public/ionicons/css/ionicons.min.css">
+        <!-- Morris -->
+        <link rel="stylesheet" href="<?php echo URL; ?>public/admin-lte/plugins/morris/morris.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="<?php echo URL; ?>public/admin-lte/css/AdminLTE.min.css">
         <!-- AdminLTE Skin Blue  -->
@@ -71,6 +73,9 @@ class AdminTemplate {
         <script src="<?php echo URL; ?>public/js/admin/index_tasks.js"></script>
         <script src="<?php echo URL; ?>public/js/admin/stadistics_orders.js"></script>
         <script src="<?php echo URL; ?>public/three/three.min.js"></script>
+        <!-- Morris.js charts -->
+        <script src="<?php echo URL; ?>public/admin-lte/plugins/morris/raphael-min.js"></script>
+        <script src="<?php echo URL; ?>public/admin-lte/plugins/morris/morris.min.js"></script>
 
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
