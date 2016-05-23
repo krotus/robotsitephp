@@ -1,29 +1,31 @@
-$("#order_create").validate({
+$("#robot_edit").validate({
     rules:{
-        order_code: {
+        robot_code: {
             required: true,
             minlength:3,
             maxlength:11,
             digits: true
         },
-        order_description:{
+        robot_name:{
             required:true,
             maxlength:50
         },
-        order_date:{
+        robot_latitude:{
             required:true,
-            date:true
+            number:true
         },
-        order_quantity:{
+        robot_longitude:{
             required:true,
-            digits:true,
-            maxlength:11
+            number:true
         },
-        order_robot:{
+        robot_ip_cam:{
+            IP4Checker:true
+        },
+        robot_state:{
             required:true
         },
-        order_process:{
-            required:true
+        robot_ip_address:{
+            IP4Checker:true
         }
 
     },

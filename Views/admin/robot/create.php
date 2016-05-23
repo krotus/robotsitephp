@@ -22,14 +22,18 @@
 <h2>Añadir Robot</h2>
 <div class="row">
     <div class="col-xs-12">
-        <form role="form" action="" method="POST">
+        <form  id="robot_create" role="form" action="" method="POST">
             <div class="form-group col-md-6 col-xs-12">
                 <label for="robot_code">Codigo:</label>
-                <input type="text" class="form-control" name="robot_code" id="robot_code">
+                <div class="magic-span">
+                    <input type="text" class="form-control" name="robot_code" id="robot_code">
+                </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="robot_name">Nombre:</label>
-                <input type="text" class="form-control" name="robot_name" id="robot_name">
+                <div class="magic-span">
+                    <input type="text" class="form-control" name="robot_name" id="robot_name">
+                </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <div class="row">
@@ -39,23 +43,31 @@
                 <div class="row">
                     <div class="col-md-6" style="padding-left:0px">
                         <label for="robot_latitude">Latitud:</label>
-                        <input type="text" class="form-control" name="robot_latitude" id="robot_latitude">
+                        <div class="magic-span">
+                            <input type="text" class="form-control" name="robot_latitude" id="robot_latitude">
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="robot_longitude">Longitud:</label>
-                        <input type="text" class="form-control" name="robot_longitude" id="robot_longitude">
+                        <div class="magic-span">
+                            <input type="text" class="form-control" name="robot_longitude" id="robot_longitude">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="robot_ip_cam">IP Cam:</label>
-                <input type="text" class="form-control" name="robot_ip_cam" id="robot_ip_cam">
+                <div class="magic-span">
+                    <input type="text" class="form-control" name="robot_ip_cam" id="robot_ip_cam">
+                </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
             <label>Estado:</label>
-                <?php
-                App\Utility\QuickForm::createSelect("robot_state", "description", $data['status']);
-                ?>
+                <div class="magic-span">
+                    <?php
+                    App\Utility\QuickForm::createSelect("robot_state", "description", $data['status']);
+                    ?>
+                </div>
             </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Crear" name="team_create">
@@ -64,6 +76,8 @@
         </form>
     </div>
 </div>
+<script src="<?php echo URL; ?>public/js/validation/robot/create.js"></script>
+
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {

@@ -1063,8 +1063,7 @@ $.validator.addMethod("valueNotEquals", function(value, element, arg){
 }, "Value must not equal arg.");
 
 $.validator.addMethod('IP4Checker', function(value) {
-	var ip = "^(?:(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)\.){3}" +
-    "(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)$";
+	var ip = "^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$";
     return value.match(ip);
 }, 'Invalid IP address');
 

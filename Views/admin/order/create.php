@@ -18,32 +18,42 @@
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_description">Descripción:</label>
-                    <input type="text" class="form-control" name="order_description" id="order_description">
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="order_description" id="order_description">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="process_description">Fecha de ejecución:</label>
                     <div class='input-group date' id='datepickertask'>
-                        <input type='text' class="form-control" id="order_date" name="order_date"/>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
+                        <div class="magic-span">
+                            <input type='text' class="form-control" id="order_date" name="order_date"/>
+                        </div>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_quantity">Cantidad:</label>
-                    <input type="number" class="form-control" name="order_quantity" id="order_quantity">
+                    <div class="magic-span">
+                        <input type="number" class="form-control" name="order_quantity" id="order_quantity">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                 <label>Robot:</label>
-                    <?php
-                    App\Utility\QuickForm::createSelect("order_robot", "name", $data['robots']);
-                    ?>
+                    <div class="magic-span">
+                        <?php
+                        App\Utility\QuickForm::createSelect("order_robot", "name", $data['robots']);
+                        ?>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                 <label>Proceso:</label>
+                    <div class="magic-span">
                     <?php
                     App\Utility\QuickForm::createSelect("order_process", "description", $data['processes']);
                     ?>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_priority">Prioridad:</label><br>

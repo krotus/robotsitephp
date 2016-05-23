@@ -1,29 +1,10 @@
-$("#order_create").validate({
+$("#task_create").validate({
     rules:{
-        order_code: {
+        task_team: {
             required: true,
-            minlength:3,
-            maxlength:11,
-            digits: true
         },
-        order_description:{
+        task_order:{
             required:true,
-            maxlength:50
-        },
-        order_date:{
-            required:true,
-            date:true
-        },
-        order_quantity:{
-            required:true,
-            digits:true,
-            maxlength:11
-        },
-        order_robot:{
-            required:true
-        },
-        order_process:{
-            required:true
         }
 
     },
