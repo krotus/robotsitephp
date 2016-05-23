@@ -1,14 +1,18 @@
 <h2>Añadir Equipo</h2>
 <div class="row">
     <div class="col-xs-12">
-        <form role="form" action="" method="POST">
+        <form id="team_create" role="form" action="" method="POST">
             <div class="form-group col-md-6 col-xs-12">
                 <label for="team_code">Codigo:</label>
-                <input type="text" class="form-control" name="team_code" id="team_code">
+                <div class="magic-span">
+                    <input type="text" class="form-control" name="team_code" id="team_code">
+                </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="team_name">Nombre:</label>
-                <input type="text" class="form-control" name="team_name" id="team_name">
+                <div class="magic-span">
+                    <input type="text" class="form-control" name="team_name" id="team_name">
+                </div>
             </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Crear" name="team_create">
@@ -17,6 +21,7 @@
         </form>
     </div>
 </div>
+<script src="<?php echo URL; ?>public/js/validation/team/create.js"></script>
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {

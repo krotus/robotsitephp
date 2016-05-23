@@ -9,19 +9,25 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form role="form" action="" method="POST">
+            <form id="order_edit" role="form" action="" method="POST">
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_code">Codigo:</label>
-                    <input type="text" class="form-control" name="order_code" id="order_code" value="<?php echo $data['order']->getCode(); ?>">
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="order_code" id="order_code" value="<?php echo $data['order']->getCode(); ?>">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_description">Descripción:</label>
-                    <input type="text" class="form-control" name="order_description" id="order_description" value="<?php echo $data['order']->getDescription(); ?>">
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="order_description" id="order_description" value="<?php echo $data['order']->getDescription(); ?>">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="process_description">Fecha de ejecución:</label>
                     <div class='input-group date' id='datepickertask'>
-                        <input type='text' class="form-control" id="order_date" name="order_date" value="<?php echo $data['order']->getDate() ?>"/>
+                        <div class="magic-span">
+                            <input type='text' class="form-control" id="order_date" name="order_date" value="<?php echo $data['order']->getDate() ?>"/>
+                        </div>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -29,19 +35,25 @@
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_quantity">Cantidad:</label>
-                    <input type="number" class="form-control" name="order_quantity" id="order_quantity" value="<?php echo $data['order']->getQuantity(); ?>">
+                    <div class="magic-span">
+                        <input type="number" class="form-control" name="order_quantity" id="order_quantity" value="<?php echo $data['order']->getQuantity(); ?>">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                 <label>Estado:</label>
-                    <?php
-                    App\Utility\QuickForm::createSelect("order_status", "description", $data['statusOrders'], $data['order']->getStatusOrder()->getId());
-                    ?>
+                    <div class="magic-span">
+                        <?php
+                        App\Utility\QuickForm::createSelect("order_status", "description", $data['statusOrders'], $data['order']->getStatusOrder()->getId());
+                        ?>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                 <label>Robot:</label>
-                    <?php
-                    App\Utility\QuickForm::createSelect("order_robot", "name", $data['robots'], $data['order']->getRobot()->getId());
-                    ?>
+                    <div class="magic-span">
+                        <?php
+                        App\Utility\QuickForm::createSelect("order_robot", "name", $data['robots'], $data['order']->getRobot()->getId());
+                        ?>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_priority">Prioridad:</label><br>
@@ -58,9 +70,11 @@
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                 <label>Proceso:</label>
-                    <?php
-                    App\Utility\QuickForm::createSelect("order_process", "description", $data['processes'], $data['order']->getProcess()->getId());
-                    ?>
+                    <div class="magic-span">
+                        <?php
+                        App\Utility\QuickForm::createSelect("order_process", "description", $data['processes'], $data['order']->getProcess()->getId());
+                        ?>
+                    </div>
                 </div>
                 <div class="col-xs-12">
                     <input type="submit" class="btn btn-primary" value="Editar" name="process_edit">
@@ -69,6 +83,7 @@
             </form>
         </div>
     </div>
+<script src="<?php echo URL; ?>public/js/validation/order/edit.js"></script>
 <script type="text/javascript">
     $(function () {
         $('#datepickertask').datetimepicker({

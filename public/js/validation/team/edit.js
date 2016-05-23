@@ -1,32 +1,16 @@
-$("#order_create").validate({
+$("#team_edit").validate({
     rules:{
-        order_code: {
+        team_code: {
             required: true,
             minlength:3,
-            maxlength:11,
             digits: true
         },
-        order_description:{
-            required:true,
-            maxlength:50
-        },
-        order_date:{
-            required:true,
-            date:true
-        },
-        order_quantity:{
-            required:true,
-            digits:true,
-            maxlength:11
-        },
-        order_robot:{
-            required:true
-        },
-        order_process:{
-            required:true
+        team_name: {
+            required: true,
+            minlength: 3
         }
-
     },
+    
     errorElement: "em",
     errorPlacement: function ( error, element ) {
         // Add the `help-block` class to the error element

@@ -29,21 +29,24 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form role="form" action="" method="POST">
+            <form id="robot_edit" role="form" action="" method="POST">
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="robot_code">Codigo:</label>
-                    <input type="text" class="form-control" name="robot_code" 
-                           id="robot_code" value="<?php echo $data['robot']->getCode() ?>">
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="robot_code" id="robot_code" value="<?php echo $data['robot']->getCode() ?>">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="robot_name">Nombre:</label>
-                    <input type="text" class="form-control" name="robot_name" 
-                           id="robot_name" value="<?php echo $data['robot']->getName() ?>">
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="robot_name" id="robot_name" value="<?php echo $data['robot']->getName() ?>">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="robot_ip_cam">IP Cam:</label>
-                    <input type="text" class="form-control" name="robot_ip_cam" 
-                           id="robot_ip_cam" value="<?php echo $data['robot']->getIpCam() ?>">
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="robot_ip_cam" id="robot_ip_cam" value="<?php echo $data['robot']->getIpCam() ?>">
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <div class="row">
@@ -53,26 +56,31 @@
                     <div class="row">
                         <div class="col-md-6" style="padding-left:0px">
                             <label for="robot_latitude">Latitud:</label>
-                            <input type="text" class="form-control" name="robot_latitude" 
-                                   id="robot_latitude" value="<?php echo $data['robot']->getLatitude() ?>">
+                            <div class="magic-span">
+                                <input type="text" class="form-control" name="robot_latitude" id="robot_latitude" value="<?php echo $data['robot']->getLatitude() ?>">
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="robot_longitude">Longitud:</label>
-                            <input type="text" class="form-control" name="robot_longitude" 
-                                   id="robot_longitude" value="<?php echo $data['robot']->getLongitude() ?>">
+                            <div class="magic-span">
+                                <input type="text" class="form-control" name="robot_longitude" id="robot_longitude" value="<?php echo $data['robot']->getLongitude() ?>">
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label>Estat:</label>
-                    <?php
-                    App\Utility\QuickForm::createSelect("robot_state", "description", $data['status'], true);
-                    ?>
+                    <div class="magic-span">
+                        <?php
+                        App\Utility\QuickForm::createSelect("robot_state", "description", $data['status'], true);
+                        ?>
+                    </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="robot_ip_address">Ip:</label>
-                    <input type="text" class="form-control" name="robot_ip_address" 
-                           id="robot_ip_address" value="<?php echo $data['robot']->getIpAddress() ?>">
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="robot_ip_address" id="robot_ip_address" value="<?php echo $data['robot']->getIpAddress() ?>">
+                    </div>
                 </div>
                 <div class="col-xs-12">
                     <input type="submit" class="btn btn-primary" value="Editar" name="team_edit">
@@ -81,6 +89,7 @@
             </form>
         </div>
     </div>
+<script src="<?php echo URL; ?>public/js/validation/robot/edit.js"></script>
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {

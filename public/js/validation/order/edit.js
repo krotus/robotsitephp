@@ -1,4 +1,4 @@
-$("#order_create").validate({
+$("#order_edit").validate({
     rules:{
         order_code: {
             required: true,
@@ -24,6 +24,9 @@ $("#order_create").validate({
         },
         order_process:{
             required:true
+        },
+        order_status:{
+        	required:true
         }
 
     },
