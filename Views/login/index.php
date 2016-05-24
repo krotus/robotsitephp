@@ -1,7 +1,7 @@
 <?php 
 if(isset($data)){
 	if (array_key_exists("alert", $data)) {
-		echo '<div class="alert alert-danger" role="alert">' . $trans[$data["alert"]] . '</div>';
+		echo '<div class="alert alert-danger" role="alert">' . $data["alert"] . '</div>';
 	}	
 }
 ?>
@@ -10,7 +10,7 @@ if(isset($data)){
         <a href="../../index2.html"><b>ARM</b>duino</a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg"><?php echo $trans["sign_in"] ?></p>
+        <p class="login-box-msg">Iniciar sessión</p>
 
         <form method="post" action="">
             <div class="form-group has-feedback">
@@ -25,7 +25,7 @@ if(isset($data)){
                 <div class="col-xs-8">
                     <div class="material-switch pull-left">
                         <input id="remember-me" name="remember-me" type="checkbox" <?php echo isset($_COOKIE['password']) ? 'checked' : '';?>/>
-                        <label for="remember-me" class="label-primary"><span>Remember Me</span></label>
+                        <label for="remember-me" class="label-primary"><span>Recordar</span></label>
                     </div>
                 </div>
                 <!-- /.col -->

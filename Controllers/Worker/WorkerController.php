@@ -5,6 +5,7 @@ namespace Controllers\Worker;
 use Controllers\Controller as Controller;
 use Models\Business\Worker as Worker;
 use Models\Business\Order as Order;
+use Models\Business\Language as Language;
 use Models\Business\Task as Task;
 use Models\Business\Team as Team;
 use App\Core\View as View;
@@ -32,7 +33,9 @@ class WorkerController extends Controller {
     public function profile() {
         if (!$_POST) {
             $worker = unserialize(Session::get('user'));
-            View::to("worker.profile", compact('worker'));
+            $language = new Language();
+            $languages = $language->getAll();
+            View::to("worker.profile", compact('worker', 'languages'));
         } else {
             $validator = new Gump();
             $inputs = array(
@@ -62,12 +65,27 @@ class WorkerController extends Controller {
             if ($validated === TRUE) {
                 $worker = unserialize(Session::get("user"));
                 $nWorker = new Worker(
-                        $worker->getId(), $_POST["worker_username"], $_POST["worker_password"], $_POST["worker_nif"], $_POST["worker_name"], $_POST["worker_surname"], $_POST["worker_mobile"], $_POST["worker_telephone"], $_POST["worker_category"], $worker->getTeam()->getId()
+                        $worker->getId(), 
+                        $_POST["worker_username"], 
+                        $_POST["worker_password"], 
+                        $_POST["worker_nif"], 
+                        $_POST["worker_name"], 
+                        $_POST["worker_surname"], 
+                        $_POST["worker_mobile"], 
+                        $_POST["worker_telephone"], 
+                        $_POST["worker_category"], 
+                        $worker->getTeam()->getId(),
+                        0,
+                        $_POST["worker_language"]
                 );
+                $worker->updateWorker($nWorker);
                 $team = new Team($worker->getTeam()->getId());
                 $team = $team->get();
-                $worker->updateWorker($nWorker);
                 $nWorker->setTeam($team);
+                
+                $language = new Language($_POST["worker_language"]);
+                $language = $language->get();
+                $nWorker->setLanguage($language);
                 Session::set('user', serialize($nWorker));
                 $msg = "s'ha editat satisfactoriament.";
                 View::redirect("worker", compact("msg"));

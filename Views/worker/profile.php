@@ -59,10 +59,17 @@
                 </div>
             </div>
             <div class="form-group col-md-6 col-xs-12">
-            <label>Equipo:</label>
-            <label class="form-control"><?php echo $data['worker']->getTeam()->getName(); ?></label>
+                <label>Equipo:</label>
+                <label class="form-control"><?php echo $data['worker']->getTeam()->getName(); ?></label>
             </div>
-            
+            <div class="form-group col-md-6 col-xs-12">
+                <label class="control-label" for="worker_language">Idioma:</label>
+                <div class="magic-span">
+                    <?php
+                    App\Utility\QuickForm::createSelect("worker_language", "description", $data['languages'], $data['worker']->getLanguage()->getId());
+                    ?>
+                </div>
+            </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Guardar canvios" name="worker_profile" disabled>
             </div>

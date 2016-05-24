@@ -9,7 +9,10 @@ class View{
 	public static function to($view, $data = null){
 
 		//carreguem l'idioma que li correspon
-		$lang = Session::get("lang");
+		$lang = LOCALE;
+		if (Session::get("user") != "") {
+			$lang = unserialize(Session::get("user"))->getLanguage()->getCode();
+		}
 		$choiceLang = ROOT . "Resources/Lang/" . $lang .".php";
 		$trans = include $choiceLang;
 

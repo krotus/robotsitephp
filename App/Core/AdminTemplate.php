@@ -63,7 +63,7 @@ class AdminTemplate {
         <script src="<?php echo URL; ?>public/js/index_orders.js"></script>
         <script src="<?php echo URL; ?>public/js/validation/jquery.validate.js"></script>
         <script src="<?php echo URL; ?>public/js/validation/additional-methods.js"></script>
-        <script src="<?php echo URL; ?>public/js/validation/localization/messages_<?php echo Session::get('lang') ?>.js"></script>
+        <script src="<?php echo URL; ?>public/js/validation/localization/messages_<?php echo unserialize(Session::get('user'))->getLanguage()->getCode() ?>.js"></script>
         <script src="<?php echo URL; ?>public/sweetalert/js/sweetalert.min.js"></script>
         <script src="<?php echo URL; ?>public/js/admin/index_workers.js"></script>
         <script src="<?php echo URL; ?>public/js/admin/index_teams.js"></script>

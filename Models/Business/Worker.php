@@ -8,8 +8,8 @@ use Models\DAO\WorkerDAO as WorkerDAO;
 
 class Worker extends User {
 
-    public function __construct($id = null, $username = null, $password = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null){
-        parent::__construct($id, $username, $password, $nif, $name, $surname, $mobile, $telephone, $category, $team);
+    public function __construct($id = null, $username = null, $password = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null, $isAdmin = null, $language = null){
+        parent::__construct($id, $username, $password, $nif, $name, $surname, $mobile, $telephone, $category, $team, 0, $language);
         $this->setIsAdmin(0);
     }
 /**

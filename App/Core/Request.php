@@ -16,15 +16,11 @@ class Request{
 
 	public function __construct(){
 
-		if(!Session::get("lang")){
-			Session::set("lang", LOCALE);
-		}
-
 		// usuari no ha fet login
 		if(!Session::isLogged()){
 			$pos = strpos($_GET["url"], "login");
 			if(is_bool($pos)){
-				$alert = "alert_must_login";
+				$alert = "Por favor, primero debes iniciar sessión.";
 				View::redirect("login.index", compact('alert'));
 				exit;
 			}
@@ -33,7 +29,7 @@ class Request{
 				$pos = strpos($_GET["url"], "login");
 				if(!is_bool($pos)){
 					//mode multi idioma => clau associativa del array de langs
-					$alert = "alert_already_login";
+					$alert = "Ya has iniciado iniciado sessión con tu cuenta!";
 					View::redirect("", compact('alert'));	
 					exit;
 				}
@@ -48,7 +44,7 @@ class Request{
 			$isAdminPage = in_array("admin", $request);
 			if($isAdminPage){ //peticio a una pagina admin
 				if(unserialize(Session::get("user")) instanceof Worker){ //si ets un treballador redireccionem a la primera pagina
-					$alert = "alert_access_denied";
+					$alert = "No tienes acceso a esa pagina!";
 					View::redirect(FIRST_PAGE, compact('alert'));
 					exit;
 				}else{

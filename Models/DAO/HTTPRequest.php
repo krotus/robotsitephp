@@ -65,7 +65,6 @@ class HTTPRequest {
 		curl_close($ch);
 		// output the profile information - includes the header
 		$this->setOutput($output);
-		//var_dump($output);
 		return $this->validateResponse();
 	}
 

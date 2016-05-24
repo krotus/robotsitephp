@@ -9,18 +9,7 @@ function pendingOrders(idWorker, baseUrl) {
             $('#pending-ord').html('');
             $('#pending-ord').DataTable({
                 data: dades,
-                columns: [
-                    {title: "Id Orden"},
-                    {title: "Código de orden"},
-                    {title: "Descripción de orden"},
-                    {title: "Prioridad"},
-                    {title: "Fecha"},
-                    {title: "Ejecuciones necesarias"},
-                    {title: "Código robot"},
-                    {title: "Nombre robot"},
-                    {title: "Estado del robot"},
-                    {title: "Opciones"}
-                ],
+                columns: columns1,
                 "language": {
                     "url": "public/datatables/json/" + lang + ".json"
                 },
@@ -48,18 +37,7 @@ function initOrders(idWorker, baseUrl) {
 
             $('#init-ord').DataTable({
                 data: dades,
-                columns: [
-                    {title: "Id Orden"},
-                    {title: "Código de orden"},
-                    {title: "Descripción de orden"},
-                    {title: "Prioridad"},
-                    {title: "Fecha"},
-                    {title: "Ejecuciones necesarias"},
-                    {title: "Código robot"},
-                    {title: "Nombre robot"},
-                    {title: "Estado del robot"},
-                    {title: "Opciones"}
-                ],
+                columns: columns1,
                 "language": {
                     "url": "public/datatables/json/" + lang + ".json"
                 },
@@ -86,17 +64,7 @@ function completedOrders(idWorker, baseUrl) {
 
             $('#completed-ord').DataTable({
                 data: dades,
-                columns: [
-                    {title: "Id Orden"},
-                    {title: "Código de orden"},
-                    {title: "Descripción de orden"},
-                    {title: "Prioridad"},
-                    {title: "Fecha"},
-                    {title: "Ejecuciones necesarias"},
-                    {title: "Código robot"},
-                    {title: "Nombre robot"},
-                    {title: "Estado del robot"},
-                ],
+                columns: columns2,
                 "language": {
                     "url": "public/datatables/json/" + lang + ".json"
                 },
@@ -123,17 +91,7 @@ function uncompletedOrders(idWorker, baseUrl) {
 
             $('#uncompleted-ord').DataTable({
                 data: dades,
-                columns: [
-                    {title: "Id Orden"},
-                    {title: "Código de orden"},
-                    {title: "Descripción de orden"},
-                    {title: "Prioridad"},
-                    {title: "Fecha"},
-                    {title: "Ejecuciones necesarias"},
-                    {title: "Código robot"},
-                    {title: "Nombre robot"},
-                    {title: "Estado del robot"},
-                ],
+                columns: columns2,
                 "language": {
                     "url": "public/datatables/json/" + lang + ".json"
                 },
@@ -160,17 +118,7 @@ function cancelledOrders(idWorker, baseUrl) {
 
             $('#cancelled-ord').DataTable({
                 data: dades,
-                columns: [
-                    {title: "Id Orden"},
-                    {title: "Código de orden"},
-                    {title: "Descripción de orden"},
-                    {title: "Prioridad"},
-                    {title: "Fecha"},
-                    {title: "Ejecuciones necesarias"},
-                    {title: "Código robot"},
-                    {title: "Nombre robot"},
-                    {title: "Estado del robot"},
-                ],
+                columns: columns2,
                 "language": {
                     "url": "public/datatables/json/" + lang + ".json"
                 },

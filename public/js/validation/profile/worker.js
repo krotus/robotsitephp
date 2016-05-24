@@ -4,6 +4,11 @@ $("input").each(function(){
     inputsValues[this.id] = $(this).val();
 });
 
+$("select").change(function(){
+    newChanges = true;
+    changeStateButton(newChanges);
+});
+
 $("input").keyup(function(){
     checkNewChanges();
 });
@@ -64,6 +69,9 @@ $("#worker_profile").validate({
             digits: true
         },
         worker_category: {
+            required: true
+        },
+        worker_language: {
             required: true
         }
     },

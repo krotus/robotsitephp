@@ -20,8 +20,9 @@ class User extends DataObject {
     protected $category;
     protected $team;
     protected $isAdmin;
+    protected $language;
 
-    function __construct($id = null, $username = null, $password = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null, $isAdmin = null) {
+    function __construct($id = null, $username = null, $password = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null, $isAdmin = null, $language = null) {
         $this->setId($id);
         $this->setUsername($username);
         $this->setPassword($password);
@@ -33,6 +34,7 @@ class User extends DataObject {
         $this->setTelephone($telephone);
         $this->setCategory($category);
         $this->setTeam($team);
+        $this->setLanguage($language);
     }
 
     public function getId() {
@@ -148,6 +150,14 @@ class User extends DataObject {
     }
     public function toJson() {
         return json_encode($this);
+    }
+
+    public function getLanguage(){
+        return $this->language;
+    }
+
+    public function setLanguage($language){
+        $this->language = $language;
     }
 
 }

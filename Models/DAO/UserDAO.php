@@ -5,6 +5,7 @@ namespace Models\DAO;
 use Models\DAO\HTTPRequest as HTTPRequest;
 use Models\DAO\AbstractDAO as AbstractDAO;
 use Models\Business\Team as Team;
+use Models\Business\Language as Language;
 use Models\Business\Admin as Admin;
 use Models\Business\Worker as Worker;
 use Models\Business\User as User;
@@ -79,6 +80,10 @@ class UserDAO extends AbstractDAO{
 		$team = new Team($user->getTeam());
 		$team = $team->get();
 		$user->setTeam($team);
+
+		$language = new Language($user->getLanguage());
+		$language = $language->get();
+		$user->setLanguage($language);
 		return $user;
 	}
 
@@ -102,7 +107,9 @@ class UserDAO extends AbstractDAO{
 				$object->getMobile(),
 				$object->getTelephone(),
 				$object->getCategory(),
-				$object->getTeam()
+				$object->getTeam(),
+				1,
+				$object->getLanguage()
 			);
 		}else{
 			$user = new Worker(
@@ -115,7 +122,9 @@ class UserDAO extends AbstractDAO{
 				$object->getMobile(),
 				$object->getTelephone(),
 				$object->getCategory(),
-				$object->getTeam()
+				$object->getTeam(),
+				0,
+				$object->getLanguage()
 			);
 		}
 		return $user;
