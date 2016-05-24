@@ -25,13 +25,22 @@ class OrderController extends Controller {
         if (!$_POST) {
             $order = new Order($id);
             $order = $order->get();
+            $ordersAll = new Order();
+            $orderCode = $order->getCode();
+            $orders = $ordersAll->getAll();
+            $codeOrders = [];
+            foreach ($orders as $nOrder){
+                if($nOrder->getCode() != $orderCode){
+                    $codeOrders[] = $nOrder->getCode();
+                }
+            }
             $robot = new Robot();
             $robots = $robot->getAll();
             $process = new Process();
             $processes = $process->getAll();
             $statusOrder = new StatusOrder();
             $statusOrders = $statusOrder->getAll();
-            View::to("admin.order.edit", compact('order', 'robots', 'processes', 'statusOrders'));
+            View::to("admin.order.edit", compact('order', 'robots', 'processes', 'statusOrders', 'codeOrders'));
         } else {
             $validator = new Gump();
             $inputs = array(
@@ -77,11 +86,17 @@ class OrderController extends Controller {
 
     public function create() {
         if (!$_POST) {
+            $order = new Order();
+            $orders = $order->getAll();
+            $codeOrders = [];
+            foreach ($orders as $order){
+                $codeOrders[] = $order->getCode();
+            }
             $robot = new Robot();
             $robots = $robot->getAll();
             $process = new Process();
             $processes = $process->getAll();
-            View::to("admin.order.create", compact('robots', 'processes'));
+            View::to("admin.order.create", compact('robots', 'processes', 'codeOrders'));
         } else {
             $validator = new Gump();
             $inputs = array(
