@@ -39,23 +39,55 @@
     
     
 
-function loadTable(){
-    $('#ordersFilter').DataTable({
-                data: dataSet,
+function loadTable(baseUrl){
+    var strDate = $('#order_date_str').val();
+    var endDate = $('#order_date_end').val();
+    var idStatus = $('#team-select').val();
+    var idTeam = "0";
+    var idWorker = "0";
+    if ($('#select-filter-type').val() == "team") {
+        idTeam = $('#select_filter').val();
+    }else if($('#select-filter-type').val() == "worker"){
+        idWorker = $('#select_filter').val();
+    }
+    
+     $.ajax({
+        type: "POST",
+        url: baseUrl + "admin/stadistic/getStadisticOrdersByAjax",
+        data:{"str_date": strDate, "end_date": endDate, "id_team": idTeam,"id_worker": idWorker, "id_status": idStatus},
+        success: function (data) {
+            console.log(data);
+//            var dades = JSON.parse(data);
+            /*$('#ordersFilter').html('');
+            $('#ordersFilter').DataTable({
+                data: dades,
                 columns: [
-                    {title: "Código"},
+                    {title: "Usuario"},
+                    {title: "NIF"},
                     {title: "Nombre"},
-                    {title: "Trabajadores"},
-                    {title: "Trabajadores"},
-                    {title: "Trabajadores"},
+                    {title: "Apellido"},
+                    {title: "Móvil"},
+                    {title: "Teléfono"},
+                    {title: "Categoría"},
+                    {title: "Administrador"},
+                    {title: "Equipo"},
                     {title: "Opciones"}
                 ],
                 "language": {
                     "url": "../public/datatables/json/es.json"
                 },
-                "aLengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "Todos"]]
+                "aLengthMenu": [[15, 25, 50, 75, -1], [15, 25, 50, 75, "Todos"]]
 
-            });
+            });*/
+        },
+        error: function (err) {
+            console.log(err);
+        },
+        beforeSend: function () {
+            $('#ordersFilter').html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+        }
+    });
+
 }
 
 function switchFilter(valueFilter, baseUrl){

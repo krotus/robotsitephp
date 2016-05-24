@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/datetimepicker-custom.css">
+<!--<link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/datetimepicker-custom.css">-->
 <section class="content-header">
     <h1>
         Estadísticas de las ordenes
@@ -15,7 +15,7 @@
             <div class="col-md-6" style="padding-left: 0px;">
                 <label for="order_code">Inicio:</label>
                 <div class='input-group date' id='datepickerstart'>
-                    <input type='text' class="form-control" id="order_date" name="order_date"/>
+                    <input type='text' class="form-control" id="order_date_str" name="order_date"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -24,7 +24,7 @@
             <div class="col-md-6">
                 <label for="order_code">Fin:</label>
                 <div class='input-group date' id='datepickerend'>
-                    <input type='text' class="form-control" id="order_date" name="order_date"/>
+                    <input type='text' class="form-control" id="order_date_end" name="order_date"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -52,7 +52,7 @@
             ?>
         </div>
         <div class="col-xs-12">
-            <input type="button" class="btn btn-primary" value="Filtrar" name="filter_order">
+            <input type="button" class="btn btn-primary" value="Filtrar" name="filter_order" onclick="loadTable('<?php echo URL; ?>')">
         </div>
     </div> <!-- ./row -->
     <div class="box">
@@ -77,7 +77,7 @@
             ordersListStadistics();
             $("#select_filter").show();
 
-            loadTable();
+            //loadTable();
         });
 
     </script>
