@@ -4,7 +4,8 @@ $("#order_create").validate({
             required: true,
             minlength:3,
             maxlength:11,
-            digits: true
+            digits: true,
+            codeChecker: codes
         },
         order_description:{
             required:true,

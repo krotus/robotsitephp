@@ -9,40 +9,40 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-        	<label for="order_code">Periodo</label>
+            <label for="order_code">Periodo</label>
         </div>
         <div class="form-group col-md-6 col-xs-12">
             <div class="col-md-6" style="padding-left: 0px;">
-            	<label for="order_code">Inicio:</label>
-            	<div class='input-group date' id='datepickerstart'>
-        	        <input type='text' class="form-control" id="order_date" name="order_date"/>
-        	        <span class="input-group-addon">
-        	            <span class="glyphicon glyphicon-calendar"></span>
-        	        </span>
-        	    </div>
+                <label for="order_code">Inicio:</label>
+                <div class='input-group date' id='datepickerstart'>
+                    <input type='text' class="form-control" id="order_date" name="order_date"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
             <div class="col-md-6">
-            	<label for="order_code">Fin:</label>
-            	<div class='input-group date' id='datepickerend'>
-        	        <input type='text' class="form-control" id="order_date" name="order_date"/>
-        	        <span class="input-group-addon">
-        	            <span class="glyphicon glyphicon-calendar"></span>
-        	        </span>
-        	    </div>
+                <label for="order_code">Fin:</label>
+                <div class='input-group date' id='datepickerend'>
+                    <input type='text' class="form-control" id="order_date" name="order_date"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
         </div>
         <div class="form-group col-md-2 col-xs-12">
             <label for="order_code">Filtro por:</label>
-            <select class="selectpicker form-control" onchange="switchFilter(this.value)">
+            <select id="select-filter-type" class="selectpicker form-control" >
                 <option value="empty">Ningun</option>
-            	<option value="team">Equipo</option>
-            	<option value="worker">Trabajador</option>
+                <option value="team">Equipo</option>
+                <option value="worker">Trabajador</option>
             </select>
         </div>
         <div class="form-group col-md-2 col-xs-12">
-        	<label for="order_code">&nbsp;</label>
+            <label for="order_code">&nbsp;</label>
             <select id="select_filter" class="selectpicker form-control">
-            	<option> - - - - - - - - - - - - - - </option>
+                <option value="0"> - - - - - - - - - - - - - - </option>
             </select>
         </div>
         <div class="form-group col-md-2 col-xs-12">
@@ -55,48 +55,29 @@
             <input type="button" class="btn btn-primary" value="Filtrar" name="filter_order">
         </div>
     </div> <!-- ./row -->
-    <div class="row">
-        <div class="col-xs-12">
+    <div class="box">
+        <div class="box-body">
             <table id="ordersFilter" class="table table-bordered table-condensed">
             </table>
-        </div>
+        </div><!-- /.box-body -->
     </div> <!-- ./row -->
-<script type="text/javascript">
-    $(document).ready(function(){
-    	$('#datepickerstart').datetimepicker({
-            format: 'YYYY/MM/DD HH:mm:ss'
-        });
-        $('#datepickerend').datetimepicker({
-            format: 'YYYY/MM/DD HH:mm:ss'
-        });
-        ordersListStadistics();
-        $("#select_filter").show();
-    });
-    function switchFilter($valueFilter){
-    	switch($valueFilter){
-    		case "worker":
-               $.getJSON( "<?php echo URL . 'admin/stadistic/getWorkersAjax' ?>", function( workers ) {
-                    var select = "";
-                    for(var i = 0; i < workers.length; i++){
-                        select += "<option value="+workers[i].id+">"+workers[i].username+"</option>";
-                    }
-                    $("#select_filter").html(select); 
-                });
-                break;
-            case "team":
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-                $.getJSON( "<?php echo URL . 'admin/stadistic/getTeamsAjax' ?>", function( teams ) {
-                    var select = "";
-                    for(var i = 0; i < teams.length; i++){
-                        select += "<option value="+teams[i].id+">"+teams[i].name+"</option>";
-                    }
-                    $("#select_filter").html(select);     
-                    $("#select_filter").show();     
-                });
-                break;
-            default:
-                $("#select_filter").html("<option> - - - - - - - - - - - - - - </option>");  
-    			break;
-    	}
-    }
-</script>
+            $('#select-filter-type').change(function () {
+                switchFilter(this.value, '<?php echo URL; ?>');
+            });
+
+            $('#datepickerstart').datetimepicker({
+                format: 'YYYY/MM/DD HH:mm:ss'
+            });
+            $('#datepickerend').datetimepicker({
+                format: 'YYYY/MM/DD HH:mm:ss'
+            });
+            ordersListStadistics();
+            $("#select_filter").show();
+
+            loadTable();
+        });
+
+    </script>

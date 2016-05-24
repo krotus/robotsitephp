@@ -3,7 +3,8 @@ $("#team_create").validate({
         team_code: {
             required: true,
             minlength:3,
-            digits: true
+            digits: true,
+            codeChecker: codes
         },
         team_name: {
             required: true,

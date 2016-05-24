@@ -24,9 +24,18 @@ class RobotController extends Controller {
         if (!$_POST) {
             $robot = new Robot($id);
             $robot = $robot->get();
+            $robotsAll = new Robot();
+            $robotCode = $robot->getCode();
+            $robots = $robotsAll->getAll();
+            $codeRobots = [];
+            foreach ($robots as $nRobot){
+                if($nRobot->getCode() != $robotCode){
+                    $codeRobots[] = $nRobot->getCode();
+                }
+            }
             $statusRobot = new StatusRobot();
             $status = $statusRobot->getAll();
-            View::to("admin.robot.edit", compact('robot', 'status'));
+            View::to("admin.robot.edit", compact('robot', 'status', 'codeRobots'));
         } else {
             $validator = new Gump();
             $inputs = array(
@@ -73,9 +82,15 @@ class RobotController extends Controller {
 // 
     public function create() {
         if (!$_POST) {
+            $robot = new Robot();
+            $robots = $robot->getAll();
+            $codeRobots = [];
+            foreach ($robots as $robot){
+                $codeRobots[] = $robot->getCode();
+            }
             $statusRobot = new StatusRobot();
             $status = $statusRobot->getAll();
-            View::to("admin.robot.create", compact('status'));
+            View::to("admin.robot.create", compact('status', 'codeRobots'));
         } else {
             $validator = new Gump();
             $inputs = array(

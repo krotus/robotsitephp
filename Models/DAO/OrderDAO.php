@@ -106,6 +106,15 @@ class OrderDAO extends AbstractDAO{
 		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
 		return $arrayResponse;
 	}
+        
+	public function getStadisticOrders()	{
+		$url = WEBSERVICE. "orders/getAllOrdersAdmin";
+                //TODO
+		$this->HTTPRequest->setUrl($url);
+		$this->HTTPRequest->setMethod("GET");
+		$arrayResponse = $this->HTTPRequest->sendHTTPRequest();
+		return $arrayResponse;
+	}
 }
 
 

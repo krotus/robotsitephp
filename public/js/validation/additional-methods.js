@@ -1066,5 +1066,14 @@ $.validator.addMethod('IP4Checker', function(value) {
 	var ip = "^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$";
     return value.match(ip);
 }, 'Invalid IP address');
-
+$.validator.addMethod('codeChecker', function(value, element, array) {
+    var bool = true;
+    for (var i = 0; i < array.length; i++) {
+        if(value == array[i]){
+            bool = false;
+            return bool;
+        }
+    }
+    return bool;
+}, 'This code already exists');
 }));
