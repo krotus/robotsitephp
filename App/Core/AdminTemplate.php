@@ -77,6 +77,7 @@ class AdminTemplate {
         <script src="<?php echo URL; ?>public/js/admin/index_orders.js"></script>
         <script src="<?php echo URL; ?>public/js/admin/index_tasks.js"></script>
         <script src="<?php echo URL; ?>public/js/admin/stadistics_orders.js"></script>
+        <script src="<?php echo URL; ?>public/js/admin/stadistics_table.js"></script>
         <script src="<?php echo URL; ?>public/three/three.min.js"></script>
         <!-- Morris.js charts -->
         <script src="<?php echo URL; ?>public/admin-lte/plugins/morris/raphael-min.js"></script>
