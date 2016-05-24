@@ -14,7 +14,7 @@ class QuickForm {
     public static function createSelect($idName, $atribute, $array, $idSelected = false) {
         $atribute = "get" . ucfirst($atribute);
         ?>
-        <select id="team-select" class="selectpicker form-control" name="<?php echo $idName ?>"> 
+        <select id="<?php echo $idName ?>" class="selectpicker form-control" name="<?php echo $idName ?>"> 
             <?php
             foreach ($array as $item) {
                 if (is_numeric($idSelected)) {
