@@ -3,7 +3,8 @@ $("#process_create").validate({
         process_code: {
             required: true,
             minlength:3,
-            digits: true
+            digits: true,
+            codeChecker: codes
         },
         process_description: {
             required: true,
