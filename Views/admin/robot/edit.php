@@ -49,32 +49,30 @@
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                    <div class="row">
-                        <button type="button" class="btn btn-info" onclick="toggleMap()" />
-                        <i class="glyphicon glyphicon-map-marker"></i> Abrir Mapa</button>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6" style="padding-left:0px">
-                            <label for="robot_latitude">Latitud:</label>
-                            <div class="magic-span">
-                                <input type="text" class="form-control" name="robot_latitude" id="robot_latitude" value="<?php echo $data['robot']->getLatitude() ?>">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="robot_longitude">Longitud:</label>
-                            <div class="magic-span">
-                                <input type="text" class="form-control" name="robot_longitude" id="robot_longitude" value="<?php echo $data['robot']->getLongitude() ?>">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-md-6 col-xs-12">
                     <label>Estat:</label>
                     <div class="magic-span">
                         <?php
                         App\Utility\QuickForm::createSelect("robot_state", "description", $data['status'], true);
                         ?>
                     </div>
+                </div>
+                <div class="form-group col-md-3 col-xs-12">
+                    <label for="robot_latitude">Latitud:</label>
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="robot_latitude" id="robot_latitude" value="<?php echo $data['robot']->getLatitude() ?>">
+                    </div>
+                </div>
+                <div class="form-group col-md-3 col-xs-12">
+                    <label for="robot_longitude">Longitud:</label>
+                    <div class="magic-span">
+                        <input type="text" class="form-control" name="robot_longitude" id="robot_longitude" value="<?php echo $data['robot']->getLongitude() ?>">
+                    </div>
+                </div>
+                <div class="form-group col-md-6 hidden-xs" style="height: 0.7em;">
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <button type="button" class="btn btn-info" onclick="toggleMap()" />
+                    <i class="glyphicon glyphicon-map-marker"></i> Abrir Mapa</button>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="robot_ip_address">Ip:</label>
@@ -89,6 +87,9 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        codes = <?php echo json_encode($data['codeRobots']); ?>;
+    </script>
 <script src="<?php echo URL; ?>public/js/validation/robot/edit.js"></script>
 <?php
 if (isset($data)) {
