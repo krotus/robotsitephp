@@ -126,10 +126,10 @@ class AdminTemplate {
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="<?php echo URL . 'admin/profile' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                                            <a href="<?php echo URL . 'admin/profile' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> Perfil</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="<?php echo URL . 'worker/logout' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                                            <a href="<?php echo URL . 'worker/logout' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesión</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -166,7 +166,7 @@ class AdminTemplate {
 
                         <li <?php echo (!isset($_GET['url']) || $_GET['url'] == "admin") ? "class='active'" : ""; ?>>
                             <a href="<?php echo URL; ?>admin">
-                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                <i class="fa fa-dashboard"></i> <span>Panel de control</span>
                             </a>
                         </li>
                         <li <?php echo (strpos($_GET['url'], "order")) ? "class='active'" : ""; ?>>

@@ -1,7 +1,6 @@
 <section class="content-header">
     <h1>
-        Dashboard
-        <small>Panel de control admin</small>
+        Panel de control
     </h1>
 </section>
 
