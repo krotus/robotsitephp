@@ -60,10 +60,14 @@
 <script src="<?php echo URL; ?>public/js/validation/task/edit.js"></script>
 <script type="text/javascript">
     $(function () {
+        $("#task_team").change(function () {
+            getWorkers();
+        });
         $('#datepickertask').datetimepicker({
             format: 'YYYY/MM/DD HH:mm:ss'
         });
     });
+
 </script>
 <?php
 if (isset($data)) {
