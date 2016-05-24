@@ -8,6 +8,9 @@ class WorkerTemplate {
 
     public function __construct() {
         $user = unserialize(Session::get('user'));
+        $lang = $user->getLanguage()->getCode();
+        $choiceLang = ROOT . "Resources/Lang/" . $lang .".php";
+        $trans = include $choiceLang;
     ?>
     <!DOCTYPE html>
     <html>
@@ -59,7 +62,9 @@ class WorkerTemplate {
         <script src="<?php echo URL; ?>public/js/index_orders.js"></script>
         <script src="<?php echo URL; ?>public/js/validation/jquery.validate.js"></script>
         <script src="<?php echo URL; ?>public/js/validation/additional-methods.js"></script>
-        <script src="<?php echo URL; ?>public/js/validation/localization/messages_<?php echo unserialize(Session::get('user'))->getLanguage()->getCode() ?>.js"></script>
+        <?php if($lang != "en"){?>
+        <script src="<?php echo URL; ?>public/js/validation/localization/messages_<?php echo $lang ?>.js"></script>
+        <?php }?>
         <script src="<?php echo URL; ?>public/sweetalert/js/sweetalert.min.js"></script>
         <script src="<?php echo URL; ?>public/three/three.min.js"></script>
 
@@ -100,16 +105,16 @@ class WorkerTemplate {
 
                                         <p>
                                             <?php echo $user->getName() . " " . $user->getSurname();  ?>
-                                            <small>Forma parte del equipo: <?php echo $user->getTeam()->getName() ?></small>
+                                            <small><?php echo $trans['pop_user_action_info'] . $user->getTeam()->getName() ?></small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="<?php echo URL . 'worker/profile' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                                            <a href="<?php echo URL . 'worker/profile' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> <?php echo $trans['pop_user_action_profile']; ?></a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="<?php echo URL . 'worker/logout' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                                            <a href="<?php echo URL . 'worker/logout' ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-log-out"></span> <?php echo $trans['pop_user_action_logout']; ?></a>
                                         </div>
                                     </li>
                                 </ul>

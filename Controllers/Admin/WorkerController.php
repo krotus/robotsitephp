@@ -59,6 +59,8 @@ class WorkerController extends Controller {
 
             if ($validated === TRUE) {
                 $admin = unserialize(Session::get("user"));
+                $worker = new Worker($id);
+                $worker = $worker->get();
                 if($_POST["worker_is_admin"] == 1){
                     $admin->updateWorker(new Admin(
                         $id, 
@@ -70,7 +72,9 @@ class WorkerController extends Controller {
                         $_POST["worker_mobile"], 
                         $_POST["worker_telephone"], 
                         $_POST["worker_category"], 
-                        $_POST["worker_team"]
+                        $_POST["worker_team"],
+                        1, //isAdmin
+                        $worker->getLanguage()->getId() //code language
                     ));
                 }else{
                     $admin->updateWorker(new Worker(
@@ -83,7 +87,9 @@ class WorkerController extends Controller {
                         $_POST["worker_mobile"], 
                         $_POST["worker_telephone"], 
                         $_POST["worker_category"], 
-                        $_POST["worker_team"]
+                        $_POST["worker_team"],
+                        0, //isAdmin
+                        $worker->getLanguage()->getId() //code language
                     ));
                 }
                 
@@ -100,8 +106,6 @@ class WorkerController extends Controller {
         ob_end_clean();
         $worker = new Worker();
         $workers = $worker->getAllWorkersAdmin();
-        //Debug::log($workers);
-        //exit();
         $arrayToSend = array();
         for ($i = 0; $i < count($workers); $i++) {
             $auxArray = array();
@@ -181,7 +185,9 @@ class WorkerController extends Controller {
                         $_POST["worker_mobile"], 
                         $_POST["worker_telephone"], 
                         $_POST["worker_category"], 
-                        $_POST["worker_team"]
+                        $_POST["worker_team"],
+                        1, //isAdmin
+                        1 //code language
                     ));
                 }else{
                     $admin->createWorker(new Worker(
@@ -194,7 +200,9 @@ class WorkerController extends Controller {
                         $_POST["worker_mobile"], 
                         $_POST["worker_telephone"], 
                         $_POST["worker_category"], 
-                        $_POST["worker_team"]
+                        $_POST["worker_team"],
+                        0, //isAdmin
+                        1 //code language
                     ));
                 }
                 $msg = "s'ha creat satisfactoriament.";

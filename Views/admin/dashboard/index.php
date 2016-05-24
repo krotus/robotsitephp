@@ -155,7 +155,7 @@
 		        console.log("Error: ", err);
 		    },
 		    beforeSend: function () {
-		        console.log("Cargando ...");
+		        //console.log("Cargando ...");
 		    }
 		});
 	});

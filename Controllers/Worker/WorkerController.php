@@ -106,6 +106,10 @@ class WorkerController extends Controller {
 
     public function getOrdersByAjax($idWorker, $status) {
         ob_end_clean();
+        $user = unserialize(Session::get('user'));
+        $lang = $user->getLanguage()->getCode();
+        $choiceLang = ROOT . "Resources/Lang/" . $lang .".php";
+        $trans = include $choiceLang;
         $order = new Order();
         $orders = $order->getAllByStatus($idWorker, $status);
         $task = new Task();
@@ -119,7 +123,7 @@ class WorkerController extends Controller {
             switch ($status) {
                 case 'pending':
                     if ($orders[$i]['desc_sr'] != 'online') {
-                        array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar' disabled>");
+                        array_push($auxArray, "<input type='button' class='btn btn-success' value='" . $trans['btn_orders_execute'] . "' disabled>");
                     } else {
                         array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ",". $orders[$i]['code_robot'] .", \"" . URL . "\")'>
                             <button type='button' class='btn btn-info' onclick='toogleCam()' style='width:74px' />

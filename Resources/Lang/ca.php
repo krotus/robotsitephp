@@ -7,6 +7,10 @@ return [
 	"pop_user_action_profile" 	=> "Perfil",
 	"pop_user_action_logout" 	=> "Tanca sessió",
 	"btn_name_cancel"			=> "Cancelar",
+	"404_title"					=> "Ups! No s'ha trobat la pàgina.",
+	"404_message1"				=> "No hem pogut trobar la pàgina que intentes cercar. Però es possible ",
+	"404_go_back"				=> "tornar enrrera ",
+	"404_message2"				=> "o intentar una altre opció.",
 
 	//View workers frontend
 	"title_workers_frontend"	=> "Ordres de ",
@@ -32,6 +36,19 @@ return [
 	"dt_name_robot_frontend"	=> "Nom robot",
 	"dt_status_robot_frontend"	=> "Estat del robot",
 	"dt_options_frontend"		=> "Opcions",
+
+	//View worker profile frontend
+	"profile_worker_username"		=> "Usuari:",
+	"profile_worker_password"		=> "Contrasenya:",
+	"profile_worker_re_password"	=> "Repeteix contrasenya:",
+	"profile_worker_nif"			=> "NIF:",
+	"profile_worker_name"			=> "Nom:",
+	"profile_worker_surname"		=> "Cognoms:",
+	"profile_worker_mobile"			=> "Mòbil:",
+	"profile_worker_telephone"		=> "Telèfon:",
+	"profile_worker_category"		=> "Categoria:",
+	"profile_worker_team"			=> "Equip:",
+	"profile_worker_language"		=> "Idioma:"	
 
 
 ];

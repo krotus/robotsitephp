@@ -4,6 +4,7 @@ namespace Controllers\Admin;
 
 use Controllers\Controller as Controller;
 use Models\Business\Worker as Worker;
+use Models\Business\Language as Language;
 use Models\Business\Admin as Admin;
 use Models\Business\Team as Team;
 use App\Core\Session as Session;
@@ -22,7 +23,9 @@ class ProfileController extends Controller {
 
             $team = new Team();
             $teams = $team->getAll();
-            View::to("admin.profile", compact('admin', 'teams'));
+            $language = new Language();
+            $languages = $language->getAll();
+            View::to("admin.profile", compact('admin', 'teams', 'languages'));
         } else {
             $validator = new Gump();
             $inputs = array(
@@ -53,8 +56,6 @@ class ProfileController extends Controller {
 
             if ($validated === TRUE) {
                 $admin = unserialize(Session::get("user"));
-                $team = new Team($_POST["worker_team"]);
-                $team = $team->get();
                 $nAdmin = new Admin(
                         $admin->getId(), 
                         $_POST["worker_username"], 
@@ -65,11 +66,21 @@ class ProfileController extends Controller {
                         $_POST["worker_mobile"], 
                         $_POST["worker_telephone"], 
                         $_POST["worker_category"], 
-                        $_POST["worker_team"]
+                        $_POST["worker_team"],
+                        1, //isAdmin
+                        $_POST["worker_language"] //code language
                 );
 
                 $admin->updateWorker($nAdmin);
+                
+                $team = new Team($_POST["worker_team"]);
+                $team = $team->get();
                 $nAdmin->setTeam($team);
+
+                $language = new Language($_POST["worker_language"]);
+                $language = $language->get();
+                $nAdmin->setLanguage($language);
+
                 Session::set('user', serialize($nAdmin));
                 $msg = "s'ha editat satisfactoriament.";
                 View::redirect("admin.dashboard", compact("msg"));

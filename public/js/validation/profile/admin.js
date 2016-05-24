@@ -72,6 +72,9 @@ $("#admin_profile").validate({
         },
         worker_team: {
             required: true
+        },
+        worker_language: {
+            required: true
         }
     },
     errorElement: "em",
