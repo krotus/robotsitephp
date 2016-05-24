@@ -29,7 +29,7 @@
                 <label>Trabajador:</label>
                     <div class="magic-span">
                         <?php
-                        App\Utility\QuickForm::createSelect("task_worker", "name", $data['workers'], $data['task']->getWorker()->getId());
+                            App\Utility\QuickForm::createSelect("task_worker", "name", $data['workersTaskTeam'], $data['task']->getWorker()->getId());
                         ?>
                     </div>
                 </div>
