@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                <label>Estado:</label>
+                    <label>Estado:</label>
                     <div class="magic-span">
                         <?php
                         App\Utility\QuickForm::createSelect("order_status", "description", $data['statusOrders'], $data['order']->getStatusOrder()->getId());
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                <label>Robot:</label>
+                    <label>Robot:</label>
                     <div class="magic-span">
                         <?php
                         App\Utility\QuickForm::createSelect("order_robot", "name", $data['robots'], $data['order']->getRobot()->getId());
@@ -58,18 +58,18 @@
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="order_priority">Prioridad:</label><br>
                     <input id="order_priority" name="order_priority" style="width:100%"
-                        type="number"
-                        data-provide="slider"
-                        data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-                        data-slider-ticks-labels='["poca", "", "", "","media","","","","","alta"]'
-                        data-slider-min="1"
-                        data-slider-max="10"
-                        data-slider-step="1"
-                        data-slider-value="<?php echo $data['order']->getPriority()?>"
-                        data-slider-tooltip="show" />
+                           type="number"
+                           data-provide="slider"
+                           data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                           data-slider-ticks-labels='["poca", "", "", "","media","","","","","alta"]'
+                           data-slider-min="1"
+                           data-slider-max="10"
+                           data-slider-step="1"
+                           data-slider-value="<?php echo $data['order']->getPriority() ?>"
+                           data-slider-tooltip="show" />
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
-                <label>Proceso:</label>
+                    <label>Proceso:</label>
                     <div class="magic-span">
                         <?php
                         App\Utility\QuickForm::createSelect("order_process", "description", $data['processes'], $data['order']->getProcess()->getId());
@@ -83,22 +83,25 @@
             </form>
         </div>
     </div>
-<script src="<?php echo URL; ?>public/js/validation/order/edit.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $('#datepickertask').datetimepicker({
-            format: 'YYYY/MM/DD HH:mm:ss'
+    <script type="text/javascript">
+        codes = <?php echo json_encode($data['codeOrders']); ?>;
+    </script>
+    <script src="<?php echo URL; ?>public/js/validation/order/edit.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datepickertask').datetimepicker({
+                format: 'YYYY/MM/DD HH:mm:ss'
+            });
         });
-    });
-</script>
-<?php
-if (isset($data)) {
-    if (array_key_exists("error", $data)) {
-        echo '<div class="alert alert-danger" role="alert"><ul>';
-        foreach ($data["error"] as $key => $error) {
-            echo "<li>" . $error . "</li>";
+    </script>
+    <?php
+    if (isset($data)) {
+        if (array_key_exists("error", $data)) {
+            echo '<div class="alert alert-danger" role="alert"><ul>';
+            foreach ($data["error"] as $key => $error) {
+                echo "<li>" . $error . "</li>";
+            }
+            echo '</ul></div>';
         }
-        echo '</ul></div>';
     }
-}
-?>
+    ?>

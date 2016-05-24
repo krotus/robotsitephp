@@ -79,6 +79,9 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    codes = <?php echo json_encode($data['codeRobots']); ?>;
+</script>
 <script src="<?php echo URL; ?>public/js/validation/robot/create.js"></script>
 
 <?php
