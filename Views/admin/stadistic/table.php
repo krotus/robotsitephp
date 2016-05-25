@@ -52,7 +52,7 @@
             ?>
         </div>
         <div class="col-xs-12">
-            <input type="button" class="btn btn-primary" value="Filtrar" name="filter_order" onclick="loadTable('<?php echo URL; ?>')">
+            <input type="button" class="btn btn-primary " value="Filtrar" name="filter_order" onclick="filterAction('<?php echo URL; ?>')">
         </div>
     </div> <!-- ./row -->
     <div class="box">
@@ -63,6 +63,7 @@
     </div> <!-- ./row -->
     <script type="text/javascript">
         $(document).ready(function () {
+            setCurrentDates();
 
             $('#select-filter-type').change(function () {
                 switchFilter(this.value, '<?php echo URL; ?>');
@@ -77,7 +78,7 @@
             ordersListStadistics();
             $("#select_filter").show();
 
-            //loadTable();
+            loadTable('<?php echo URL; ?>');
         });
 
     </script>

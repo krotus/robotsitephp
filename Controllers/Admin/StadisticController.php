@@ -63,6 +63,8 @@ class StadisticController {
         $endDate = $_POST['end_date'];
         $idTeam = intval($_POST['id_team']);
         $idWorker = intval($_POST['id_worker']);
+//        var_dump($_POST['id_status']);
+//        exit;
         $idStatus = intval($_POST['id_status']);
         $paramsArray = array(
         "strDate" => $strDate,

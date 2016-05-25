@@ -113,6 +113,8 @@ class OrderDAO extends AbstractDAO{
 		$this->HTTPRequest->setMethod("POST");
 		$this->HTTPRequest->setData($object);
 		$response = $this->HTTPRequest->sendHTTPRequest();
+//                Debug::log($response);
+//                exit;
 		return $response;
 	}
 }
