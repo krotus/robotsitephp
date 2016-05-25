@@ -21,6 +21,9 @@
         </form>
     </div>
 </div>
+<script>
+    codes = <?php echo json_encode($data['codeProcesses']); ?>;
+</script>
 <script src="<?php echo URL; ?>public/js/validation/process/create.js"></script>
 <?php
 if (isset($data)) {

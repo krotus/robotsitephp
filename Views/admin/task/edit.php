@@ -29,7 +29,7 @@
                 <label>Trabajador:</label>
                     <div class="magic-span">
                         <?php
-                        App\Utility\QuickForm::createSelect("task_worker", "name", $data['workers'], $data['task']->getWorker()->getId());
+                            App\Utility\QuickForm::createSelect("task_worker", "name", $data['workersTaskTeam'], $data['task']->getWorker()->getId());
                         ?>
                     </div>
                 </div>
@@ -60,10 +60,14 @@
 <script src="<?php echo URL; ?>public/js/validation/task/edit.js"></script>
 <script type="text/javascript">
     $(function () {
+        $("#task_team").change(function () {
+            getWorkers();
+        });
         $('#datepickertask').datetimepicker({
             format: 'YYYY/MM/DD HH:mm:ss'
         });
     });
+
 </script>
 <?php
 if (isset($data)) {

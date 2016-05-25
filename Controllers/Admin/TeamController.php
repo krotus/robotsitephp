@@ -24,7 +24,16 @@ class TeamController extends Controller {
         if (!$_POST) {
             $team = new Team($id);
             $team = $team->get();
-            View::to("admin.team.edit", compact('team'));
+            $teamAll = new Team();
+            $teamCode = $team->getCode();
+            $teams = $teamAll->getAll();
+            $codeTeams = [];
+            foreach ($teams as $nTeam){
+                if($nTeam->getCode() != $teamCode){
+                    $codeTeams[] = $nTeam->getCode();
+                }
+            }
+            View::to("admin.team.edit", compact('team', 'codeTeams'));
         } else {
             $validator = new Gump();
             $inputs = array(
@@ -59,7 +68,13 @@ class TeamController extends Controller {
 
     public function create() {
         if (!$_POST) {
-            View::to("admin.team.create");
+            $team = new Team();
+            $teams = $team->getAll();
+            $codeTeams = [];
+            foreach ($teams as $team){
+                $codeTeams[] = $team->getCode();
+            }
+            View::to("admin.team.create", compact('codeTeams'));
         } else {
             $validator = new Gump();
             $inputs = array(

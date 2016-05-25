@@ -22,7 +22,16 @@ class ProcessController extends Controller {
         if(!$_POST){
             $process = new Process($id);
             $process = $process->get();
-            View::to("admin.process.edit", compact('process'));
+            $processAll = new Process();
+            $processCode = $process->getCode();
+            $processes = $processAll->getAll();
+            $codeProcesses = [];
+            foreach ($processes as $nProcess){
+                if($nProcess->getCode() != $processCode){
+                    $codeProcesses[] = $nProcess->getCode();
+                }
+            }
+            View::to("admin.process.edit", compact('process', 'codeProcesses'));
         } else {
             $validator = new Gump();
             $inputs = array(
@@ -58,7 +67,13 @@ class ProcessController extends Controller {
 
     public function create() {
         if(!$_POST){
-            View::to("admin.process.create");
+            $process = new Process();
+            $processes = $process->getAll();
+            $codeProcesses = [];
+            foreach ($processes as $process){
+                $codeProcesses[] = $process->getCode();
+            }
+            View::to("admin.process.create", compact('codeProcesses'));
         }else{
             $validator = new Gump();
             $inputs = array(

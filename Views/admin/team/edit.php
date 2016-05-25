@@ -8,7 +8,7 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <form id="team_create" role="form" action="" method="POST">
+            <form id="team_edit" role="form" action="" method="POST">
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="team_code">Codigo:</label>
                     <div class="magic-span">
@@ -28,15 +28,18 @@
             </form>
         </div>
     </div>
+    <script>
+        codes = <?php echo json_encode($data['codeTeams']); ?>;
+    </script>
     <script src="<?php echo URL; ?>public/js/validation/team/edit.js"></script>
-<?php
-if (isset($data)) {
-    if (array_key_exists("error", $data)) {
-        echo '<div class="alert alert-danger" role="alert"><ul>';
-        foreach ($data["error"] as $key => $error) {
-            echo "<li>" . $error . "</li>";
+    <?php
+    if (isset($data)) {
+        if (array_key_exists("error", $data)) {
+            echo '<div class="alert alert-danger" role="alert"><ul>';
+            foreach ($data["error"] as $key => $error) {
+                echo "<li>" . $error . "</li>";
+            }
+            echo '</ul></div>';
         }
-        echo '</ul></div>';
     }
-}
-?>
+    ?>

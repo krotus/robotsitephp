@@ -121,5 +121,12 @@ class Order extends DataObject{
         $dao = new OrderDAO();
         return $dao->getAllOrdersAdmin();   
     }
+    
+    function getStadisticOrders($object){
+        $dao = new OrderDAO();
+        return $dao->getStadisticOrders($object);   
+    }
+    
+    
 
 }

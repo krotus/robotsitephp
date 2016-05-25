@@ -30,7 +30,13 @@ class TaskController extends Controller {
             $orders = $order->getAll();
             $worker = new Worker();
             $workers = $worker->getAll();
-            View::to("admin.task.edit", compact('task','teams','orders','workers'));
+            $workersTaskTeam = array();
+            for ($i=0; $i < count($workers); $i++) { 
+                if ($workers[$i]->getTeam() == $task->getTeam()->getId()) {
+                    array_push($workersTaskTeam, $workers[$i]);
+                }
+            }
+            View::to("admin.task.edit", compact('task','teams','orders','workersTaskTeam'));
         }else{
             $validator = new Gump();
             $inputs = array(
