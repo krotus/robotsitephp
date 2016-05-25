@@ -14,13 +14,13 @@
             <div id = 'mapdiv'></div> 
             <div class="modal-footer">
                 <button type="button" id="save_ubication" class="btn btn-success pull-left">Grabar </button>
-                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger pull-right boto_margin" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
 </div> 
 <section class="content-header">
-    <h1>
+    <h1 class="titol_margin">
         Editar robot
     </h1>
 </section>

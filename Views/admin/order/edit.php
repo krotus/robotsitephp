@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/datetimepicker-custom.css">
 <section class="content-header">
-    <h1>
+    <h1 class="titol_margin">
         Editar orden
     </h1>
 </section>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-xs-12">
                     <input type="submit" class="btn btn-primary" value="Editar" name="process_edit">
-                    <a href=".." class="btn btn-danger">Cancelar</a>
+                    <a href=".." class="btn btn-danger boto_margin">Cancelar</a>
                 </div>
             </form>
         </div>

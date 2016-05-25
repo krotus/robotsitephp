@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/datetimepicker-custom.css">
 <section class="content-header">
-    <h1>
-        Añadir orden
-    </h1>
+        <h1 class="titol_margin">
+            Añadir orden
+        </h1>
 </section>
 
 <!-- Main content -->
@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-xs-12">
                     <input type="submit" class="btn btn-primary" value="Crear" name="process_create">
-                    <a href="../order" class="btn btn-danger">Cancelar</a>
+                    <a href="../order" class="btn btn-danger boto_margin">Cancelar</a>
                 </div>
             </form>
         </div>

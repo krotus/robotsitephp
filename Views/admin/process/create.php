@@ -1,4 +1,9 @@
-<h2>Añadir proceso</h2>
+<section class="content-header">
+        <h1 class="titol_margin">
+            Añadir proceso
+        </h1>
+</section>
+<section class="content">
 <div class="row">
     <div class="col-xs-12">
         <form id="process_create" role="form" action="" method="POST">
@@ -16,7 +21,7 @@
             </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Crear" name="process_create">
-                <a href="../process" class="btn btn-danger">Cancelar</a>
+                <a href="../process" class="btn btn-danger boto_margin">Cancelar</a>
             </div>
         </form>
     </div>

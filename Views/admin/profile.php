@@ -1,5 +1,5 @@
 <section class="content-header">
-    <h1>
+    <h1 class="titol_margin">
         Modificar perfil
     </h1>
 </section>

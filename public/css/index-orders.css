@@ -28,3 +28,11 @@
     color: #000;
     font-size: 30px;
 }
+
+.titol_margin{
+    margin-left: 0.6em !important;
+}
+
+.boto_margin{
+    margin-bottom: 1em !important;
+}

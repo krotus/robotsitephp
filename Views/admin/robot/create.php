@@ -20,8 +20,9 @@
     </div>
 </div> 
 <section class="content-header">
-    <h2>Añadir Robot</h2>
+    <h1 class="titol_margin">Añadir Robot</h1>
 </section>
+<section class="content">
 <div class="row">
     <div class="col-xs-12">
         <form  id="robot_create" role="form" action="" method="POST">
@@ -74,7 +75,7 @@
             </div>
             <div class="col-xs-12">
                 <input type="submit" class="btn btn-primary" value="Crear" name="team_create">
-                <a href="../robot" class="btn btn-danger">Cancelar</a>
+                <a href="../robot" class="btn btn-danger boto_margin">Cancelar</a>
             </div>
         </form>
     </div>
