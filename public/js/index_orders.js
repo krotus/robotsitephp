@@ -147,12 +147,12 @@ function specifyIssue(idOrder, codeRobot) {
     $('#cancelledModal').modal('toggle');
 }
 
-function executeOrder(idOrd, status, idWork, codeRobot, baseUrl) {
+function executeOrder(idOrd, status, idWork, codeRobot, baseUrl, ipRobot) {
     $.ajax({
         type: "get",
         url: "http://testservice.xyz/v1/orders/updateExecute/" + idOrd + "/" + status + "/" + idWork + "/" + codeRobot,
         crossDomain: true,
-        async: false,
+        async: true,
         success: function (data) {
             $('#confirmModal>div>div').attr('class', 'alert alert-success');
             $('#confirmModal>div>div').html(data.message);
@@ -163,6 +163,24 @@ function executeOrder(idOrd, status, idWork, codeRobot, baseUrl) {
             setTimeout(function () {
                 $('#confirmModal').modal('toggle');
             }, 1000);
+
+            $.ajax({
+                type: "get",
+                url: "http://"+ipRobot+"/order/"+idOrd,
+                crossDomain: true,
+                async: true,
+                success: function (data) {
+                    console.log("dades enviades correctament.");
+                    console.log(data);
+                },
+                error: function (err) {
+                    console.log("error", err);
+                },
+                beforeSend: function () {
+                    console.log("executant ordre robot");
+                }
+            });
+
         },
         error: function (err) {
             $('#confirmModal>div>div').attr('class', 'alert alert-danger');
@@ -231,7 +249,7 @@ function completeOrder(idWork, baseUrl) {
     }
 }
 
-function cancelOrder(idWork, baseUrl) {
+function cancelOrder(idWork, baseUrl, ipRobot) {
     var justification = $('#cancel-justification').val();
     if (justification.trim().length == 0) {
         $('#cancelledModal .modal-body').prepend('<p class="alert alert-danger">Por favor introduzca una justificación válida.</p>')

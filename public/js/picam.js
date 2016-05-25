@@ -6,7 +6,7 @@ var scene,
     context,
     widthBox = 512,
     heightBox = 288,
-    ipCam = "192.168.2.3",
+    ipCam = "192.168.2.4",
     flag;
 
 $(document).ready(init);

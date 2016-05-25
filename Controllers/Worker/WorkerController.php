@@ -120,12 +120,13 @@ class WorkerController extends Controller {
             foreach ($orders[$i] as $ord) {
                 array_push($auxArray, $ord);
             }
+            array_pop($auxArray);
             switch ($status) {
                 case 'pending':
                     if ($orders[$i]['desc_sr'] != 'online') {
                         array_push($auxArray, "<input type='button' class='btn btn-success' value='" . $trans['btn_orders_execute'] . "' disabled>");
                     } else {
-                        array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ",". $orders[$i]['code_robot'] .", \"" . URL . "\")'>
+                        array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ",". $orders[$i]['code_robot'] .", \"" . URL . "\", \"".$orders[$i]['ip_robot']."\")'>
                             <button type='button' class='btn btn-info' onclick='toogleCam()' style='width:74px' />
                         <i class='fa fa-video-camera'></i></button>");
                         
@@ -139,7 +140,7 @@ class WorkerController extends Controller {
                         }
                     }
                     if ($taskFound->getWorker() == $idWorker) {
-                        array_push($auxArray, "<button class='btn btn-success' value='' onclick='setCompletedTime(" . $orders[$i]['id'] . "," . $orders[$i]['code_robot'] . ")'><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-danger' value='' onclick='specifyIssue(" . $orders[$i]['id'] . "," . $orders[$i]['code_robot'] . ")'><span class='glyphicon glyphicon-remove'></span></button><button type='button' class='btn btn-info' onclick='toogleCam()' style='padding-left:32px;padding-right:32px'/><i class='fa fa-video-camera'></i></button>");
+                        array_push($auxArray, "<button class='btn btn-success' value='' onclick='setCompletedTime(" . $orders[$i]['id'] . "," . $orders[$i]['code_robot'] . ")'><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-danger' value='' onclick='specifyIssue(" . $orders[$i]['id'] . "," . $orders[$i]['code_robot'] . ", \"".$orders[$i]['ip_robot']."\")'><span class='glyphicon glyphicon-remove'></span></button><button type='button' class='btn btn-info' onclick='toogleCam()' style='padding-left:32px;padding-right:32px'/><i class='fa fa-video-camera'></i></button>");
                     } else {
                         array_push($auxArray, "<button class='btn btn-disabled' value=''><span class='glyphicon glyphicon-ok'></span></button><button class='btn btn-disabled' value=''><span class='glyphicon glyphicon-remove'></span></button>");
                     }
