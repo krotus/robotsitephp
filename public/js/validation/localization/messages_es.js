@@ -34,7 +34,8 @@ $.extend( $.validator.messages, {
 	nieES: "Por favor, escribe un NIE válido.",
 	cifES: "Por favor, escribe un CIF válido.",
 	IP4Checker: "Por favor, escribe un IPv4 válida.",
-	exactlength: "Por favor, esribe exactamente {0} caracteres."
+	exactlength: "Por favor, esribe exactamente {0} caracteres.",
+	codeChecker: "Este codigo ya existe."
 } );
 
 }));

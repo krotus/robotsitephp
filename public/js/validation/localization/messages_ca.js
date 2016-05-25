@@ -34,7 +34,8 @@ $.extend( $.validator.messages, {
 	nieES: "Si us plau, escriu un NIE vàlid.",
 	cifES: "Si us plau, escriu un CIF vàlid.",
 	IP4Checker: "Si us plau, escriur una IPv4 vàlida.",
-	exactlength: "Si us plau, escriu exactament {0} caràcters."
+	exactlength: "Si us plau, escriu exactament {0} caràcters.",
+	codeChecker: "Aquest codi ja existeix."
 } );
 
 }));
