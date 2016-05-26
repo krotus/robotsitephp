@@ -11,6 +11,7 @@ return [
 	"404_message1"				=> "We could not find the page you were looking for. Meanwhile, you may ",
 	"404_go_back"				=> "go back ",
 	"404_message2"				=> "or try other option.",
+	"btn_name_save_changes"		=> "Save changes",
 
 	//View workers frontend
 	"title_workers_frontend"	=> "Orders from ",

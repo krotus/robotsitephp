@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="col-xs-12">
-                <input type="submit" class="btn btn-primary" value="Guardar canvios" name="worker_profile" disabled>
+                <input type="submit" class="btn btn-primary" value="<?php echo $trans['btn_name_save_changes']?>" name="worker_profile" disabled>
             </div>
         </form>
     </div>

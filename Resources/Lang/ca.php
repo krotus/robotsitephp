@@ -11,6 +11,7 @@ return [
 	"404_message1"				=> "No hem pogut trobar la pàgina que intentes cercar. Però es possible ",
 	"404_go_back"				=> "tornar enrrera ",
 	"404_message2"				=> "o intentar una altre opció.",
+	"btn_name_save_changes"		=> "Guardar canvis",
 
 	//View workers frontend
 	"title_workers_frontend"	=> "Ordres de ",
