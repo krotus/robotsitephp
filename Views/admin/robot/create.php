@@ -88,11 +88,7 @@
 <?php
 if (isset($data)) {
     if (array_key_exists("error", $data)) {
-        echo '<div class="alert alert-danger" role="alert"><ul>';
-        foreach ($data["error"] as $key => $error) {
-            echo "<li>" . $error . "</li>";
-        }
-        echo '</ul></div>';
+        App\Utility\QuickForm::showListErrors($data["error"]);
     }
 }
 ?>

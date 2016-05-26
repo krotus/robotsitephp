@@ -1,4 +1,4 @@
-$("#worker_create").validate({
+$("#worker_edit").validate({
     rules:{
         worker_username: {
             required: true,

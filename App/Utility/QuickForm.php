@@ -40,5 +40,13 @@ class QuickForm {
         <?php
     }
 
+    public static function showListErrors($errors){
+        echo '<div class="alert alert-danger" role="alert"><ul>';
+        foreach ($errors as $key => $error) {
+            echo "<li>" . $error . "</li>";
+        }
+        echo '</ul></div>';
+    }
+
 }
 ?>
