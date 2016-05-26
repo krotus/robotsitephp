@@ -2,3 +2,12 @@
 ::-webkit-scrollbar-thumb{background-color: #3c8dbc; border-radius: 0px;}
 ::-webkit-scrollbar-thumb:hover{background-color: #3c8dbc;}
 ::-webkit-scrollbar-track{background-color:#ecf0f5;}
+
+.dataTables_wrapper{
+	overflow-x: scroll;
+}
+
+.dataTables_wrapper .row{
+	margin-right:0px !important;
+	margin-left:0px !important; 
+}

@@ -55,7 +55,7 @@
             <input type="button" class="btn btn-primary " value="Filtrar" name="filter_order" onclick="filterAction('<?php echo URL; ?>')">
         </div>
     </div> <!-- ./row -->
-    <div class="box">
+    <div class="box box-primary">
         <div class="box-body">
             <table id="ordersFilter" class="table table-bordered table-condensed">
             </table>
