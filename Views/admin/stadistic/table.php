@@ -1,4 +1,4 @@
-<!--<link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/datetimepicker-custom.css">-->
+<link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/datetimepicker-custom.css">
 <section class="content-header">
     <h1>
         Estadísticas de las ordenes
@@ -51,7 +51,7 @@
             App\Utility\QuickForm::createSelect("order_status", "description", $data['statusOrders']);
             ?>
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12 margin-bottom">
             <input type="button" class="btn btn-primary " value="Filtrar" name="filter_order" onclick="filterAction('<?php echo URL; ?>')">
         </div>
     </div> <!-- ./row -->

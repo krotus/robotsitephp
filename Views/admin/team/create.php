@@ -19,9 +19,9 @@
                     <input type="text" class="form-control" name="team_name" id="team_name">
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-12 margin-bottom">
                 <input type="submit" class="btn btn-primary" value="Crear" name="team_create">
-                <a href="../team" class="btn btn-danger boto_margin">Cancelar</a>
+                <a href="../team" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>

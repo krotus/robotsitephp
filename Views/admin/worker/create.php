@@ -74,9 +74,9 @@
                     <label class="radio-inline"><input type="radio" value="1" name="worker_is_admin">Sí</label>
                     <label class="radio-inline"><input type="radio" value="0" name="worker_is_admin" checked>No</label>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 margin-bottom">
                     <input type="submit" class="btn btn-primary" value="Crear" name="worker_create">
-                    <a href="../worker" class="btn btn-danger boto_margin">Cancelar</a>
+                    <a href="../worker" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>

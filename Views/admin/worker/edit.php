@@ -67,9 +67,9 @@
                     <label class="radio-inline"><input type="radio" value="0" name="worker_is_admin" 
                         <?php echo ($data['worker']->getIsAdmin() == 0) ? 'checked' : ''; ?>>No</label>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 margin-bottom">
                     <input type="submit" class="btn btn-primary" value="Editar" name="worker_edit">
-                    <a href=".." class="btn btn-danger boto_margin">Cancelar</a>
+                    <a href=".." class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>

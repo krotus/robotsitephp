@@ -80,7 +80,7 @@
                         <input type="text" class="form-control" name="robot_ip_address" id="robot_ip_address" value="<?php echo $data['robot']->getIpAddress() ?>">
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 margin-bottom">
                     <input type="submit" class="btn btn-primary" value="Editar" name="team_edit">
                     <a href=".." class="btn btn-danger">Cancelar</a>
                 </div>

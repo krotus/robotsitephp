@@ -19,9 +19,9 @@
                     <input type="text" class="form-control" name="process_description" id="process_description">
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-12 margin-bottom">
                 <input type="submit" class="btn btn-primary" value="Crear" name="process_create">
-                <a href="../process" class="btn btn-danger boto_margin">Cancelar</a>
+                <a href="../process" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>
