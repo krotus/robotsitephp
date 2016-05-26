@@ -126,7 +126,7 @@ class WorkerController extends Controller {
                     if ($orders[$i]['desc_sr'] != 'online') {
                         array_push($auxArray, "<input type='button' class='btn btn-success' value='" . $trans['btn_orders_execute'] . "' disabled>");
                     } else {
-                        array_push($auxArray, "<input type='button' class='btn btn-success' value='Ejecutar'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ",". $orders[$i]['code_robot'] .", \"" . URL . "\", \"".$orders[$i]['ip_robot']."\")'>
+                        array_push($auxArray, "<input type='button' class='btn btn-success' value='" . $trans['btn_orders_execute'] . "'  onclick='executeOrder(" . $orders[$i]['id'] . ", 2, " . unserialize(\App\Core\Session::get('user'))->getId() . ",". $orders[$i]['code_robot'] .", \"" . URL . "\", \"".$orders[$i]['ip_robot']."\")'>
                             <button type='button' class='btn btn-info' onclick='toogleCam()' style='width:74px' />
                         <i class='fa fa-video-camera'></i></button>");
                         
