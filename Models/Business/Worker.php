@@ -5,7 +5,9 @@ namespace Models\Business;
 use Models\Business\User as User;
 use Models\DAO\TaskDAO as TaskDAO;
 use Models\DAO\WorkerDAO as WorkerDAO;
-
+/**
+ * @package \Models\Business\Worker
+ */
 class Worker extends User {
 
     public function __construct($id = null, $username = null, $password = null, $nif = null, $name = null, $surname = null, $mobile = null, $telephone = null, $category = null, $team = null, $isAdmin = null, $language = null){
@@ -13,7 +15,7 @@ class Worker extends User {
         $this->setIsAdmin(0);
     }
 /**
- * Metode que permet a un treballador afagar una ordre
+ * Metode que permet a un treballador afagar una ordre.
  * @param type $task
  */
     public function takeOrder($task) {
@@ -22,18 +24,24 @@ class Worker extends User {
         $dao->update($task);
     }
     /**
-     * Metode que permet al treballador finalitzar l'ordre
-     * @param type $task
+     * Metode que permet al treballador finalitzar l'ordre.
+     * @param object $task
      */
     public function finishOrder($task){
         $dao = new TaskDAO;
         $dao->update($task);
     }
-    
+    /**
+     * Metode que fa una actualització del treballador
+     * @param object $worker
+     */
     public function updateWorker($worker){
         $worker->update();
     }
-
+/**
+ * Metode que retorna tots els treballadors.
+ * @return array[][]
+ */
     public function getAllWorkersAdmin() {
         $dao = new WorkerDAO();
         return $dao->getAllWorkersAdmin();

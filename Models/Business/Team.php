@@ -5,18 +5,21 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 use Models\DAO\TeamDAO as TeamDAO;
 
-class Team extends DataObject{
+/**
+ * @package \Models\Business\Team
+ */
+class Team extends DataObject {
+
     protected $id;
     protected $code;
     protected $name;
-    
+
     function __construct($id = null, $code = null, $name = null) {
         $this->setId($id);
         $this->setCode($code);
         $this->setName($name);
     }
 
-    
     function getId() {
         return $this->id;
     }
@@ -41,11 +44,13 @@ class Team extends DataObject{
         $this->name = $name;
     }
 
-    public function getAllTeamsAdmin()
-    {
+    /**
+     * Metode que retorna tots els equips
+     * @return array[][]
+     */
+    public function getAllTeamsAdmin() {
         $dao = new TeamDAO();
         return $dao->getAllTeamsAdmin();
     }
-
 
 }

@@ -5,7 +5,9 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 use Models\DAO\TaskDAO as TaskDAO;
 
-
+/**
+ * @package \Models\Business\Task
+ */
 class Task extends DataObject{
     protected $id;
     protected $team;
@@ -82,7 +84,10 @@ class Task extends DataObject{
     function setJustification($justification) {
         $this->justification = $justification;
     }
-
+/**
+ * Metode que retorna totes les tasques.
+ * @return array[][]
+ */
     public function getAllTasksAdmin()
     {
         $dao = new TaskDAO();
