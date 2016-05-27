@@ -8,7 +8,7 @@
 <section class="content">
 	<!-- Small boxes (Stat box) -->
 	<div class="row">
-	    <div class="col-lg-3 col-xs-6">
+	    <div class="col-lg-4 col-xs-6">
 	        <!-- small box -->
 	        <div class="small-box bg-aqua">
 	            <div class="inner">
@@ -23,7 +23,7 @@
 	        </div>
 	    </div>
 	    <!-- ./col -->
-	    <div class="col-lg-3 col-xs-6">
+	    <div class="col-lg-4 col-xs-6">
 	        <!-- small box -->
 	        <div class="small-box bg-green">
 	            <div class="inner">
@@ -38,7 +38,7 @@
 	        </div>
 	    </div>
 	    <!-- ./col -->
-	    <div class="col-lg-3 col-xs-6">
+	    <div class="col-lg-4 col-xs-6">
 	        <!-- small box -->
 	        <div class="small-box bg-yellow">
 	            <div class="inner">
@@ -53,7 +53,7 @@
 	        </div>
 	    </div>
 	    <!-- ./col -->
-	    <div class="col-lg-3 col-xs-6">
+	    <div class="col-lg-4 col-xs-6">
 	        <!-- small box -->
 	        <div class="small-box bg-purple">
 	            <div class="inner">
@@ -68,7 +68,7 @@
 	        </div>
 	    </div>
 	    <!-- ./col -->
-	    <div class="col-lg-3 col-xs-6">
+	    <div class="col-lg-4 col-xs-6">
 	        <!-- small box -->
 	        <div class="small-box bg-red">
 	            <div class="inner">
@@ -83,7 +83,7 @@
 	        </div>
 	    </div>
 	    <!-- ./col -->
-	    <div class="col-lg-3 col-xs-6">
+	    <div class="col-lg-4 col-xs-6">
 	        <!-- small box -->
 	        <div class="small-box bg-blue">
 	            <div class="inner">
@@ -101,6 +101,7 @@
 	</div>
 	<!-- /.row -->
 	<div class="row">
+            <div class="col-md-3 hidden-xs"></div>
 	    <div class="col-md-6">
 	        <!-- DONUT CHART -->
 	        <div class="box box-primary">
@@ -122,6 +123,7 @@
 	        </div>
 	        <!-- /.box -->
 	    </div><!-- /.col (LEFT) -->
+            <div class="col-md-3 hidden-xs"></div>
 	</div><!-- /.row -->
 	<script>
 	$(document).ready(function(){
