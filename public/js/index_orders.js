@@ -147,10 +147,10 @@ function specifyIssue(idOrder, codeRobot) {
     $('#cancelledModal').modal('toggle');
 }
 
-function executeOrder(idOrd, status, idWork, codeRobot, baseUrl, ipRobot) {
+function executeOrder(idOrd, status, idWork, codeRobot, baseUrl, ipRobot, baseUrlW) {
     $.ajax({
         type: "get",
-        url: "http://testservice.xyz/v1/orders/updateExecute/" + idOrd + "/" + status + "/" + idWork + "/" + codeRobot,
+        url: baseUrlW+"orders/updateExecute/" + idOrd + "/" + status + "/" + idWork + "/" + codeRobot,
         crossDomain: true,
         async: true,
         success: function (data) {
@@ -197,7 +197,7 @@ function executeOrder(idOrd, status, idWork, codeRobot, baseUrl, ipRobot) {
     });
 }
 
-function completeOrder(idWork, baseUrl) {
+function completeOrder(idWork, baseUrl, baseUrlW) {
     var completedTime = $('#completed-time').val();
     if (completedTime.trim().length == 0) {
         $('#completedModal .modal-body').prepend('<p class="alert alert-danger">Por favor introduzca una hora válida.</p>')
@@ -216,7 +216,7 @@ function completeOrder(idWork, baseUrl) {
         $('#completedModal').modal('toggle');
         $.ajax({
             type: "get",
-            url: "http://testservice.xyz/v1/orders/completedByTask/" + orderId + "/" + statusId + "/" + codeRobot,
+            url: baseUrlW+"orders/completedByTask/" + orderId + "/" + statusId + "/" + codeRobot,
             data: {"dataExtra": datetimeToSend},
             crossDomain: true,
             async: false,
@@ -249,7 +249,7 @@ function completeOrder(idWork, baseUrl) {
     }
 }
 
-function cancelOrder(idWork, baseUrl, ipRobot) {
+function cancelOrder(idWork, baseUrl, baseUrlW, ipRobot) {
     var justification = $('#cancel-justification').val();
     if (justification.trim().length == 0) {
         $('#cancelledModal .modal-body').prepend('<p class="alert alert-danger">Por favor introduzca una justificación válida.</p>')
@@ -260,7 +260,7 @@ function cancelOrder(idWork, baseUrl, ipRobot) {
         $('#cancelledModal').modal('toggle');
         $.ajax({
             type: "get",
-            url: "http://testservice.xyz/v1/orders/completedByTask/" + orderId + "/" + statusId + "/" + codeRobot,
+            url: baseUrlW+"orders/completedByTask/" + orderId + "/" + statusId + "/" + codeRobot,
             data: {"dataExtra": justification},
             async: false,
             crossDomain: true,

@@ -54,7 +54,7 @@ if (isset($data)) {
                 </script>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success pull-left" onclick="completeOrder('<?php echo unserialize(\App\Core\Session::get('user'))->getId(); ?>', '<?php echo URL; ?>')"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-success pull-left" onclick="completeOrder('<?php echo unserialize(\App\Core\Session::get('user'))->getId(); ?>', '<?php echo URL; ?>', '<?php echo WEBSERVICE; ?>')"><span class="glyphicon glyphicon-ok"></span></button>
                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
         </div>
@@ -80,7 +80,7 @@ if (isset($data)) {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success pull-left" onclick="cancelOrder('<?php echo unserialize(\App\Core\Session::get('user'))->getId(); ?>', '<?php echo URL; ?>')"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-success pull-left" onclick="cancelOrder('<?php echo unserialize(\App\Core\Session::get('user'))->getId(); ?>', '<?php echo URL; ?>', '<?php echo WEBSERVICE; ?>')"><span class="glyphicon glyphicon-ok"></span></button>
                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
         </div>

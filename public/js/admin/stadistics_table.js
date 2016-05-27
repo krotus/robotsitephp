@@ -13,7 +13,7 @@ function setCurrentDates(){
         nextYear = nextYear.toString();
         nextMonth = (nextMonth+2).toString();
     }
-    $('#order_date_str').val(year+"/"+monthS+"/"+day+" 00:00:00");
+    $('#order_date_start').val(year+"/"+monthS+"/"+day+" 00:00:00");
     $('#order_date_end').val(nextYear+"/"+nextMonth+"/"+day+" 00:00:00");
 }
 
@@ -24,7 +24,7 @@ function filterAction(baseUrl){
 }
 
 function loadTable(baseUrl){
-    var strDate = $('#order_date_str').val();
+    var strDate = $('#order_date_start').val();
     var endDate = $('#order_date_end').val();
     var idStatus = $('#order_status').val();
     var idTeam = "0";

@@ -4,10 +4,10 @@ function updateData(workers) {
 		dropdownFill(workersFilter);
 }
 
-function getWorkers() {
+function getWorkers(baseUrl) {
     $.ajax({
         type: "GET",
-        url: "http://testservice.xyz/v1/workers/getAll",
+        url: baseUrl+"workers/getAll",
         async: true,
         crossDomain: true,
         success: function (result) {

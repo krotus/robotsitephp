@@ -15,7 +15,7 @@
             <div class="col-md-6" style="padding-left: 0px;">
                 <label for="order_code">Inicio:</label>
                 <div class='input-group date' id='datepickerstart'>
-                    <input type='text' class="form-control" id="order_date_str" name="order_date"/>
+                    <input type='text' class="form-control" id="order_date_start" name="order_date"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -75,7 +75,6 @@
             $('#datepickerend').datetimepicker({
                 format: 'YYYY/MM/DD HH:mm:ss'
             });
-            ordersListStadistics();
             $("#select_filter").show();
 
             loadTable('<?php echo URL; ?>');

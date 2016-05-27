@@ -64,6 +64,8 @@
     var isTeam = 1;
     var stadistics = [];
     $(document).ready(function(){
+        setCurrentDates();
+        
     	$('#datepickerstart').datetimepicker({
             format: 'YYYY/MM/DD HH:mm:ss'
         });
@@ -75,23 +77,10 @@
             isTeam = getIsTeam();
         });
 
-        var today = new Date();
-
-        var stadistic = {
-            "startDate" : today.getFullYear.toString()+"-"+(today.getMonth()+1).toString()+"-"+today.getDate().toString() + " 00:00:00",
-            "endDate": today.getFullYear.toString()+"-"+(today.getMonth()+1).toString()+"-"+today.getDate().toString() + " 23:59:59",
-            "isTeam": isTeam
-        };
-
-        getFilter(stadistic);
+        getFilter('<?php echo WEBSERVICE; ?>');
 
         $("#filter_order").on("click", function(){
-           var stadistic = {
-                "startDate" : $("#order_date_start").val(),
-                "endDate": $("#order_date_end").val(),
-                "isTeam": isTeam
-            };
-            getFilter(stadistic);
+           getFilter('<?php echo WEBSERVICE; ?>');
         });
 
         $("#form-pdf").on("submit", function(e){
@@ -105,73 +94,4 @@
         });
 
     });
-
-    function getFilter(stadistic){
-        $.ajax({
-            type: "post",
-            url: "http://testservice.xyz/v1/orders/stadistics",
-            data: stadistic,
-            async: true,
-            crossDomain: true,
-            success: function (result) {
-                if(isTeam == 1){
-                    stadistics = [];
-                    for(var i = 0; i < result.data.length; i++){
-                        var arrayN = [];
-                        var name = result.data[i].name;
-                        var count = result.data[i].tasks_done;
-                        arrayN['y'] = name;
-                        arrayN['a'] = count;
-                        stadistics.push(arrayN);
-                    }
-                    //BAR CHART
-                    var bar = new Morris.Bar({
-                        element: 'bar-chart',
-                        resize: true,
-                        data: stadistics,
-                        barColors: ['#00a65a'],
-                        xkey: 'y',
-                        ykeys: ['a'],
-                        labels: ['Completadas'],
-                        hideHover: 'auto'
-                    });
-                }else{
-                    stadistics = [];
-                    for(var i = 0; i < result.data.length; i++){
-                        var arrayN = [];
-                        var name = result.data[i].worker;
-                        var count = result.data[i].tasks_done;
-                        arrayN['y'] = name;
-                        arrayN['a'] = count;
-                        stadistics.push(arrayN);
-                    }
-                    var bar = new Morris.Bar({
-                        element: 'bar-chart',
-                        resize: true,
-                        data: stadistics,
-                        barColors: ['#00a65a'],
-                        xkey: 'y',
-                        ykeys: ['a'],
-                        labels: ['Completadas'],
-                        hideHover: 'auto'
-                    });
-                }
-
-            },
-            error: function (err) {
-                console.log("Error: ", err);
-            },
-            beforeSend: function () {
-                console.log("Cargando ...");
-            }
-        });
-    }
-
-    function getIsTeam(){
-        var isTeam = 0;
-        if($("#select_filter").val() == "team"){
-            isTeam = 1;
-        }
-        return isTeam;
-    }
 </script>

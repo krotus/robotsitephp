@@ -61,7 +61,7 @@
 <script type="text/javascript">
     $(function () {
         $("#task_team").change(function () {
-            getWorkers();
+            getWorkers('<?php echo WEBSERVICE; ?>');
         });
         $('#datepickertask').datetimepicker({
             format: 'YYYY/MM/DD HH:mm:ss'
