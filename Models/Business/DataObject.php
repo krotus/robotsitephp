@@ -1,53 +1,56 @@
-<?php 
+<?php
 
 namespace Models\Business;
 
 use App\Utility\Debug as Debug;
 
-abstract class DataObject{
+/**
+ * @package \Models\Business\DataObject
+ */
+abstract class DataObject {
 
-	protected function buildDAO(){
-		$typeOf = get_class($this);
-		$typeOf = str_replace("Business", "DAO", $typeOf);
-		$typeOf .= "DAO";
-		$dao = new $typeOf;
-		return $dao;
-	}
+    protected function buildDAO() {
+        $typeOf = get_class($this);
+        $typeOf = str_replace("Business", "DAO", $typeOf);
+        $typeOf .= "DAO";
+        $dao = new $typeOf;
+        return $dao;
+    }
 
-  	public function getSetters(){
+    public function getSetters() {
         $settersArray = array();
         foreach ($this as $key => $value) {
-           $key = ucfirst($key);
-           array_push($settersArray,"set" . $key);
+            $key = ucfirst($key);
+            array_push($settersArray, "set" . $key);
         }
 
         return $settersArray;
     }
 
-	public function get(){
-            $dao = $this->buildDAO();
-            return $dao->getById($this->getId())[0];
-	}
+    public function get() {
+        $dao = $this->buildDAO();
+        return $dao->getById($this->getId())[0];
+    }
 
-	public function getAll(){
-		$dao = $this->buildDAO();
-		return $dao->getAll();
-	}
+    public function getAll() {
+        $dao = $this->buildDAO();
+        return $dao->getAll();
+    }
 
-	public function create(){
-		$dao = $this->buildDAO();
-		return $dao->create($this);
-	}
+    public function create() {
+        $dao = $this->buildDAO();
+        return $dao->create($this);
+    }
 
-	public function delete(){
-		$dao = $this->buildDAO();
-		return $dao->delete($this->getId());
-	}
+    public function delete() {
+        $dao = $this->buildDAO();
+        return $dao->delete($this->getId());
+    }
 
-	public function update(){
-		$dao = $this->buildDAO();
-		return $dao->update($this);
-	}
+    public function update() {
+        $dao = $this->buildDAO();
+        return $dao->update($this);
+    }
 
     public function objectToArray($data) {
         if (is_array($data) || is_object($data)) {
@@ -64,17 +67,16 @@ abstract class DataObject{
     }
 
     //testejar.
-    public function objectToInt($object)
-    {
-    	$id = null;
+    public function objectToInt($object) {
+        $id = null;
         foreach ($object as $key => $value) {
-        	if (is_object($value)) {
-        		$id = $value->getId();
-        		$setter ="set".ucfirst($key);
-        		$object->$setter($id);
-        	}
-		}
-		return $object;
+            if (is_object($value)) {
+                $id = $value->getId();
+                $setter = "set" . ucfirst($key);
+                $object->$setter($id);
+            }
+        }
+        return $object;
     }
 
     public function toJson() {

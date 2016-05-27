@@ -5,19 +5,18 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 use Models\DAO\ProcessDAO as ProcessDAO;
 
+class Process extends DataObject {
 
-class Process extends DataObject{
     protected $id;
     protected $code;
     protected $description;
-    
+
     function __construct($id = null, $code = null, $description = null) {
         $this->setId($id);
         $this->setCode($code);
         $this->setDescription($description);
     }
 
-    
     function getId() {
         return $this->id;
     }
@@ -41,11 +40,14 @@ class Process extends DataObject{
     function setDescription($description) {
         $this->description = $description;
     }
-    public function getAllProcessesAdmin()
-    {
+
+    /**
+     * Metode que agafa tots el processos
+     * @return array[][]
+     */
+    public function getAllProcessesAdmin() {
         $dao = new ProcessDAO();
         return $dao->getAllProcessesAdmin();
     }
-
 
 }

@@ -4,16 +4,19 @@ namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
 
-class Point extends DataObject{
+/**
+ * @package \Models\Business\Point
+ */
+class Point extends DataObject {
+
     protected $id;
     protected $posX;
     protected $posY;
     protected $posZ;
     protected $tweezer;
     protected $process;
-    
-    function __construct($id = null, $posX = null, $posY = null, $posZ = null, 
-            $tweezer = null, $process = null) {
+
+    function __construct($id = null, $posX = null, $posY = null, $posZ = null, $tweezer = null, $process = null) {
         $this->setId($id);
         $this->setPosX($posX);
         $this->setPosY($posY);
@@ -22,7 +25,6 @@ class Point extends DataObject{
         $this->setProcess($process);
     }
 
-        
     function getId() {
         return $this->id;
     }
@@ -70,6 +72,5 @@ class Point extends DataObject{
     function setProcess($process) {
         $this->process = $process;
     }
-
 
 }

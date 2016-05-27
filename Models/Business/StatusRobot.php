@@ -3,7 +3,9 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
-
+/**
+ * @package \Models\Business\StatusRobot
+ */
 class StatusRobot extends DataObject{
     protected $id;
     protected $description;

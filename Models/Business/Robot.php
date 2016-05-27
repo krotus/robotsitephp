@@ -5,8 +5,11 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 use Models\DAO\RobotDAO as RobotDAO;
 
+/**
+ * @package \Models\Business\Robot
+ */
+class Robot extends DataObject {
 
-class Robot extends DataObject{
     protected $id;
     protected $code;
     protected $name;
@@ -15,9 +18,8 @@ class Robot extends DataObject{
     protected $longitude;
     protected $statusRobot;
     protected $ipCam;
-    
-    function __construct($id = null, $code = null, $name = null, $ipAddress = null, 
-            $latitude = null, $longitude = null, $statusRobot = null, $ipCam = null) {
+
+    function __construct($id = null, $code = null, $name = null, $ipAddress = null, $latitude = null, $longitude = null, $statusRobot = null, $ipCam = null) {
         $this->setId($id);
         $this->setCode($code);
         $this->setName($name);
@@ -28,7 +30,6 @@ class Robot extends DataObject{
         $this->setIpCam($ipCam);
     }
 
-    
     function getId() {
         return $this->id;
     }
@@ -85,19 +86,21 @@ class Robot extends DataObject{
         $this->statusRobot = $statusRobot;
     }
 
-    function getIpCam(){
+    function getIpCam() {
         return $this->ipCam;
     }
 
-    function setIpCam($ipCam){
+    function setIpCam($ipCam) {
         $this->ipCam = $ipCam;
     }
 
-    public function getAllRobotsAdmin()
-    {
+    /**
+     * Metode que agafa tots els robots.
+     * @return array[][]
+     */
+    public function getAllRobotsAdmin() {
         $dao = new RobotDAO();
         return $dao->getAllRobotsAdmin();
     }
-
 
 }

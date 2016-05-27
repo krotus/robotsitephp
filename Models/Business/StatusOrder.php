@@ -3,7 +3,9 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
-
+/**
+ * \Models\Business\StatusOrder
+ */
 class StatusOrder extends DataObject{
     protected $id;
     protected $description;

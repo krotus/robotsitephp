@@ -5,6 +5,9 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 use Models\DAO\OrderDAO as OrderDAO;
 
+/**
+ * @package \Models\Business\Order
+ */
 class Order extends DataObject {
 
     protected $id;
@@ -70,7 +73,7 @@ class Order extends DataObject {
     }
 
     function setCode($code) {
-            $this->code = $code;
+        $this->code = $code;
     }
 
     function setDescription($description) {
@@ -102,8 +105,8 @@ class Order extends DataObject {
     }
 
     /**
-     * Metode que retorna les ordres assignades a un equip
-     * @param type $team
+     * Metode que retorna les ordres assignades a un equip.
+     * @param object $team
      */
     function checkOrdersAssigned($team) {
         $dao = new OrderDAO();
@@ -111,16 +114,31 @@ class Order extends DataObject {
         $dao->getOrdersByTeamId($team);
     }
 
+    /**
+     * Metode que retorna les ordres assignades a un treballador per l'estat en el que es troben.
+     * @param int $idWorker
+     * @param string $status
+     * @return array[][]
+     */
     function getAllByStatus($idWorker, $status) {
         $dao = new OrderDAO();
         return $dao->getAllByStatus($idWorker, $status);
     }
 
+    /**
+     * Metode que retorna totes les ordres.
+     * @return array[][]
+     */
     function getAllOrdersAdmin() {
         $dao = new OrderDAO();
         return $dao->getAllOrdersAdmin();
     }
 
+    /**
+     * Metode que retorna les ordres per a construir les estadistiques.
+     * @param object $object
+     * @return array[][]
+     */
     function getStadisticOrders($object) {
         $dao = new OrderDAO();
         return $dao->getStadisticOrders($object);

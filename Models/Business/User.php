@@ -6,7 +6,9 @@ use Models\DAO\HTTPRequest as HTTPRequest;
 use Models\DAO\UserDAO as UserDAO;
 use Models\Business\DataObject as DataObject;
 use App\Utility\Debug as Debug;
-
+/**
+ * @package \Models\Business\User
+ */
 class User extends DataObject {
 
     protected $id;
@@ -128,7 +130,10 @@ class User extends DataObject {
     public function setTeam($team) {
         $this->team = $team;
     }
-
+/**
+ * Metode que autentica que un usuari i contrasenya existeix a la base de dades.
+ * @return boolean
+ */
     public function authenticate() {
         $userDAO = new UserDAO();
         $users = $userDAO->getAll();
@@ -145,9 +150,16 @@ class User extends DataObject {
         }
         return $valid;
     }
+    /**
+     * Metode que tanca la sessió de l'usuari
+     */
     public function logout(){
         Session::destroy('user');
     }
+    /**
+     * Metode que a partir d'un objecte crea un json.
+     * @return json
+     */
     public function toJson() {
         return json_encode($this);
     }

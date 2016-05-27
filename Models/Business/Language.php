@@ -1,16 +1,19 @@
-<?php 
+<?php
 
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
 
-class Language extends DataObject{
+/**
+ * @package \Models\Business\Language
+ */
+class Language extends DataObject {
 
-	public function __construct($id = null, $code = null, $description = null){
+    public function __construct($id = null, $code = null, $description = null) {
         $this->setId($id);
         $this->setCode($code);
         $this->setDescription($description);
-	}
+    }
 
     function getId() {
         return $this->id;
@@ -35,6 +38,7 @@ class Language extends DataObject{
     function setDescription($description) {
         $this->description = $description;
     }
+
 }
 
 ?>
