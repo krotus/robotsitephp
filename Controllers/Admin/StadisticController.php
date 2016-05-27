@@ -11,6 +11,7 @@ use App\Core\Session as Session;
 use App\Core\View as View;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
+use App\Utility\PdfCustom as PdfCustom;
 
 class StadisticController {
 
@@ -63,8 +64,6 @@ class StadisticController {
         $endDate = $_POST['end_date'];
         $idTeam = intval($_POST['id_team']);
         $idWorker = intval($_POST['id_worker']);
-//        var_dump($_POST['id_status']);
-//        exit;
         $idStatus = intval($_POST['id_status']);
         $paramsArray = array(
         "strDate" => $strDate,
@@ -73,12 +72,6 @@ class StadisticController {
         "idWorker" => $idWorker,
         "idStatus" => $idStatus
         );
-//        $object = new \stdClass();
-//        $object->strDate = $strDate;
-//        $object->endDate = $endDate;
-//        $object->idTeam = $idTeam;
-//        $object->idWorker = $idWorker;
-//        $object->idStatus = $idStatus;
         $order = new Order();
         $orders = $order->getStadisticOrders($paramsArray);
 
@@ -92,6 +85,25 @@ class StadisticController {
         }
 
         echo json_encode($arrayToSend);
+    }
+
+    public function getPdfbyAjax(){
+        ob_end_clean();
+        $header = $_POST["headers"];
+        $rows = $_POST["counts"];
+        $pdf = new PdfCustom();
+        $pdf->AliasNbPages();
+        $pdf->Open();
+        $pdf->AddPage();
+        $pdf->SetTitle('PDF A IMPRIMIR');
+        $pdf->SetMargins(10,5,5);
+        $pdf->SetDisplayMode(93);
+        $pdf->Ln(5);
+        
+        // Títulos de las columnas
+        //$header = array('Id', 'Name', 'Hours', 'StartDate', 'Theme');
+        $pdf->ImprovedTable($header,array($rows));
+        $pdf->Output();
     }
 
 }
