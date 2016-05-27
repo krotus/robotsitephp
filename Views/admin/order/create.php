@@ -78,7 +78,7 @@
     <script type="text/javascript">
         codes = <?php echo json_encode($data['codeOrders']); ?>;
     </script>
-    <script src="<?php echo URL; ?>public/js/validation/order/create.js"></script>
+    <!--<script src="<?php echo URL; ?>public/js/validation/order/create.js"></script>-->
     <script type="text/javascript">
         $(function () {
             $('#datepickertask').datetimepicker({

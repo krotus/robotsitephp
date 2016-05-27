@@ -5,7 +5,8 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 use Models\DAO\OrderDAO as OrderDAO;
 
-class Order extends DataObject{
+class Order extends DataObject {
+
     protected $id;
     protected $code;
     protected $description;
@@ -15,10 +16,8 @@ class Order extends DataObject{
     protected $statusOrder;
     protected $robot;
     protected $process;
-    
-    
-    function __construct($id = null, $code = null, $description = null, $priority = null, 
-            $date = null, $quantity = null, $statusOrder = null, $robot = null, $process = null) {
+
+    function __construct($id = null, $code = null, $description = null, $priority = null, $date = null, $quantity = null, $statusOrder = null, $robot = null, $process = null) {
         $this->setId($id);
         $this->setCode($code);
         $this->setDescription($description);
@@ -30,7 +29,6 @@ class Order extends DataObject{
         $this->setProcess($process);
     }
 
-    
     function getId() {
         return $this->id;
     }
@@ -72,7 +70,7 @@ class Order extends DataObject{
     }
 
     function setCode($code) {
-        $this->code = $code;
+            $this->code = $code;
     }
 
     function setDescription($description) {
@@ -102,31 +100,30 @@ class Order extends DataObject{
     function setProcess($process) {
         $this->process = $process;
     }
-/**
- * Metode que retorna les ordres assignades a un equip
- * @param type $team
- */
-    function checkOrdersAssigned($team){
+
+    /**
+     * Metode que retorna les ordres assignades a un equip
+     * @param type $team
+     */
+    function checkOrdersAssigned($team) {
         $dao = new OrderDAO();
         //provisional
         $dao->getOrdersByTeamId($team);
     }
 
-    function getAllByStatus($idWorker, $status){
+    function getAllByStatus($idWorker, $status) {
         $dao = new OrderDAO();
-        return $dao->getAllByStatus($idWorker, $status);   
+        return $dao->getAllByStatus($idWorker, $status);
     }
 
-    function getAllOrdersAdmin(){
+    function getAllOrdersAdmin() {
         $dao = new OrderDAO();
-        return $dao->getAllOrdersAdmin();   
+        return $dao->getAllOrdersAdmin();
     }
-    
-    function getStadisticOrders($object){
+
+    function getStadisticOrders($object) {
         $dao = new OrderDAO();
-        return $dao->getStadisticOrders($object);   
+        return $dao->getStadisticOrders($object);
     }
-    
-    
 
 }
