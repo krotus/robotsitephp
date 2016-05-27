@@ -37,10 +37,13 @@
            <option value="team">Equipo</option>
            <option value="worker">Trabajador</option>
        </select>
-   </div>
-   <div class="col-xs-12 margin-bottom">
-    <input type="button" class="btn btn-primary" value="Filtrar" name="filter_order" id="filter_order">
-</div>
+    </div>
+    <div class="col-xs-12 margin-bottom">
+        <input type="button" class="btn btn-primary pull-left" value="Filtrar" name="filter_order" id="filter_order">
+        <form id="form-pdf" method="post" action="<?php echo URL ?>admin/stadistic/getPdfbyAjax" class="pull-right">
+            <input type="submit" class="btn btn-success pull-right" id="pdf_order" value="Generar PDF">
+        </form>
+    </div>
 </div> <!-- ./row -->
 <div class="row">
     <div class="col-xs-12">
@@ -59,6 +62,7 @@
 </div> <!-- ./row -->
 <script type="text/javascript">
     var isTeam = 1;
+    var stadistics = [];
     $(document).ready(function(){
     	$('#datepickerstart').datetimepicker({
             format: 'YYYY/MM/DD HH:mm:ss'
@@ -90,6 +94,16 @@
             getFilter(stadistic);
         });
 
+        $("#form-pdf").on("submit", function(e){
+            var str = "";
+            for(var i = 0 ; i < stadistics.length;i++){
+                str += '<input type="text" name="headers[]" value="'+stadistics[i]['y']+'"/>';
+                str += '<input type="text" name="counts[]" value="'+stadistics[i]['a']+'"/>';
+            }
+            $(this).html(str);
+        
+        });
+
     });
 
     function getFilter(stadistic){
@@ -101,20 +115,20 @@
             crossDomain: true,
             success: function (result) {
                 if(isTeam == 1){
-                    var array = [];
+                    stadistics = [];
                     for(var i = 0; i < result.data.length; i++){
                         var arrayN = [];
                         var name = result.data[i].name;
                         var count = result.data[i].tasks_done;
                         arrayN['y'] = name;
                         arrayN['a'] = count;
-                        array.push(arrayN);
+                        stadistics.push(arrayN);
                     }
                     //BAR CHART
                     var bar = new Morris.Bar({
                         element: 'bar-chart',
                         resize: true,
-                        data: array,
+                        data: stadistics,
                         barColors: ['#00a65a'],
                         xkey: 'y',
                         ykeys: ['a'],
@@ -122,20 +136,19 @@
                         hideHover: 'auto'
                     });
                 }else{
-                    var array = [];
+                    stadistics = [];
                     for(var i = 0; i < result.data.length; i++){
                         var arrayN = [];
                         var name = result.data[i].worker;
                         var count = result.data[i].tasks_done;
                         arrayN['y'] = name;
                         arrayN['a'] = count;
-                        array.push(arrayN);
+                        stadistics.push(arrayN);
                     }
-                    console.log(array);
                     var bar = new Morris.Bar({
                         element: 'bar-chart',
                         resize: true,
-                        data: array,
+                        data: stadistics,
                         barColors: ['#00a65a'],
                         xkey: 'y',
                         ykeys: ['a'],
