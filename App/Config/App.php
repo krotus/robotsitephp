@@ -2,7 +2,7 @@
 
 //GLOBALS
 define("URL", "http://localhost/api.web.com/");
-define("APP_NAME", "Robot site");
+define("APP_NAME", "ARMduino");
 define("TIME_ZONE", "Europe/Madrid");
 define("LOCALE", "es");
 define("FIRST_PAGE", "worker");

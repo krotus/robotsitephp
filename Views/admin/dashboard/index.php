@@ -32,7 +32,7 @@
 	                <p>Robots</p>
 	            </div>
 	            <div class="icon">
-	                <i class="ion ion-outlet"></i>
+	                <i class="ion ion-steam"></i>
 	            </div>
 	            <a href="<?php echo URL; ?>admin/robot" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
 	        </div>

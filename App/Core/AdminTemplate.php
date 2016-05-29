@@ -42,6 +42,7 @@ class AdminTemplate {
         <link rel="stylesheet" href="<?php echo URL; ?>public/css/bootstrap-slider.min.css">
         <link rel="stylesheet" href="<?php echo URL; ?>public/css/validation.css">
         <link rel="stylesheet" href="<?php echo URL; ?>public/sweetalert/css/sweetalert.css">
+        <link rel="stylesheet" href="<?php echo URL; ?>public/bootstrap/css/datetimepicker-custom.css">
 
         <!-- REQUIRED JS SCRIPTS -->
         <!-- jQuery 2.2.0 -->
