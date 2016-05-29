@@ -20,9 +20,13 @@
         <directory>Controllers</directory>
         <directory>Models</directory>
         <ignore>.git/*</ignore>
+        <ignore>.vendor/*</ignore>
+        <ignore>.public/*</ignore>
+        <ignore>.nbproject/*</ignore>
+        <ignore>.Views/*</ignore>
     </files>
     <transformations>
-        <template name="responsive-twig"/>
+        <template name="clean"/>
         <template name="checkstyle"/>
     </transformations>
 </phpdoc>
