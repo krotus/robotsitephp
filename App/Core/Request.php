@@ -7,13 +7,19 @@ use App\Core\View as View;
 use Models\Business\User as User;
 use Models\Business\Worker as Worker;
 
+/**
+ * Classe Request, utilitzada per gestionar les diferents peticions del client sobre l'aplicació.
+ * @package \App\Core
+ */
 class Request{
 
+	//metodes privats
 	private $page;
 	private $controller;
 	private $method;
 	private $argument;
 
+	//Construcció de la petició de control
 	public function __construct(){
 
 		// usuari no ha fet login

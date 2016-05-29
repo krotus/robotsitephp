@@ -4,6 +4,11 @@ namespace App\Core;
 
 use App\Utility\Debug as Debug;
 
+/**
+ * Classe AdminTemplate, la seva funció es neixer i morir amb codi HTML per tal de generar la renderització de la vista
+ * d'administrador, en la que inclou majoritariament codi HTML juntament amb codi PHP per efectes pràctics de l'aplicació.
+ * @package \App\Core
+ */
 class AdminTemplate {
 
     public function __construct() {

@@ -4,6 +4,12 @@ namespace App\Core;
 
 use App\Utility\Debug as Debug;
 
+
+/**
+ * Classe WorkerTemplate, la seva funció es neixer i morir amb codi HTML per tal de generar la renderització de la vista
+ * del treballador, en la que inclou majoritariament codi HTML juntament amb codi PHP per efectes pràctics de l'aplicació.
+ * @package \App\Core
+ */
 class WorkerTemplate {
 
     public function __construct() {

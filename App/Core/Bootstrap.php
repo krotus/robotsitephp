@@ -6,8 +6,19 @@ use App\Core\Session as Session;
 use App\Utility\Debug as Debug;
 use App\Core\View as View;
 
+/**
+ * Classe Bootstrap, utilitzada com a enrutador entre la petició originada per el client i la resposta obtinguda per part
+ * de l'aplicació servidor.
+ * @package App\Core
+ */
 class Bootstrap{
 
+	/**
+	 * Metode run, a partir de la petició del client construïm una resposta al client.
+	 * En cas de que no es pugui resoldre la petició sempre mostrarem una plana 404 d'error.
+	 * @param Request $request Petició del client
+	 * @return void
+	 */
 	public static function run(Request $request){
 		$controller = ucfirst($request->getController()) . "Controller";
 		if($request->getPage() == "admin"){

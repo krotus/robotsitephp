@@ -2,13 +2,19 @@
 
 namespace App\Utility;
 
+/**
+ * Classe QuickForm que te como a proposit generar codi HTML de forma dinamica segons
+ * la necessitat que requereixi la vista a renderitzar.
+ * @package \App\Utility
+ */
 class QuickForm {
 
     /**
-     * Create select HTML5 here with the following parameters
-     * @param string $idName Id of select option tag
-     * @param string $atribute Atribute to show on the view
-     * @param array $array Items to walk zombie.
+     * Crea un combobox en HTML5 segons els parametres passats
+     * @param string $idName La id del select
+     * @param string $atribute Atribut que es vol mostrar a la vista
+     * @param array $array Llista de elements que es vol mostrar
+     * @param integer $idSelected Id del selector seleccionat per defecte
      * @return void
      */
     public static function createSelect($idName, $atribute, $array, $idSelected = false) {
@@ -40,6 +46,11 @@ class QuickForm {
         <?php
     }
 
+    /**
+     * Mostra la llista de errors en format d'alerta i utilitzan una llista desordenada.
+     * @param array $errors Els errors trobats despres de una validació.
+     * @return void
+     */
     public static function showListErrors($errors){
         echo '<div class="alert alert-danger" role="alert"><ul>';
         foreach ($errors as $key => $error) {
