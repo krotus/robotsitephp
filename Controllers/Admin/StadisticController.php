@@ -13,14 +13,25 @@ use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 use App\Utility\PdfCustom as PdfCustom;
 
+/**
+ * Classe controladora de les diferents estadístiques que es puguin generar a partir dels seus respectius filtres.
+ * Hereta de la classe Controller
+ * @package \Controllers\Admin
+ */
 class StadisticController {
 
+    /**
+     * No s'utilitza.
+     */
     public function index() {
         View::to("admin.stadistic.index");
     }
 
-    // llistar detall de les ordres segons un període a demanar (data o mes o
-    // any), per treballador o equip, per estat...
+    /**
+     * llistar detall de les ordres segons un període a demanar (data o mes o
+     * any), per treballador o equip, per estat...
+     * @return void
+     */
     public function table() {
         $team = new Team();
         $teams = $team->getAll();
@@ -31,11 +42,18 @@ class StadisticController {
         View::to("admin.stadistic.table", compact('teams', 'workers', 'statusOrders'));
     }
 
-    //treballadors, equips amb més/menys ordres completades per període
+    /**
+     * Treballadors, equips amb més/menys ordres completades per període
+     * @return void
+     */
     public function graphic() {
         View::to("admin.stadistic.graphic");
     }
 
+    /**
+     * Petició ajax en el qual retorna en format json la llista d'equips
+     * @return string Objecte json amb la llista d'equips
+     */
     public function getTeamsAjax() {
         ob_end_clean();
         $team = new Team();
@@ -47,6 +65,10 @@ class StadisticController {
         echo json_encode($array);
     }
 
+    /**
+     * Petició ajax en el qual retorna en format json la llista de treballadors
+     * @return string Objecte json amb la llista de treballadors
+     */
     public function getWorkersAjax() {
         ob_end_clean();
         $worker = new Worker();
@@ -58,6 +80,11 @@ class StadisticController {
         echo json_encode($array);
     }
 
+    /**
+     * Petició ajax encarregada de enviar per post els filtres passats a partir de la vista
+     * en el model per tal de generar el filtre dessitjat, entre periodes.
+     * @return string Objecte json amb la llista filtrada.
+     */
     public function getStadisticOrdersByAjax() {
         ob_end_clean();
         $strDate = $_POST['str_date'];
@@ -87,6 +114,7 @@ class StadisticController {
         echo json_encode($arrayToSend);
     }
 
+    //TODO
     public function getPdfbyAjax(){
         ob_end_clean();
         $header = $_POST["headers"];
@@ -100,8 +128,6 @@ class StadisticController {
         $pdf->SetDisplayMode(93);
         $pdf->Ln(5);
         
-        // Títulos de las columnas
-        //$header = array('Id', 'Name', 'Hours', 'StartDate', 'Theme');
         $pdf->ImprovedTable($header,array($rows));
         $pdf->Output();
     }

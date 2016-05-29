@@ -10,14 +10,27 @@ use App\Core\View as View;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 
+/**
+ * Classe controladora dels processos que hi hauran dintre de l'aplicació.
+ * Hereta de la classe Controller
+ * @package \Controllers\Admin
+ */
 class ProcessController extends Controller {
 
-    private $process;
-
+    /**
+     * Metode index en el que es renderitza una llista de processos actuals amb opció de reordanament manual entre camps.
+     * @return void
+     */
     public function index() {
         View::to("admin.process.index");
     }
 
+    /**
+     * Metode edit en el que a partir de la id única del procés podrem actualitza el registre de la taula processos utilitzant la capa de model.
+     * També realitza una serie de validacions per tal de que els camps que es recuperen sigin valids per la generació del objecte.
+     * @param integer $id La id que identifica de forma única al registre
+     * @return void
+     */
     public function edit($id) {
         if(!$_POST){
             $process = new Process($id);
@@ -60,11 +73,21 @@ class ProcessController extends Controller {
         }
     }
 
+    /**
+     * Metode delete, elimina un procés a partir de la seva id, ordena al model a eliminar el registre.
+     * @param type $id La id identifica de forma única al registre
+     * @return void
+     */
     public function delete($id) {
        $process = new Process($id);
        $process->delete();
     }
 
+    /**
+     * Metode create, renderitza un formulari on a partir de camps que li ariven com a parametres POST, crida al model per crear-ne'n l'objecte
+     * i finalment grabar-lo a la base de dades si aquest, es correcte.
+     * @return void
+     */
     public function create() {
         if(!$_POST){
             $process = new Process();
@@ -102,13 +125,16 @@ class ProcessController extends Controller {
         }
     }
 
-    
+    /**
+     * Metode getProcessesByAjax que es cridat per una petició Ajax sobre els processos de la base de dades.
+     * Utilitzat per la generació de les taules dinamiques que es troben al metode index.
+     * En aquest cas un recull dels processos a partir del model.
+     * @return string Objecte json amb totes els processos de la taula processos.
+     */
     function getProcessesByAjax(){
         ob_end_clean();
         $process = new Process();
         $processes = $process->getAllProcessesAdmin();
-//        Debug::log($processes);
-//        exit();
         $arrayToSend = array();
         for ($i = 0; $i < count($processes); $i++) {
             $auxArray = array();

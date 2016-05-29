@@ -13,14 +13,27 @@ use App\Core\View as View;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 
+/**
+ * Classe controladora de les ordres que hi hauran dintre de l'aplicació.
+ * Hereta de la classe Controller
+ * @package \Controllers\Admin
+ */
 class OrderController extends Controller {
 
-    private $order;
-
+    /**
+     * Metode index en el que es renderitza una llista de ordres actuals amb opció de reordanament manual entre camps.
+     * @return void
+     */
     public function index() {
         View::to("admin.order.index");
     }
 
+    /**
+     * Metode edit en el que a partir de la id única de la ordre podrem actualitza el registre de la taula ordres utilitzant la capa de model.
+     * També realitza una serie de validacions per tal de que els camps que es recuperen sigin valids per la generació del objecte.
+     * @param integer $id $id La id que identifica de forma única al registre
+     * @return void
+     */
     public function edit($id) {
         if (!$_POST) {
             $order = new Order($id);
@@ -79,11 +92,21 @@ class OrderController extends Controller {
         }
     }
 
+    /**
+     * Metode delete, elimina una ordre a partir de la seva id, ordena al model a eliminar el registre.
+     * @param type $id La id identifica de forma única al registre
+     * @return void
+     */
     public function delete($id) {
         $order = new Order($id);
         $order->delete();
     }
 
+    /**
+     * Metode create, renderitza un formulari on a partir de camps que li ariven com a parametres POST, crida al model per crear-ne'n l'objecte
+     * i finalment grabar-lo a la base de dades si aquest, es correcte.
+     * @return void
+     */
     public function create() {
         if (!$_POST) {
             $order = new Order();
@@ -134,12 +157,16 @@ class OrderController extends Controller {
         }
     }
 
-    function getOrdersByAjax() {
+    /**
+     * Metode getOrdersByAjax que es cridat per una petició Ajax sobre les ordres de la base de dades.
+     * Utilitzat per la generació de les taules dinamiques que es troben al metode index.
+     * En aquest cas un recull de les ordres a partir del model.
+     * @return string Objecte json amb totes les ordres de la taula orders.
+     */
+    public function getOrdersByAjax() {
         ob_end_clean();
         $order = new Order();
         $orders = $order->getAllOrdersAdmin();
-//        Debug::log($orders);
-//        exit();
         $arrayToSend = array();
         for ($i = 0; $i < count($orders); $i++) {
             $auxArray = array();

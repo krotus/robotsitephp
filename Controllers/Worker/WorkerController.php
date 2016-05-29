@@ -13,23 +13,46 @@ use App\Core\Session as Session;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 
+/**
+ * Classe controladora que gestiona la part frontend (treballador) que serà que interactuarà directament amb les 
+ * diferents ordres de fabricació diarires que l'administrador o cap superior administra.
+ * Hereta de la classe Controller
+ * @package \Controllers\Admin
+ */
 class WorkerController extends Controller {
 
-    private $worker;
-
+    /**
+     * Metode index renderitza la plana principal on el treballador visualitzara en tot moment les ordres
+     * separadas per el seu estat, permeten una millor gestió d'aquestes.
+     * @return void
+     */
     public function index() {
         $workerName = unserialize(Session::get('user'))->getName();
         View::to("worker.index", compact("workerName"));
     }
 
-    public function edit($id) {
-        //TODO
-    }
+    /**
+     * No s'utilitza 
+     */
+    public function edit($id) {}
 
-    public function delete($id) {
-        //TODO
-    }
+    /**
+     * No s'utilitza 
+     */
+    public function delete($id) {}
 
+    /**
+     * No s'utilitza 
+     */
+    public function create() {}
+
+    /**
+     * Metode profile en el que permet a un treballador la possiblitat de modificar canvis entre el seu perfil, entre elles el idioma
+     * en el que vol que la aplicació es formati.
+     * Totes les validacions es realitzen a partir dels parametres POST que li arriven del formulari d'entrada per ser posteriorment
+     * tractats i actualitzar-ne l'estat si aquest les valida.
+     * @return void
+     */
     public function profile() {
         if (!$_POST) {
             $worker = unserialize(Session::get('user'));
@@ -96,14 +119,12 @@ class WorkerController extends Controller {
         }
     }
 
-    public function create() {
-        if (!$_POST) {
-            View::to("worker.create");
-        } else {
-            View::redirect("worker.index");
-        }
-    }
-
+    /**
+     * Metode getOrdersByAjax que es cridat per una petició Ajax sobre les ordres de la base de dades.
+     * Utilitzat per la generació de les taules dinamiques que es troben al metode index.
+     * En aquest cas un recull les ordres a partir del model segons l'estat en el que es troben cadascuna.
+     * @return string Objecte json amb totes les ordres de la taula ordres.
+     */
     public function getOrdersByAjax($idWorker, $status) {
         ob_end_clean();
         $user = unserialize(Session::get('user'));
@@ -153,9 +174,6 @@ class WorkerController extends Controller {
         echo json_encode($arrToPass);
     }
 
-    public function robotCam(){
-        View::to("worker.robotcam");
-    }
 
 }
 

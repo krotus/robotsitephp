@@ -12,14 +12,29 @@ use App\Utility\QuickForm as QuickForm;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 
+
+/**
+ * Classe controladora dels equips que formen l'aplicació.
+ * Hereta de la classe Controller
+ * @package \Controllers\Admin
+ */
 class TeamController extends Controller {
 
-    private $team;
-
+    /**
+     * Metode index en el que es renderitza una llista de equips actuals amb opció de reordanament manual entre camps.
+     * @return void
+     */
     public function index() {
         View::to("admin.team.index");
     }
 
+
+    /**
+     * Metode edit en el que a partir de la id única del equip podrem actualitza el registre de la taula equips utilitzant la capa de model.
+     * També realitza una serie de validacions per tal de que els camps que es recuperen sigin valids per la generació del objecte.
+     * @param integer $id La id que identifica de forma única al registre
+     * @return void
+     */
     public function edit($id) {
         if (!$_POST) {
             $team = new Team($id);
@@ -61,11 +76,22 @@ class TeamController extends Controller {
         }
     }
 
+    /**
+     * Metode delete, elimina un equip a partir de la seva id, ordena al model a eliminar el registre.
+     * @param type $id La id identifica de forma única al registre
+     * @return void
+     */
     public function delete($id) {
         $team = new Team($id);
         $team->delete();
     }
 
+
+    /**
+    * Metode create, renderitza un formulari on a partir de camps que li ariven com a parametres POST, crida al model per crear-ne'n l'objecte
+    * i finalment grabar-lo a la base de dades si aquest, es correcte.
+    * @return void
+    */
     public function create() {
         if (!$_POST) {
             $team = new Team();
@@ -101,11 +127,17 @@ class TeamController extends Controller {
         }
     }
 
+
+    /**
+     * Metode getTeamsByAjax que es cridat per una petició Ajax sobre els equips de la base de dades.
+     * Utilitzat per la generació de les taules dinamiques que es troben al metode index.
+     * En aquest cas un recull els equips a partir del model.
+     * @return string Objecte json amb totes els equips de la tels equips.
+     */
     function getTeamsByAjax() {
         ob_end_clean();
         $team = new Team();
         $teams = $team->getAllTeamsAdmin();
-        //Debug::log($teams);
         $arrayToSend = array();
         for ($i = 0; $i < count($teams); $i++) {
             $auxArray = array();
@@ -116,7 +148,6 @@ class TeamController extends Controller {
             array_shift($auxArray);
             array_push($arrayToSend, $auxArray);
         }
-        //Debug::log($arrayToSend);
         echo json_encode($arrayToSend);
     }
 

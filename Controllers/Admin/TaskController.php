@@ -12,14 +12,29 @@ use App\Core\View as View;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 
+
+/**
+ * Classe controladora de les tasques que hi hauran dintre de l'aplicació.
+ * Hereta de la classe Controller
+ * @package \Controllers\Admin
+ */
 class TaskController extends Controller {
 
-    private $task;
 
+    /**
+     * Metode index en el que es renderitza una llista de tasques actuals amb opció de reordanament manual entre camps.
+     * @return void
+     */
     public function index() {
         View::to("admin.task.index");
     }
 
+    /**
+     * Metode edit en el que a partir de la id única de la tasca podrem actualitza el registre de la taula tasques utilitzant la capa de model.
+     * També realitza una serie de validacions per tal de que els camps que es recuperen sigin valids per la generació del objecte.
+     * @param integer $id La id que identifica de forma única al registre
+     * @return void
+     */
     public function edit($id) {
         if(!$_POST){
             $task = new Task($id);
@@ -69,11 +84,21 @@ class TaskController extends Controller {
         }
     }
 
+    /**
+     * Metode delete, elimina una tasca a partir de la seva id, ordena al model a eliminar el registre.
+     * @param type $id La id identifica de forma única al registre
+     * @return void
+     */
     public function delete($id) {
         $task = new Task($id);
         $task->delete();
     }
 
+    /**
+    * Metode create, renderitza un formulari on a partir de camps que li ariven com a parametres POST, crida al model per crear-ne'n l'objecte
+    * i finalment grabar-lo a la base de dades si aquest, es correcte.
+    * @return void
+    */
     public function create() {
         if (!$_POST) {
             $team = new Team();
@@ -113,6 +138,12 @@ class TaskController extends Controller {
         }
     }
 
+    /**
+     * Metode getTasksByAjax que es cridat per una petició Ajax sobre les tasques de la base de dades.
+     * Utilitzat per la generació de les taules dinamiques que es troben al metode index.
+     * En aquest cas un recull les tasques a partir del model.
+     * @return string Objecte json amb totes les tasques de la tles tasques.
+     */
     function getTasksByAjax() {
         ob_end_clean();
         $task = new Task();
@@ -126,7 +157,6 @@ class TaskController extends Controller {
             array_push($auxArray, "<a href='" . URL . "admin/task/edit/" . $tasks[$i]['id'] . "'><button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'></span></button></a><button class='btn btn-danger' onclick='deleteTask(" . $tasks[$i]['id'] . ", \"" . URL . "\");'><span class='glyphicon glyphicon-remove'></span></button>");
             array_push($arrayToSend, $auxArray);
         }
-//        Debug::log($tasks);
         echo json_encode($arrayToSend);
     }
 

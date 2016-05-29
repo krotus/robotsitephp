@@ -39,6 +39,8 @@ function loadTable(baseUrl){
         type: "POST",
         url: baseUrl + "admin/stadistic/getStadisticOrdersByAjax",
         data:{"str_date": strDate, "end_date": endDate, "id_team": idTeam,"id_worker": idWorker, "id_status": idStatus},
+        async: true,
+        crossDomain: true,
         success: function (data) {
           var dades = JSON.parse(data);
             $('#ordersFilter').html('');

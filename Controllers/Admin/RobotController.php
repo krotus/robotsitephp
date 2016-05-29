@@ -12,14 +12,27 @@ use App\Utility\QuickForm as QuickForm;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 
+/**
+ * Classe controladora dels robots que hi hauran dintre de l'aplicació.
+ * Hereta de la classe Controller
+ * @package \Controllers\Admin
+ */
 class RobotController extends Controller {
 
-    private $team;
-
+    /**
+     * Metode index en el que es renderitza una llista de robots actuals amb opció de reordanament manual entre camps.
+     * @return void
+     */
     public function index() {
         View::to("admin.robot.index");
     }
 
+    /**
+     * Metode edit en el que a partir de la id única del robot podrem actualitza el registre de la taula robots utilitzant la capa de model.
+     * També realitza una serie de validacions per tal de que els camps que es recuperen sigin valids per la generació del objecte.
+     * @param integer $id La id que identifica de forma única al registre
+     * @return void
+     */
     public function edit($id) {
         if (!$_POST) {
             $robot = new Robot($id);
@@ -75,11 +88,22 @@ class RobotController extends Controller {
         }
     }
 
+    /**
+     * Metode delete, elimina un robot a partir de la seva id, ordena al model a eliminar el registre.
+     * @param type $id La id identifica de forma única al registre
+     * @return void
+     */
     public function delete($id) {
         $robot = new Robot($id);
         $robot->delete();
     }
-// 
+
+
+    /**
+     * Metode create, renderitza un formulari on a partir de camps que li ariven com a parametres POST, crida al model per crear-ne'n l'objecte
+     * i finalment grabar-lo a la base de dades si aquest, es correcte.
+     * @return void
+     */
     public function create() {
         if (!$_POST) {
             $robot = new Robot();
@@ -128,12 +152,17 @@ class RobotController extends Controller {
         }
     }
 
+
+    /**
+     * Metode getRobotsByAjax que es cridat per una petició Ajax sobre els robots de la base de dades.
+     * Utilitzat per la generació de les taules dinamiques que es troben al metode index.
+     * En aquest cas un recull dels robots a partir del model.
+     * @return string Objecte json amb totes els robots de la taula robots.
+     */
     function getRobotsByAjax() {
         ob_end_clean();
         $robot = new Robot();
         $robots = $robot->getAllRobotsAdmin();
-//        Debug::log($robots);
-//        exit();
         $arrayToSend = array();
         for ($i = 0; $i < count($robots); $i++) {
             $auxArray = array();
@@ -144,7 +173,6 @@ class RobotController extends Controller {
             array_shift($auxArray);
             array_push($arrayToSend, $auxArray);
         }
-//        Debug::log($arrayToSend);
         echo json_encode($arrayToSend);
     }
 

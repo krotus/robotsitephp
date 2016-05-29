@@ -6,6 +6,7 @@ use Models\Business\User as User;
 use Models\DAO\TaskDAO as TaskDAO;
 
 /**
+ * Classe Admin que hereta de User i que te privilegis per realitzar operacions CRUD sobre qualsevol model.
  * @package \Models\Business\Admin
  */
 class Admin extends User {

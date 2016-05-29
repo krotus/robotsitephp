@@ -10,8 +10,20 @@ use Models\Business\Admin as Admin;
 use Models\Business\User as User;
 use App\Utility\Debug as Debug;
 
+
+/**
+ * Classe controladora del login sobre el que interactua qualsevol usuari que intenti accedir a la plataforma web.
+ * @package \Controllers\Admin
+ */
 class LoginController {
 
+    /**
+     * Es renderitza una primera vista amb dos camps, usuari i contrasenya en els que es realitzar les validacions pertinents per
+     * evaluar si forma part d'un membre de l'empresa, sigui equip o treballador.
+     * En cada cas es generarà una sessió on viura fins que es tanqui l'aplicació i depenen del tipus de usuari
+     * es redirigirà a una secció diferent de l'aplicació.
+     * @return void
+     */
     public function index() {
         if (!$_POST) {
             View::to("login.index");

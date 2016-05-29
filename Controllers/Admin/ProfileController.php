@@ -13,10 +13,21 @@ use App\Utility\QuickForm as QuickForm;
 use App\Utility\Debug as Debug;
 use Wixel\Gump\GUMP as Gump;
 
+
+/**
+ * Classe controladora que gestiona el perfil del usuari quan aquest el solicita per modificar-ne canvis.
+ * Hereta de la classe Controller
+ * @package \Controllers\Admin
+ */
 class ProfileController extends Controller {
 
-    private $admin;
-
+    /**
+     * Metode index en el que actua com a un metode edit, ja que les úniques operacions que realitza es la visualització
+     * de la configuració inicial del perfil, i la possible modificació d'aquets.
+     * A partir dels parametres POST que li arrivin per part del formulari, serà capaç de validar-ne el seu contingut
+     * i gravar-los com a conseqüencia de la acció.
+     * @return void
+     */
     public function index() {
         if (!$_POST) {
             $admin = unserialize(Session::get('user'));
@@ -91,14 +102,23 @@ class ProfileController extends Controller {
         }
     }
 
+    /**
+     * No s'utilitza.
+     */
     public function edit($id) {
         
     }
 
+    /**
+     * No s'utilitza.
+     */
     public function delete($id) {
         
     }
 
+    /**
+     * No s'utilitza.
+     */
     public function create() {
         
     }

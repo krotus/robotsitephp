@@ -13,10 +13,17 @@ use Models\Business\Admin as Admin;
 use App\Core\Session as Session;
 use App\Core\View as View;
 
+/**
+ * Classe controladora del dasbhoard sobre el que interactua l'administrador.
+ * @package \Controllers\Admin
+ */
 class DashboardController extends Controller{
 
-	private $worker;
-
+	/**
+	 * Metode index en el que es renderitza la vista principal del panell de control.
+	 * Juntament amb els dades més rellevants de cada item.
+	 * @return void
+	 */
 	public function index(){
 		$worker = new Worker();
 		$workers = count($worker->getAll());
@@ -42,17 +49,20 @@ class DashboardController extends Controller{
         	);
 	}
 
-	public function edit($id){
-		View::to("admin.dashboard.edit");
-	}
+	/**
+	 * No s'utilitza.
+	 */
+	public function edit($id){}
 
-	public function delete($id){
-		//TODO
-	}
+	/**
+	 * No s'utilitza.
+	 */
+	public function delete($id){}
 
-	public function create(){
-		//TODO
-	}
+	/**
+	 * No s'utilitza.
+	 */
+	public function create(){}
 
 }
 
