@@ -26,7 +26,7 @@
         <ignore>.Views/*</ignore>
     </files>
     <transformations>
-        <template name="clean"/>
+        <template name="responsive-twig"/>
         <template name="checkstyle"/>
     </transformations>
 </phpdoc>
