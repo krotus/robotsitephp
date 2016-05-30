@@ -6,7 +6,9 @@ use Models\Business\DataObject as DataObject;
 use Models\DAO\OrderDAO as OrderDAO;
 
 /**
- * @package \Models\Business\Order
+ * Classe Order, hereta de DataObject i permet gestionar el CRUD de la taula orders a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
  */
 class Order extends DataObject {
 
@@ -106,7 +108,7 @@ class Order extends DataObject {
 
     /**
      * Metode que retorna les ordres assignades a un equip.
-     * @param object $team
+     * @param object $team Equip a assignar a l'ordre
      */
     function checkOrdersAssigned($team) {
         $dao = new OrderDAO();
@@ -117,8 +119,8 @@ class Order extends DataObject {
     /**
      * Metode que retorna les ordres assignades a un treballador per l'estat en el que es troben.
      * @param int $idWorker
-     * @param string $status
-     * @return array[][]
+     * @param string $status 
+     * @return array[][] Array d'ordres per estat
      */
     function getAllByStatus($idWorker, $status) {
         $dao = new OrderDAO();

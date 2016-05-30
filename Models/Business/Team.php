@@ -6,7 +6,9 @@ use Models\Business\DataObject as DataObject;
 use Models\DAO\TeamDAO as TeamDAO;
 
 /**
- * @package \Models\Business\Team
+ * Classe Team, hereta de DataObject i permet gestionar el CRUD de la taula teams a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
  */
 class Team extends DataObject {
 

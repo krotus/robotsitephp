@@ -5,8 +5,11 @@ namespace Models\Business;
 use Models\Business\User as User;
 use Models\DAO\TaskDAO as TaskDAO;
 use Models\DAO\WorkerDAO as WorkerDAO;
+
 /**
- * @package \Models\Business\Worker
+ * Classe Worker, hereta de User i permet gestionar el CRUD de la taula orders a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
  */
 class Worker extends User {
 
@@ -16,7 +19,7 @@ class Worker extends User {
     }
 /**
  * Metode que permet a un treballador afagar una ordre.
- * @param type $task
+ * @param type $task Tasca a agafar
  */
     public function takeOrder($task) {
         $task->setWorker($this);

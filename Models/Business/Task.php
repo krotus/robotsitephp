@@ -6,7 +6,9 @@ use Models\Business\DataObject as DataObject;
 use Models\DAO\TaskDAO as TaskDAO;
 
 /**
- * @package \Models\Business\Task
+ * Classe Task, hereta de DataObject i permet gestionar el CRUD de la taula tasques a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
  */
 class Task extends DataObject{
     protected $id;

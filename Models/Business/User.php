@@ -6,8 +6,12 @@ use Models\DAO\HTTPRequest as HTTPRequest;
 use Models\DAO\UserDAO as UserDAO;
 use Models\Business\DataObject as DataObject;
 use App\Utility\Debug as Debug;
+
 /**
- * @package \Models\Business\User
+ * Classe abstracta User, hereta de DataObject i permet gestionar el CRUD de la taula workers a partir 
+ * dels seus metodes i atributs.
+ * S'utilitza per gestionar els usuaris de l'aplicació per ser posteriorment distribuïts en: administradors o treballadors
+ * @package \Models\Business
  */
 class User extends DataObject {
 

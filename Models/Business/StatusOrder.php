@@ -3,8 +3,11 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
+
 /**
- * \Models\Business\StatusOrder
+ * Classe StatusOrder, hereta de DataObject i permet gestionar el CRUD de la taula status_order a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
  */
 class StatusOrder extends DataObject{
     protected $id;

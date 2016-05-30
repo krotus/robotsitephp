@@ -5,6 +5,11 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 use Models\DAO\ProcessDAO as ProcessDAO;
 
+/**
+ * Classe Process, hereta de DataObject i permet gestionar el CRUD de la taula processes a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
+ */
 class Process extends DataObject {
 
     protected $id;

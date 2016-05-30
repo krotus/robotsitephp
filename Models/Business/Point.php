@@ -5,7 +5,9 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 
 /**
- * @package \Models\Business\Point
+ * Classe Point, hereta de DataObject i permet gestionar el CRUD de la taula points a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
  */
 class Point extends DataObject {
 

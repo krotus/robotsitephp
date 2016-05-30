@@ -6,7 +6,9 @@ use Models\Business\DataObject as DataObject;
 use Models\DAO\RobotDAO as RobotDAO;
 
 /**
- * @package \Models\Business\Robot
+ * Classe Robot, hereta de DataObject i permet gestionar el CRUD de la taula robots a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
  */
 class Robot extends DataObject {
 

@@ -5,7 +5,9 @@ namespace Models\Business;
 use Models\Business\DataObject as DataObject;
 
 /**
- * @package \Models\Business\Language
+ * Classe Language, és el model que hereta de DataObject capaç de realitzar les operacions
+ * CRUD de la taula languages, per gestionar els diferents idiomes que tradueix l'aplicació.
+ * @package \Models\Business
  */
 class Language extends DataObject {
 

@@ -3,8 +3,11 @@
 namespace Models\Business;
 
 use Models\Business\DataObject as DataObject;
+
 /**
- * @package \Models\Business\StatusRobot
+ * Classe StatusRobot, hereta de DataObject i permet gestionar el CRUD de la taula status_robot a partir 
+ * dels seus metodes i atributs.
+ * @package \Models\Business
  */
 class StatusRobot extends DataObject{
     protected $id;
